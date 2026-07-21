@@ -1,0 +1,21 @@
+<footer class="site-foot ol-telemetry" aria-label="Telemetry">
+  <div class="ol-tel-grid">
+    <div class="ol-tel-cell">
+      <span class="ol-tel-label">CALLSIGN</span>
+      <span class="ol-tel-value">{{ podcast.title | escape }}</span>
+    </div>
+    <div class="ol-tel-cell">
+      <span class="ol-tel-label">STATUS</span>
+      <span class="ol-tel-value ol-tel-live">NOMINAL</span>
+    </div>
+    <div class="ol-tel-cell ol-tel-links">
+      <a href="{{ urls.pages.briefing }}">Briefing</a>
+      <a href="{{ urls.pages.channels }}">Channels</a>
+      <a href="{{ urls.pages.podcast }}">Dossier</a>
+    </div>
+  </div>
+  <p class="ol-tel-foot">
+    Imagery relay · <a href="{{ urls.pages.sources }}">Sources</a> ·
+    {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+  </p>
+</footer>

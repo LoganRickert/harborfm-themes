@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="hotmic-theme hotmic-page-{{ page }}">
+  <div class="hm-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="hm-main">
+      <div class="hm-ep-mast" aria-label="On stage">
+        <span class="hm-ep-mast__badge">LIVE</span>
+        <p class="hm-ep-mast__line">Spotlight set · mic check passed</p>
+      </div>
+      <nav class="hm-ep-crumbs" aria-label="Breadcrumb">
+        <a href="{{ urls.home }}">Tonight</a><span aria-hidden="true">›</span>
+        <a href="{{ urls.pages.podcast }}">Green room</a><span aria-hidden="true">›</span>
+        <span>Set</span>
+      </nav>
+      <section class="hm-ep-player">{% render 'harborfm/player' %}</section>
+      {% if show.episode_description %}{% if episode.description != "" %}
+      <section class="hm-stage-panel"><h2>Set notes</h2><p class="hm-lede">{{ episode.description | escape }}</p></section>
+      {% endif %}{% endif %}
+      {% if show.funding %}{% if funding_links.size > 0 %}
+      <section class="hm-stage-panel">
+        <h2>Tip jar</h2>
+        <div class="hm-chip-row">
+          {% for f in funding_links %}<a class="hm-chip hm-chip--fund" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_episode %}
+      <section class="hm-stage-panel hm-reviews" aria-label="Crowd reactions">
+        <header class="hm-reviews__head">
+          <h2>Crowd reactions</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

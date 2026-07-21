@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Meeting minutes | {{ podcast.title | escape }}</title>
+</head>
+<body class="glasshouse-theme glasshouse-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Leadership in clear air</p>
+        <h1 class="title display">Meeting minutes</h1>
+      </header>
+      <section class="panel"><h2>Minutes</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

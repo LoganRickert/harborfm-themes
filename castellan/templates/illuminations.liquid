@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Illuminations | {{ podcast.title | escape }}</title>
+</head>
+<body class="castellan-theme castellan-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    {% render '_pathhead', title: 'Illuminations', podcast: podcast, urls: urls %}
+    <main class="main plates">
+      <header class="plates__head">
+        <p class="plates__lede">Misty photography in the Castellan package, licensed from Unsplash. Each plate links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/landscape-photo-of-castle-near-the-mountain-L1DksU0Mrd4" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Castle landscape near mountains" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Castle landscape</p>
+            <p class="plate__file">hero.jpg · Ramparts hero, gallery preview</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@jerrykavan" rel="noopener noreferrer">Jerry Kavan</a>
+              on
+              <a href="https://unsplash.com/photos/landscape-photo-of-castle-near-the-mountain-L1DksU0Mrd4" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/reflection-of-a-castle-surrounded-with-fogs-B5PNmw5XSpk" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Foggy castle reflected in still water" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Foggy castle</p>
+            <p class="plate__file">a.jpg · Chronicle</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@timreb9" rel="noopener noreferrer">Tim Rebkavets</a>
+              on
+              <a href="https://unsplash.com/photos/reflection-of-a-castle-surrounded-with-fogs-B5PNmw5XSpk" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/a-woman-holding-a-sword-and-shield-in-a-field-QnEB1y8mXSo" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Female knight holding a sword and shield in a field" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Female knight</p>
+            <p class="plate__file">b.jpg · Ramparts knight strip, Court strip</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@paneva" rel="noopener noreferrer">Anna Saveleva</a>
+              on
+              <a href="https://unsplash.com/photos/a-woman-holding-a-sword-and-shield-in-a-field-QnEB1y8mXSo" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/woman-in-green-long-sleeve-shirt-holding-black-and-gray-rifle-dj_DVO6OeZA" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Warrior in green holding a rifle" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Warrior</p>
+            <p class="plate__file">c.jpg · Ramparts knight strip, Court strip</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@gioele_fazzeri_89" rel="noopener noreferrer">Gioele Fazzeri</a>
+              on
+              <a href="https://unsplash.com/photos/woman-in-green-long-sleeve-shirt-holding-black-and-gray-rifle-dj_DVO6OeZA" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/brown-wooden-round-table-with-brown-leather-boots-Dq1LIp47cUc" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Armor and leather boots on a wooden table" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Armor still life</p>
+            <p class="plate__file">d.jpg · Ramparts knight strip, Tithes</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@elimendeinagella" rel="noopener noreferrer">Elimende Inagella</a>
+              on
+              <a href="https://unsplash.com/photos/brown-wooden-round-table-with-brown-leather-boots-Dq1LIp47cUc" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    <nav class="battlement-nav" aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Ramparts</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Chronicle</a>
+      <a href="{{ urls.pages.court }}"{% if page == "court" %} aria-current="page"{% endif %}>Court</a>
+      <a href="{{ urls.pages.tithes }}"{% if page == "tithes" %} aria-current="page"{% endif %}>Tithes</a>
+      <a href="{{ urls.pages.reliquary }}"{% if page == "reliquary" %} aria-current="page"{% endif %}>Reliquary</a>
+      <a href="{{ urls.pages.illuminations }}"{% if page == "illuminations" %} aria-current="page"{% endif %}>Illuminations</a>
+    </nav>
+  </div>
+</body>
+</html>

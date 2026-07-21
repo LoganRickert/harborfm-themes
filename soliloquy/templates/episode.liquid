@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="soliloquy-theme soliloquy-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+
+  <main class="sol-journal sol-journal--page">
+    <nav class="sol-crumbs" aria-label="Breadcrumb">
+      <a class="sol-link-grow" href="{{ urls.home }}">Opening</a><span aria-hidden="true">/</span>
+      <a class="sol-link-grow" href="{{ urls.pages.podcast }}">Episodes</a><span aria-hidden="true">/</span>
+      <span>Monologue</span>
+    </nav>
+
+    <header class="sol-ep-mast">
+      <p class="sol-kicker">Monologue</p>
+      <h1 class="sol-display sol-display--episode">{{ episode.title | escape }}</h1>
+      <p class="sol-ep-dek">Press play when you are ready to listen.</p>
+    </header>
+
+    <section class="sol-ep-player sol-ep-player--journal">{% render 'harborfm/player' %}</section>
+
+    {% if show.episode_description %}{% if episode.description != "" %}
+    <section class="sol-sheet">
+      <h2 class="sol-sheet__title">Notes</h2>
+      <p class="sol-lede">{{ episode.description | escape }}</p>
+    </section>
+    {% endif %}{% endif %}
+
+    {% if show.funding %}{% if funding_links.size > 0 %}
+    <section class="sol-sheet">
+      <h2 class="sol-sheet__title">Support</h2>
+      <div class="sol-fund-row">
+        {% for f in funding_links %}<a class="sol-fund-link" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+      </div>
+    </section>
+    {% endif %}{% endif %}
+
+    {% if show.reviews_episode %}
+    <section class="sol-sheet sol-reviews" aria-label="Listener notes">
+      <header class="sol-reviews__head">
+        <h2 class="sol-sheet__title">Listener notes</h2>
+      </header>
+      {% render 'harborfm/reviews' %}
+    </section>
+    {% endif %}
+  </main>
+
+  {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

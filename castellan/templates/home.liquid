@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="castellan-theme castellan-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <header class="ramparts-hero">
+      <div class="ramparts-hero__mist" style="background-image: url('{{ urls.theme_asset_base }}/images/hero.jpg');" role="img" aria-label=""></div>
+      <div class="ramparts-hero__veil" aria-hidden="true"></div>
+      <div class="ramparts-hero__scroll">
+        <p class="eyebrow">Stone keep, slow chronicle</p>
+        <div class="ramparts-hero__mast">
+          <div class="ramparts-hero__copy">
+            <h1 class="title display">{{ podcast.title | escape }}</h1>
+            {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+            <div class="action-row">
+              <button type="button" class="btn-gold" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+              <a class="btn-parchment" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+              <button type="button" class="btn-parchment" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+            </div>
+            <p class="lede"><a class="chronicle-link" href="{{ urls.pages.podcast }}">Read the chronicle &rarr;</a></p>
+          </div>
+          {% if podcast.artwork_url != "" %}
+          <img class="ramparts-hero__seal" src="{{ podcast.artwork_url | escape }}" alt="" width="168" height="168" />
+          {% endif %}
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="knight-strip" aria-hidden="true">
+        <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="" />
+      </div>
+      <section class="panel panel--parchment">
+        <h2>Dispatch roll</h2>
+        {% render 'harborfm/search' %}
+        {% render 'harborfm/episodes' %}
+      </section>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

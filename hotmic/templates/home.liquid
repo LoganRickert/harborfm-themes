@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="hotmic-theme hotmic-page-{{ page }}">
+  <div class="hm-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <header class="hm-hero">
+      <div class="hm-hero__copy">
+        <p class="hm-kicker">Comedy club night, mic hot</p>
+        <p class="hm-neon-label" aria-hidden="true">LAUGH</p>
+        <h1 class="hm-display">{{ podcast.title | escape }}</h1>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="hm-lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+        <div class="hm-actions">
+          <button type="button" class="hm-ticket" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+          <a class="hm-ticket hm-ticket--ghost" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+          <button type="button" class="hm-ticket hm-ticket--ghost" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+          <button type="button" class="hm-ticket hm-ticket--ghost" data-harborfm-action="alerts"><i class="fa-solid fa-bell" aria-hidden="true"></i> Alerts</button>
+        </div>
+      </div>
+      {% if podcast.artwork_url != "" %}
+      <div class="hm-hero__photo" style="background-image:url('{{ podcast.artwork_url | escape }}')" role="img" aria-label="{{ podcast.title | escape }} artwork"></div>
+      {% else %}
+      <div class="hm-hero__photo" style="background-image:url('{{ urls.theme_asset_base }}/images/hero.jpg')" role="img" aria-label="Neon LAUGH sign in a comedy club"></div>
+      {% endif %}
+    </header>
+    <main class="hm-main">
+      <div class="hm-spotlight-strip">
+        <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+      <section class="hm-stage-panel"><h2>Tonight's set list</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

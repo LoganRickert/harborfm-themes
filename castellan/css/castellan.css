@@ -1,0 +1,1195 @@
+.castellan-theme {
+  --keep: #0f1712;
+  --parchment: #ebe3d0;
+  --parchment-deep: #ddd2b8;
+  --ink: #e8e2d6;
+  --ink-dark: #1c1812;
+  --muted: #8a9488;
+  --muted-dark: #5c6358;
+  --line: rgba(212, 196, 160, 0.28);
+  --line-dark: rgba(28, 24, 18, 0.18);
+  --gold: var(--accent);
+  --mist: rgba(15, 23, 18, 0.72);
+  margin: 0;
+  min-height: 100vh;
+  background: var(--keep);
+  color: var(--ink);
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  color-scheme: dark;
+}
+.castellan-theme .display {
+  font-family: "Cinzel Decorative", "Crimson Pro", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.castellan-theme h1,
+.castellan-theme h2,
+.castellan-theme h3 {
+  font-family: "Crimson Pro", Georgia, serif;
+  font-weight: 600;
+}
+.castellan-theme .shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.castellan-theme.castellan-page-podcast,
+.castellan-theme.castellan-page-court,
+.castellan-theme.castellan-page-tithes,
+.castellan-theme.castellan-page-reliquary,
+.castellan-theme.castellan-page-illuminations,
+.castellan-theme.castellan-page-episode,
+.castellan-theme.castellan-page-not_found {
+  padding-bottom: 4.75rem;
+}
+
+/* heraldic top bar */
+.castellan-theme .herald-bar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  background:
+    linear-gradient(180deg, rgba(18, 28, 22, 0.98), rgba(15, 23, 18, 0.94));
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+.castellan-theme .herald-bar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-right: auto;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 650;
+  font-size: 0.92rem;
+  min-width: 0;
+}
+.castellan-theme .herald-bar__escutcheon {
+  width: 1.15rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+  background:
+    linear-gradient(180deg, var(--gold), color-mix(in srgb, var(--gold) 65%, #1c1812));
+  clip-path: polygon(50% 0%, 100% 18%, 100% 72%, 50% 100%, 0% 72%, 0% 18%);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.castellan-theme .herald-bar__show {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+.castellan-theme .herald-bar__brand:hover .herald-bar__show {
+  border-bottom-color: var(--gold);
+}
+.castellan-theme .herald-bar__rail {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+.castellan-theme .herald-bar__rail a {
+  flex: 0 0 auto;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.castellan-theme .herald-bar__rail a:hover {
+  color: var(--ink);
+  border-color: var(--line);
+}
+.castellan-theme .herald-bar__rail a[aria-current="page"] {
+  color: var(--ink-dark);
+  background: var(--parchment);
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--parchment));
+}
+.castellan-theme .herald-bar__menu {
+  display: none;
+  position: relative;
+}
+.castellan-theme .herald-bar__toggle {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+}
+.castellan-theme .herald-bar__toggle::-webkit-details-marker { display: none; }
+.castellan-theme .herald-bar__chevron {
+  display: block;
+  width: 0.85rem;
+  height: 0.85rem;
+  background: var(--gold);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.castellan-theme .herald-bar__links {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  min-width: 11rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  background: rgba(18, 28, 22, 0.98);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+.castellan-theme .herald-bar__links a {
+  padding: 0.45rem 0.65rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.castellan-theme .herald-bar__links a[aria-current="page"],
+.castellan-theme .herald-bar__links a:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+}
+
+/* gatehead (interior page banner) */
+.castellan-theme .gatehead {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--gold) 8%, var(--keep)) 0%, var(--keep) 100%);
+  border-bottom: 1px solid var(--line);
+}
+.castellan-theme .gatehead__inner {
+  width: min(920px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 1.35rem 0 1.5rem;
+}
+.castellan-theme .gatehead__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--gold);
+  font-weight: 650;
+  font-size: 0.9rem;
+}
+.castellan-theme .gatehead__seal {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.castellan-theme .gatehead__show {
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.castellan-theme .gatehead__title {
+  margin: 0.65rem 0 0;
+  font-size: clamp(1.85rem, 4.5vw, 2.85rem);
+  line-height: 1.12;
+  color: var(--ink);
+}
+
+/* ramparts hero */
+.castellan-theme .ramparts-hero {
+  position: relative;
+  min-height: min(78vh, 780px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--keep);
+}
+.castellan-theme .ramparts-hero__mist {
+  position: absolute;
+  inset: -5% -3%;
+  background: var(--keep) center/cover no-repeat;
+  will-change: transform;
+  animation: cs-pan 34s ease-in-out infinite alternate;
+  filter: saturate(0.88) contrast(1.05);
+}
+.castellan-theme .ramparts-hero__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 18, 0.45) 0%, rgba(15, 23, 18, 0.2) 28%, rgba(15, 23, 18, 0.72) 55%, rgba(8, 12, 10, 0.97) 100%),
+    linear-gradient(90deg, rgba(15, 23, 18, 0.5) 0%, transparent 48%);
+  pointer-events: none;
+}
+.castellan-theme .ramparts-hero__scroll {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: clamp(1.75rem, 5vw, 3.25rem) clamp(1.25rem, 4vw, 2.75rem) clamp(2.25rem, 6vw, 3.75rem);
+  animation: cs-fade-rise 1s ease-out both;
+}
+.castellan-theme .ramparts-hero__mast {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem 1.75rem;
+  align-items: end;
+  margin-top: 0.85rem;
+}
+.castellan-theme .ramparts-hero__copy { min-width: 0; }
+.castellan-theme .ramparts-hero__seal {
+  width: clamp(7rem, 18vw, 10.5rem);
+  height: clamp(7rem, 18vw, 10.5rem);
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+  justify-self: end;
+}
+.castellan-theme .ramparts-hero .title {
+  color: #f4efe4;
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  line-height: 1.05;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.75), 0 4px 28px rgba(0, 0, 0, 0.55);
+  margin: 0;
+}
+.castellan-theme .ramparts-hero .lede {
+  margin: 0.85rem 0 0;
+  color: #ebe4d6;
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 2px 16px rgba(0, 0, 0, 0.55);
+}
+.castellan-theme .ramparts-hero .action-row { margin-top: 1.15rem; }
+@media (max-width: 720px) {
+  .castellan-theme .ramparts-hero__mast {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .castellan-theme .ramparts-hero__seal {
+    justify-self: start;
+    width: 6.5rem;
+    height: 6.5rem;
+    margin-top: 0.35rem;
+  }
+}
+
+.castellan-theme .eyebrow {
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.castellan-theme .ramparts-hero .eyebrow {
+  display: inline-block;
+  margin: 0 0 0.65rem;
+  padding: 0.35rem 0.65rem 0.3rem;
+  color: #f3ebda;
+  background: color-mix(in srgb, #0a100c 78%, var(--gold) 22%);
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  border-left: 3px solid var(--gold);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-shadow: none;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+}
+.castellan-theme .title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0;
+  color: var(--ink);
+}
+.castellan-theme .lede {
+  color: var(--muted);
+  font-family: "Crimson Pro", Georgia, serif;
+  line-height: 1.55;
+}
+.castellan-theme .main {
+  width: min(920px, 100% - 2rem);
+  margin: 1.25rem auto 2rem;
+}
+.castellan-theme .panel {
+  background: color-mix(in srgb, var(--keep) 88%, black);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+}
+.castellan-theme .panel--parchment {
+  background:
+    linear-gradient(180deg, var(--parchment) 0%, var(--parchment-deep) 100%);
+  color: var(--ink-dark);
+  border-color: var(--line-dark);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  /* HarborFM mounts (reviews, etc.) read these tokens */
+  --text: var(--ink-dark);
+  --text-muted: var(--muted-dark);
+  --bg: var(--parchment);
+  --bg-elevated: #f3ecda;
+  --bg-muted: color-mix(in srgb, var(--parchment) 82%, var(--ink-dark) 18%);
+  --border: var(--line-dark);
+}
+.castellan-theme .panel--parchment h2 {
+  color: var(--ink-dark);
+  margin: 0 0 0.65rem;
+}
+.castellan-theme .panel--parchment .lede {
+  color: var(--muted-dark);
+}
+
+.castellan-theme .action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+}
+.castellan-theme .btn-gold,
+.castellan-theme .btn-parchment {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.castellan-theme .btn-gold {
+  background: var(--gold);
+  color: var(--accent-fg, #1c1812);
+  border: 1px solid var(--gold);
+}
+.castellan-theme .btn-gold:hover {
+  background: color-mix(in srgb, var(--gold) 82%, white);
+}
+.castellan-theme .btn-parchment {
+  background: rgba(235, 227, 208, 0.12);
+  color: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--parchment) 45%, transparent);
+  backdrop-filter: blur(6px);
+}
+.castellan-theme .btn-parchment:hover {
+  background: rgba(235, 227, 208, 0.2);
+  border-color: var(--parchment);
+}
+.castellan-theme .panel--parchment .btn-gold {
+  color: var(--accent-fg, #1c1812);
+}
+.castellan-theme .panel--parchment .btn-parchment {
+  background: rgba(28, 24, 18, 0.06);
+  color: var(--ink-dark);
+  border-color: var(--line-dark);
+}
+.castellan-theme .chronicle-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 650;
+}
+.castellan-theme .chronicle-link:hover { text-decoration: underline; }
+
+.castellan-theme .knight-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: -1.25rem 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+.castellan-theme .knight-strip--interior {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0.5rem;
+}
+.castellan-theme .knight-strip img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  filter: saturate(0.9);
+}
+
+.castellan-theme .chronicle-panel__art {
+  float: right;
+  width: clamp(7rem, 22vw, 10.5rem);
+  height: clamp(7rem, 22vw, 10.5rem);
+  object-fit: cover;
+  margin: 0 0 0.85rem 1rem;
+  border-radius: 4px;
+  border: 2px solid var(--line-dark);
+  box-shadow: 0 6px 18px rgba(28, 24, 18, 0.12);
+}
+.castellan-theme .theme-figure {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  margin: 1rem 0;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  filter: saturate(0.88);
+}
+
+.castellan-theme .court-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.castellan-theme .court-card {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--line-dark);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.castellan-theme .court-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  filter: saturate(0.92);
+}
+.castellan-theme .court-name {
+  color: var(--ink-dark);
+  font-family: "Crimson Pro", Georgia, serif;
+  font-weight: 700;
+  margin: 0;
+}
+.castellan-theme .court-role {
+  color: var(--muted-dark);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0.1rem 0;
+}
+.castellan-theme .court-desc {
+  font-size: 0.85rem;
+  margin: 0.35rem 0 0;
+  color: var(--muted-dark);
+}
+
+.castellan-theme .tithe-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.castellan-theme .tithe-tag {
+  border: 1px solid var(--line-dark);
+  color: var(--ink-dark);
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.35);
+}
+.castellan-theme .tithe-tag:hover {
+  border-color: var(--gold);
+  color: color-mix(in srgb, var(--gold) 70%, var(--ink-dark));
+}
+.castellan-theme .tithe-tag.tithe-tag-fund {
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--line-dark));
+}
+.castellan-theme .reliquary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.castellan-theme .reliquary-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink-dark);
+  text-align: center;
+  font-size: 0.8rem;
+}
+.castellan-theme .reliquary-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--line-dark);
+  margin-bottom: 0.35rem;
+}
+
+/* battlement bottom nav */
+.castellan-theme .battlement-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding: 0.55rem 0.75rem calc(0.55rem + env(safe-area-inset-bottom));
+  background:
+    linear-gradient(180deg, rgba(15, 23, 18, 0.92), rgba(12, 18, 14, 0.98));
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.castellan-theme .battlement-nav::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -6px;
+  height: 6px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 10px,
+      rgba(15, 23, 18, 0.98) 10px 14px,
+      transparent 14px 24px
+    );
+  pointer-events: none;
+}
+.castellan-theme .battlement-nav a {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.7rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.castellan-theme .battlement-nav a:hover {
+  color: var(--ink);
+  border-color: var(--line);
+}
+.castellan-theme .battlement-nav a[aria-current="page"] {
+  background: var(--gold);
+  color: var(--accent-fg, #1c1812);
+  border-color: var(--gold);
+}
+
+/* footer warden */
+.castellan-theme .site-foot.cs-warden {
+  margin: 2.5rem 1rem 1.5rem;
+  padding: 1.75rem 1.25rem 1.5rem;
+  text-align: center;
+  background: color-mix(in srgb, var(--keep) 70%, black);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.castellan-theme .cs-warden__crest {
+  width: 2rem;
+  height: 2.35rem;
+  margin: 0 auto 0.85rem;
+  background: var(--gold);
+  clip-path: polygon(50% 0%, 100% 18%, 100% 72%, 50% 100%, 0% 72%, 0% 18%);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--gold) 55%, black);
+}
+.castellan-theme .cs-warden__name {
+  margin: 0;
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: 1.55rem;
+  color: var(--ink);
+}
+.castellan-theme .cs-warden__sub {
+  margin: 0.35rem 0 1.1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.castellan-theme .cs-warden__sub a {
+  color: var(--gold);
+  font-weight: 650;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 35%, transparent);
+}
+.castellan-theme .cs-warden__posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 1rem;
+  margin-bottom: 1rem;
+}
+.castellan-theme .cs-warden__posts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.7rem;
+  background: rgba(235, 227, 208, 0.06);
+  border-radius: 4px;
+  border: 1px solid var(--line);
+}
+.castellan-theme .cs-warden__posts a span {
+  display: inline-grid;
+  place-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 2px;
+  background: var(--gold);
+  color: var(--accent-fg, #1c1812);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+.castellan-theme .cs-warden__posts a:hover { border-color: var(--gold); }
+.castellan-theme .cs-warden__credit {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.castellan-theme .cs-warden__credit a { color: var(--gold); }
+
+/* token remap */
+.castellan-theme {
+  --bg: var(--keep);
+  --bg-elevated: color-mix(in srgb, var(--keep) 82%, var(--parchment) 18%);
+  --bg-muted: color-mix(in srgb, var(--keep) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 6px;
+  overflow-x: clip;
+}
+.castellan-theme *,
+.castellan-theme *::before,
+.castellan-theme *::after { box-sizing: border-box; }
+.castellan-theme img { max-width: 100%; height: auto; }
+.castellan-theme [data-harborfm-block] { display: block; min-width: 0; max-width: 100%; }
+
+@keyframes cs-pan {
+  0% { transform: scale(1.08) translate3d(0, 0, 0); }
+  100% { transform: scale(1.08) translate3d(-2.4%, 1.4%, 0); }
+}
+@keyframes cs-fade-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cs-torch {
+  0%, 100% { box-shadow: 0 0 0 rgba(212, 175, 55, 0.2); }
+  50% { box-shadow: 0 0 14px rgba(212, 175, 55, 0.45); }
+}
+
+.castellan-theme .ramparts-hero__scroll { animation: cs-fade-rise 1s ease-out both; }
+.castellan-theme .battlement-nav a[aria-current="page"] { animation: cs-torch 3.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .castellan-theme .ramparts-hero__mist,
+  .castellan-theme .ramparts-hero__scroll,
+  .castellan-theme .battlement-nav a[aria-current="page"] {
+    animation: none;
+  }
+  .castellan-theme .ramparts-hero__mist { transform: none; inset: 0; }
+}
+
+.castellan-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.castellan-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* harborfm-themed-dialogs */
+.castellan-theme [data-harborfm-dialog="feedback"],
+.castellan-theme [data-harborfm-dialog="alerts"],
+.castellan-theme [data-harborfm-dialog="share"],
+.castellan-theme [data-harborfm-dialog="subscription"],
+.castellan-theme [data-harborfm-dialog="review"] {
+  --bg: #ebe3d0;
+  --bg-elevated: #f3ecda;
+  --bg-muted: color-mix(in srgb, #ebe3d0 85%, #1c1812 15%);
+  --text: #1c1812;
+  --text-muted: #5c6358;
+  --border: rgba(28, 24, 18, 0.18);
+  --radius: 6px;
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+  background: #f3ecda !important;
+  border: 1px solid rgba(28, 24, 18, 0.18) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 18px 40px rgba(15, 23, 18, 0.28) !important;
+  color: #1c1812 !important;
+}
+.castellan-theme [data-harborfm-dialog-overlay="feedback"],
+.castellan-theme [data-harborfm-dialog-overlay="alerts"],
+.castellan-theme [data-harborfm-dialog-overlay="share"],
+.castellan-theme [data-harborfm-dialog-overlay="subscription"],
+.castellan-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(15, 23, 18, 0.55) !important;
+}
+.castellan-theme [data-harborfm-dialog] h2,
+.castellan-theme [data-harborfm-dialog] h3,
+.castellan-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: "Crimson Pro", Georgia, serif !important;
+  color: #1c1812 !important;
+}
+.castellan-theme [data-harborfm-dialog] input,
+.castellan-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #f3ecda 70%, #ebe3d0) !important;
+  border: 1px solid rgba(28, 24, 18, 0.18) !important;
+  border-radius: 6px !important;
+  color: #1c1812 !important;
+  font-family: inherit !important;
+}
+.castellan-theme [data-harborfm-dialog] input:focus,
+.castellan-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent) !important;
+  outline: none !important;
+}
+.castellan-theme [data-harborfm-dialog] button {
+  border-radius: 4px !important;
+  font-family: inherit !important;
+}
+.castellan-theme [data-harborfm-dialog] button[type="submit"],
+.castellan-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.castellan-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--gold) !important;
+  color: var(--accent-fg, #1c1812) !important;
+  border: 1px solid var(--gold) !important;
+  font-weight: 650 !important;
+}
+.castellan-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid rgba(28, 24, 18, 0.18) !important;
+  color: #5c6358 !important;
+}
+.castellan-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 6px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* episode page */
+.castellan-theme .ep-crumbs--keep {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  align-items: center;
+  margin: 0 0 0.65rem;
+  font-weight: 650;
+  font-size: 0.9rem;
+}
+.castellan-theme .ep-crumbs--keep a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+}
+.castellan-theme .ep-crumbs--keep span { color: var(--muted); }
+.castellan-theme .ep-keep__dek {
+  margin: 0 0 1.15rem;
+  color: var(--muted);
+  font-family: "Crimson Pro", Georgia, serif;
+  line-height: 1.55;
+  font-size: 1.02rem;
+}
+.castellan-theme .ep-player--keep { margin: 0 0 1.5rem; }
+.castellan-theme .ep-player--keep [data-harborfm-episode-card] {
+  position: relative;
+  background: linear-gradient(180deg, var(--parchment), var(--parchment-deep)) !important;
+  border: 1px solid var(--line-dark) !important;
+  border-radius: 6px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  color: var(--ink-dark) !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-card]::before {
+  content: "";
+  position: absolute;
+  top: 0.95rem;
+  right: 0.95rem;
+  z-index: 3;
+  width: 1rem;
+  height: 1.15rem;
+  background: var(--gold);
+  clip-path: polygon(50% 0%, 100% 18%, 100% 72%, 50% 100%, 0% 72%, 0% 18%);
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-header] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  gap: 0 !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-title] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-row] {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-artwork] {
+  width: 100% !important;
+  height: auto !important;
+  max-height: min(20rem, 48vh);
+  aspect-ratio: 16 / 10;
+  border-radius: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line-dark) !important;
+  object-fit: cover !important;
+  box-shadow: none !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-body] {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  padding: 1.05rem 1.2rem 1.15rem !important;
+  min-width: 0 !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-meta] {
+  margin: 0 !important;
+  color: color-mix(in srgb, var(--gold) 75%, var(--ink-dark)) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-meta] span {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  color: inherit !important;
+  font: inherit !important;
+  box-shadow: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-actions] {
+  margin: 0.15rem 0 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 0.55rem !important;
+  align-items: center !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-actions] > div {
+  display: contents !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  gap: 0 !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-actions] button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem !important;
+  margin: 0 !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--line-dark) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  color: var(--ink-dark) !important;
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  line-height: 1.2 !important;
+  padding: 0.55rem 1.05rem !important;
+  box-shadow: none !important;
+  inset: auto !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-actions] button svg {
+  width: 1rem !important;
+  height: 1rem !important;
+  flex: 0 0 auto;
+  color: color-mix(in srgb, var(--gold) 70%, var(--ink-dark)) !important;
+  stroke: currentColor !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-actions] button:hover {
+  background: #fff !important;
+  border-color: var(--gold) !important;
+  color: var(--ink-dark) !important;
+  box-shadow: none !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-actions] > button:last-of-type {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--accent-fg, #1c1812) !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-actions] > button:last-of-type svg {
+  color: inherit !important;
+}
+.castellan-theme .ep-player--keep [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  padding: 0 1.2rem 1.2rem !important;
+  border-top: 1px dashed color-mix(in srgb, var(--line-dark) 80%, var(--gold));
+}
+
+/* episodes list */
+.castellan-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.8rem !important;
+  border: none !important;
+}
+.castellan-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  border: 1px solid var(--line-dark) !important;
+  border-radius: 4px !important;
+  padding: 1.05rem 1.15rem !important;
+  box-shadow: 0 8px 20px rgba(28, 24, 18, 0.06) !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+.castellan-theme [data-harborfm-episode-item]:hover {
+  border-color: color-mix(in srgb, var(--gold) 40%, var(--line-dark)) !important;
+  box-shadow: 0 12px 26px rgba(28, 24, 18, 0.1) !important;
+  background: rgba(255, 255, 255, 0.42) !important;
+  transform: none !important;
+}
+.castellan-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.8rem !important;
+  min-width: 0 !important;
+}
+.castellan-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: "Crimson Pro", Georgia, serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+  color: var(--ink-dark) !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+.castellan-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted-dark) !important;
+  font-size: 0.8rem !important;
+}
+.castellan-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  border-radius: 4px !important;
+  background: color-mix(in srgb, var(--gold) 18%, #fff) !important;
+  color: color-mix(in srgb, var(--gold) 75%, var(--ink-dark)) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--line-dark)) !important;
+  padding: 0.4rem 0.85rem !important;
+  font-weight: 650 !important;
+  font-size: 0.8rem !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+.castellan-theme [data-harborfm-episode-item-link]:hover {
+  background: var(--gold) !important;
+  color: var(--accent-fg, #1c1812) !important;
+}
+.castellan-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  color: var(--muted-dark) !important;
+  margin: 0.6rem 0 0 !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere !important;
+}
+.castellan-theme [data-harborfm-episode-item-type] {
+  border-radius: 4px !important;
+  background: color-mix(in srgb, var(--gold) 14%, #fff) !important;
+  color: color-mix(in srgb, var(--gold) 70%, var(--ink-dark)) !important;
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--line-dark)) !important;
+}
+.castellan-theme [data-harborfm-episodes-load-more] {
+  border-radius: 4px !important;
+  border: 1px solid var(--line-dark) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  color: var(--ink-dark) !important;
+  font-weight: 650 !important;
+}
+
+/* reviews */
+.castellan-theme .reviews-block { margin: 1.5rem 0; }
+.castellan-theme .reviews-block__head h2 {
+  font-family: "Crimson Pro", Georgia, serif;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+}
+.castellan-theme .reviews-block [data-harborfm-reviews-title] { display: none !important; }
+.castellan-theme .reviews-block [data-harborfm-reviews] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.castellan-theme .reviews-block [data-harborfm-reviews-list] {
+  list-style: none !important;
+  margin: 0 0 1rem !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+.castellan-theme .reviews-block [data-harborfm-review] {
+  min-width: 0 !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid var(--line-dark) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 8px 20px rgba(28, 24, 18, 0.05) !important;
+  padding: 1rem 1.1rem !important;
+  color: var(--ink-dark) !important;
+}
+.castellan-theme .reviews-block [data-harborfm-review-name] {
+  font-family: "Crimson Pro", Georgia, serif !important;
+  font-size: 1.05rem !important;
+  color: var(--ink-dark) !important;
+}
+.castellan-theme .reviews-block [data-harborfm-review] p,
+.castellan-theme .reviews-block [data-harborfm-review] time,
+.castellan-theme .reviews-block [data-harborfm-review] span {
+  color: inherit;
+}
+.castellan-theme .reviews-block [data-harborfm-review-verified] {
+  color: color-mix(in srgb, var(--gold) 70%, var(--ink-dark)) !important;
+}
+.castellan-theme .reviews-block [data-harborfm-reviews-write],
+.castellan-theme .reviews-block [data-harborfm-reviews-load-more] {
+  border-radius: 4px !important;
+  border: 1px solid var(--line-dark) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  color: var(--ink-dark) !important;
+  font-weight: 650 !important;
+}
+.castellan-theme .reviews-block [data-harborfm-reviews-write] {
+  background: color-mix(in srgb, var(--gold) 16%, #fff) !important;
+  color: color-mix(in srgb, var(--gold) 75%, var(--ink-dark)) !important;
+  border-color: color-mix(in srgb, var(--gold) 35%, var(--line-dark)) !important;
+}
+
+/* illumination plate wall */
+.castellan-theme .plates { margin-top: 0.25rem; }
+.castellan-theme .plates__head { margin: 0 0 1.35rem; }
+.castellan-theme .plates__lede {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+.castellan-theme .plate-wall {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+.castellan-theme .plate {
+  grid-column: span 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.castellan-theme .plate:nth-child(1),
+.castellan-theme .plate:nth-child(2) { grid-column: span 3; }
+.castellan-theme .plate__frame {
+  display: block;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--keep) 80%, transparent);
+  overflow: clip;
+  line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.castellan-theme .plate__frame:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.castellan-theme .plate__frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.88);
+}
+.castellan-theme .plate:nth-child(1) .plate__frame img,
+.castellan-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 16 / 10; }
+.castellan-theme .plate__meta { min-width: 0; }
+.castellan-theme .plate__name {
+  margin: 0;
+  font-family: "Crimson Pro", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.castellan-theme .plate__file {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 650;
+}
+.castellan-theme .plate__by {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.castellan-theme .plate__by a {
+  color: var(--gold);
+  font-weight: 650;
+  text-decoration: none;
+}
+.castellan-theme .plate__by a:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .castellan-theme .herald-bar__rail { display: none; }
+  .castellan-theme .herald-bar__menu { display: block; }
+  .castellan-theme .plate-wall { grid-template-columns: 1fr 1fr; }
+  .castellan-theme .plate,
+  .castellan-theme .plate:nth-child(1),
+  .castellan-theme .plate:nth-child(2) { grid-column: span 1; }
+  .castellan-theme .plate:nth-child(1) .plate__frame img,
+  .castellan-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 720px) {
+  .castellan-theme .herald-bar,
+  .castellan-theme .battlement-nav {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .castellan-theme .ramparts-hero { min-height: 62vh; }
+  .castellan-theme .knight-strip { grid-template-columns: 1fr; }
+  .castellan-theme .knight-strip--interior { grid-template-columns: 1fr 1fr; }
+  .castellan-theme .main,
+  .castellan-theme .page,
+  .castellan-theme .content { padding-left: max(0.75rem, env(safe-area-inset-left)); padding-right: max(0.75rem, env(safe-area-inset-right)); }
+  .castellan-theme .chronicle-panel__art {
+    float: none;
+    display: block;
+    margin: 0 0 0.85rem;
+  }
+}
+@media (max-width: 560px) {
+  .castellan-theme .plate-wall { grid-template-columns: 1fr; }
+  .castellan-theme .knight-strip--interior { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .castellan-theme .plate__frame:hover { transform: none; }
+}

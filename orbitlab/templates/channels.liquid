@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Downlink channels | {{ podcast.title | escape }}</title>
+</head>
+<body class="orbitlab-theme orbitlab-page-{{ page }}">
+  <div class="orbit-wrap">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="console">
+
+      <header>
+        <p class="eyebrow">Deep dives from the console</p>
+        <h1 class="title display">Downlink channels</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">External relays where the signal also lands.</p>
+        {% if show.links %}{% if links.size > 0 %}
+        <div class="orbit-tags">
+          {% for link in links %}<a class="orbit-tag orbit-tag-{{ link.group }}" href="{{ link.url | escape }}">{{ link.label | escape }}</a>{% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Add listen-on / social links in HarborFM to fill this page.</p>{% endif %}
+      </section>
+      {% if show.podroll %}{% if podroll.size > 0 %}
+      <section class="panel">
+        <h2>Also in rotation</h2>
+        <div class="podroll-grid">
+          {% for p in podroll %}
+          <a class="podroll-card" href="{{ p.home_url | escape }}">
+            {% if p.cover_art_url != "" %}<img src="{{ p.cover_art_url | escape }}" alt="" />{% endif %}
+            <span>{{ p.title | escape }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_podcast %}
+      <section class="panel reviews-block" aria-label="Signal packets">
+        <header class="reviews-block__head">
+          <h2>Signal packets</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

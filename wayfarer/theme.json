@@ -1,0 +1,17 @@
+{
+  "id": "wayfarer",
+  "name": "Wayfarer",
+  "version": "1.0.0",
+  "description": "Travel journal layout for field notes and far-off places.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-wayfarer",
+  "pages": {
+    "podcast": "dispatches.html",
+    "map": "map.html",
+    "companions": "companions.html",
+    "tipjar": "tipjar.html",
+    "postmarks": "postmarks.html"
+  },
+  "not_found": "not_found"
+}

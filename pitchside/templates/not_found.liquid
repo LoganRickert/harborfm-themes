@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="pitchside-theme pitchside-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Offside</p>
+        <h1 class="title display">Page ruled out</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">That link never made the team sheet. Back to matchday.</p>
+        <div class="action-row">
+          <a class="btn-pitch" href="{{ urls.home }}">Back to matchday</a>
+        </div>
+      </section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+</body>
+</html>

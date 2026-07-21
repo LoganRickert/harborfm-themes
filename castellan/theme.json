@@ -1,0 +1,17 @@
+{
+  "id": "castellan",
+  "name": "Castellan",
+  "version": "1.0.0",
+  "description": "Medieval chronicle mood with crest-like structure and parchment cues.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-castellan",
+  "pages": {
+    "podcast": "chronicle.html",
+    "court": "court.html",
+    "tithes": "tithes.html",
+    "reliquary": "reliquary.html",
+    "illuminations": "illuminations.html"
+  },
+  "not_found": "not_found"
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="casefile-theme casefile-page-{{ page }}">
+  <div class="dossier">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <div class="dossier-main">
+      <header class="ep-mast ep-mast--case">
+        <p class="ep-mast__prompt" aria-hidden="true">FILE / EPISODE / PLAYBACK</p>
+        <p class="eyebrow">Noir dossier, open file</p>
+      </header>
+
+      <nav class="ep-crumbs ep-crumbs--case" aria-label="Breadcrumb">
+        <a href="{{ urls.home }}">Briefing</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ urls.pages.podcast }}">Case log</a>
+        <span aria-hidden="true">/</span>
+        <span>Playback</span>
+      </nav>
+
+      <section class="ep-player ep-player--case">{% render 'harborfm/player' %}</section>
+
+      {% if show.episode_description %}{% if episode.description != "" %}
+      <section class="panel dossier-panel">
+        <h2><span class="evidence-label">Notes</span> Case summary</h2>
+        <p class="lede">{{ episode.description | escape }}</p>
+      </section>
+      {% endif %}{% endif %}
+
+      {% if show.reviews_episode %}
+      <section class="panel dossier-panel reviews-block" aria-label="Witness statements">
+        <header class="reviews-block__head">
+          <h2>Witness statements</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+
+      {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    </div>
+  </div>
+</body>
+</html>

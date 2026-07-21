@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Folded map | {{ podcast.title | escape }}</title>
+</head>
+<body class="wayfarer-theme wayfarer-page-{{ page }}">
+  <div class="journal">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="content">
+
+      <header>
+        <p class="eyebrow">Stories from the road</p>
+        <h1 class="title display">Folded map</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">Pins for places the stories have already visited, and other roads to follow.</p>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+      </section>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+
+      {% if show.links %}{% if links.size > 0 %}
+      <section class="panel">
+        <h2>Coordinates elsewhere</h2>
+        <div class="stamp-row">
+          {% for link in links %}<a class="stamp stamp-{{ link.group }}" href="{{ link.url | escape }}">{{ link.label | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.podroll %}{% if podroll.size > 0 %}
+      <section class="panel">
+        <h2>Other routes</h2>
+        <div class="podroll-grid">
+          {% for p in podroll %}
+          <a class="podroll-card" href="{{ p.home_url | escape }}">
+            {% if p.cover_art_url != "" %}<img src="{{ p.cover_art_url | escape }}" alt="" />{% endif %}
+            <span>{{ p.title | escape }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

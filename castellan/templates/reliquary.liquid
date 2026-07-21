@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Reliquary | {{ podcast.title | escape }}</title>
+</head>
+<body class="castellan-theme castellan-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    {% render '_pathhead', title: 'Reliquary', podcast: podcast, urls: urls %}
+    <main class="main">
+      <section class="panel panel--parchment">
+        <p class="lede">Relics of the road: where to listen, where to find us, and other keeps worth visiting.</p>
+        {% if show.links %}{% if links.size > 0 %}
+        <div class="tithe-row">
+          {% for link in links %}<a class="tithe-tag tithe-tag-{{ link.group }}" href="{{ link.url | escape }}">{{ link.label | escape }}</a>{% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Add listen-on / social links in HarborFM to fill this page.</p>{% endif %}
+      </section>
+      {% if show.podroll %}{% if podroll.size > 0 %}
+      <section class="panel panel--parchment">
+        <h2>Fellow keeps</h2>
+        <div class="reliquary-grid">
+          {% for p in podroll %}
+          <a class="reliquary-card" href="{{ p.home_url | escape }}">
+            {% if p.cover_art_url != "" %}<img src="{{ p.cover_art_url | escape }}" alt="" />{% endif %}
+            <span>{{ p.title | escape }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_podcast %}
+      <section class="panel panel--parchment reviews-block" aria-label="Court letters">
+        <header class="reviews-block__head">
+          <h2>Court letters</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    <nav class="battlement-nav" aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Ramparts</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Chronicle</a>
+      <a href="{{ urls.pages.court }}"{% if page == "court" %} aria-current="page"{% endif %}>Court</a>
+      <a href="{{ urls.pages.tithes }}"{% if page == "tithes" %} aria-current="page"{% endif %}>Tithes</a>
+      <a href="{{ urls.pages.reliquary }}"{% if page == "reliquary" %} aria-current="page"{% endif %}>Reliquary</a>
+      <a href="{{ urls.pages.illuminations }}"{% if page == "illuminations" %} aria-current="page"{% endif %}>Illuminations</a>
+    </nav>
+  </div>
+</body>
+</html>

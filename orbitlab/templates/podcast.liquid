@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Mission dossier | {{ podcast.title | escape }}</title>
+</head>
+<body class="orbitlab-theme orbitlab-page-{{ page }}">
+  <div class="orbit-wrap">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="console">
+
+      <header>
+        <p class="eyebrow">Deep dives from the console</p>
+        <h1 class="title display">Mission dossier</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">Context packets and lab notes. Live telemetry streams on the Console.</p>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+        {% if show.author %}{% if podcast.author_name != "" %}<p class="lede">Hosted by {{ podcast.author_name | escape }}.</p>{% endif %}{% endif %}
+      </section>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/d.jpg" alt="" />
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

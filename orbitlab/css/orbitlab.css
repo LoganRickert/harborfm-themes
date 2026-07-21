@@ -1,0 +1,597 @@
+.orbitlab-theme {
+  --ink: #e8fbff; --muted: #7aa8b5; --bg: #050b16; --panel: rgba(10,24,40,0.9); --line: #1d4e5f;
+  --teal: var(--accent); --font: "Space Grotesk", "IBM Plex Mono", sans-serif;
+  margin: 0; min-height: 100vh; background:
+    radial-gradient(circle at 50% 0%, rgba(45,226,197,0.12), transparent 45%), var(--bg);
+  color: var(--ink); font-family: "Space Grotesk", system-ui, sans-serif; color-scheme: dark;
+}
+.orbitlab-theme .mono { font-family: "IBM Plex Mono", monospace; }
+.orbitlab-theme .orbit-wrap { position: relative; width: min(920px, 100% - 2rem); margin: 0 auto; padding: 1.5rem 0 3rem; }
+.orbitlab-theme .orbit-wrap::before, .orbitlab-theme .orbit-wrap::after {
+  content: ""; position: absolute; left: 50%; top: 8%; transform: translateX(-50%);
+  border: 1px solid rgba(45,226,197,0.18); border-radius: 50%; pointer-events: none; }
+.orbitlab-theme .orbit-wrap::before { width: min(520px, 90vw); height: min(520px, 90vw); }
+.orbitlab-theme .orbit-wrap::after { width: min(360px, 70vw); height: min(360px, 70vw); top: 14%; }
+.orbitlab-theme .topnav { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.orbitlab-theme .topnav a { padding: 0.35rem 0.7rem; border: 1px solid var(--line); color: var(--ink); text-decoration: none;
+  font-size: 0.8rem; border-radius: 999px; background: rgba(5,11,22,0.7); }
+.orbitlab-theme .topnav a[aria-current="page"] { border-color: var(--teal); color: var(--teal); }
+.orbitlab-theme .console { position: relative; z-index: 1; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 18px; padding: 1.5rem; backdrop-filter: blur(8px); }
+.orbitlab-theme .hero-img { width: 100%; max-height: 280px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 1rem; }
+.orbitlab-theme .title { font-size: clamp(1.8rem, 5vw, 2.8rem); margin: 0; color: var(--teal); }
+.orbitlab-theme .panel { margin: 1.25rem 0; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(0,0,0,0.25); }
+.orbitlab-theme .data-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 0.6rem; }
+.orbitlab-theme .data-row img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+.orbitlab-theme .credits-list { list-style: none; padding: 0; }
+.orbitlab-theme .credits-list li { margin: 0.75rem 0; font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; }
+
+.orbitlab-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 8px;
+  overflow-x: clip;
+}
+.orbitlab-theme *,
+.orbitlab-theme *::before,
+.orbitlab-theme *::after { box-sizing: border-box; }
+.orbitlab-theme img { max-width: 100%; height: auto; }
+.orbitlab-theme [data-harborfm-block] { display: block; min-width: 0; max-width: 100%; }
+.orbitlab-theme [data-harborfm-block="show_header"] img {
+  width: 8rem !important;
+  height: 8rem !important;
+  max-width: 8rem !important;
+  object-fit: cover !important;
+}
+.orbitlab-theme .theme-figure { width: 100%; max-height: 360px; object-fit: cover; margin: 1rem 0; display: block; }
+@media (max-width: 720px) {
+  .orbitlab-theme .film-nav,
+  .orbitlab-theme .scorebar,
+  .orbitlab-theme .mag-top nav,
+  .orbitlab-theme .util nav,
+  .orbitlab-theme .topnav,
+  .orbitlab-theme .bottom-nav {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .orbitlab-theme .rail nav,
+  .orbitlab-theme .itinerary nav,
+  .orbitlab-theme .masonry { columns: 1 !important; }
+  .orbitlab-theme .panels > * { min-height: 140px; }
+  .orbitlab-theme .hero-bleed { min-height: 56vh; }
+  .orbitlab-theme .main,
+  .orbitlab-theme .page,
+  .orbitlab-theme .content,
+  .orbitlab-theme .console { padding-left: max(0.75rem, env(safe-area-inset-left)); padding-right: max(0.75rem, env(safe-area-inset-right)); }
+}
+
+.orbitlab-theme .eyebrow { font-family: "IBM Plex Mono", monospace; color: var(--teal); font-size: 0.8rem; text-transform: uppercase; }
+.orbitlab-theme .action-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+.orbitlab-theme .btn-orbit,
+.orbitlab-theme .btn-orbit-ghost { font-family: "Space Grotesk", sans-serif; font-size: 0.85rem; padding: 0.55rem 1rem; border-radius: 999px;
+  cursor: pointer; text-decoration: none; display: inline-block; }
+.orbitlab-theme .btn-orbit { background: var(--teal); color: var(--accent-fg, #041814); border: 1px solid var(--teal); }
+.orbitlab-theme .btn-orbit:hover { background: color-mix(in srgb, var(--teal) 82%, white); color: var(--accent-fg, #041814); }
+.orbitlab-theme .btn-orbit-ghost { background: transparent; color: var(--teal); border: 1px solid var(--line); }
+.orbitlab-theme .btn-orbit-ghost:hover { border-color: var(--teal); }
+.orbitlab-theme .crew-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; }
+.orbitlab-theme .crew-card { border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem; background: rgba(0,0,0,0.25); }
+.orbitlab-theme .crew-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; margin-bottom: 0.5rem; }
+.orbitlab-theme .crew-name { color: var(--teal); margin: 0; font-weight: 600; }
+.orbitlab-theme .crew-role { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; margin: 0.1rem 0; }
+.orbitlab-theme .crew-desc { font-size: 0.85rem; margin: 0.35rem 0 0; }
+.orbitlab-theme .orbit-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.orbitlab-theme .orbit-tag { border: 1px solid var(--line); color: var(--ink); padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.8rem; text-decoration: none; }
+.orbitlab-theme .orbit-tag.orbit-tag-listen { border-color: var(--teal); color: var(--teal); }
+.orbitlab-theme .podroll-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; }
+.orbitlab-theme .podroll-card { display: block; text-decoration: none; color: var(--ink); text-align: center; font-size: 0.8rem; }
+.orbitlab-theme .podroll-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); margin-bottom: 0.35rem; }
+
+@keyframes orb-spin-slow { from { transform: translateX(-50%) rotate(0deg); } to { transform: translateX(-50%) rotate(360deg); } }
+@keyframes orb-spin-rev { from { transform: translateX(-50%) rotate(360deg); } to { transform: translateX(-50%) rotate(0deg); } }
+@keyframes orb-pulse-teal { 0%, 100% { box-shadow: 0 0 0 rgba(45,226,197,0.3); } 50% { box-shadow: 0 0 16px rgba(45,226,197,0.55); } }
+
+.orbitlab-theme .orbit-wrap::before { animation: orb-spin-slow 40s linear infinite; }
+.orbitlab-theme .orbit-wrap::after { animation: orb-spin-rev 28s linear infinite; }
+.orbitlab-theme .btn-orbit { animation: orb-pulse-teal 3.2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orbitlab-theme .orbit-wrap::before,
+  .orbitlab-theme .orbit-wrap::after,
+  .orbitlab-theme .btn-orbit {
+    animation: none;
+  }
+}
+
+.orbitlab-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.orbitlab-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* harborfm-themed-dialogs */
+.orbitlab-theme [data-harborfm-dialog="feedback"],
+.orbitlab-theme [data-harborfm-dialog="alerts"],
+.orbitlab-theme [data-harborfm-dialog="share"],
+.orbitlab-theme [data-harborfm-dialog="subscription"],
+.orbitlab-theme [data-harborfm-dialog="review"] {
+  --bg: #070b14;
+  --bg-elevated: #0b1220;
+  --bg-muted: color-mix(in srgb, #070b14 85%, #e8eefc 15%);
+  --text: #e8eefc;
+  --text-muted: #8b9bb8;
+  --border: #243352;
+  --radius: 18px;
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  background: #0b1220 !important;
+  border: 1px solid #243352 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 20px 50px rgba(61,255,224,0.12) !important;
+  color: #e8eefc !important;
+}
+.orbitlab-theme [data-harborfm-dialog-overlay="feedback"],
+.orbitlab-theme [data-harborfm-dialog-overlay="alerts"],
+.orbitlab-theme [data-harborfm-dialog-overlay="share"],
+.orbitlab-theme [data-harborfm-dialog-overlay="subscription"],
+.orbitlab-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(4, 8, 18, 0.7) !important;
+}
+.orbitlab-theme [data-harborfm-dialog] h2,
+.orbitlab-theme [data-harborfm-dialog] h3,
+.orbitlab-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: "Space Grotesk", system-ui, sans-serif !important;
+  color: #e8eefc !important;
+}
+.orbitlab-theme [data-harborfm-dialog] input,
+.orbitlab-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #0b1220 70%, #070b14) !important;
+  border: 1px solid #243352 !important;
+  border-radius: 18px !important;
+  color: #e8eefc !important;
+  font-family: inherit !important;
+}
+.orbitlab-theme [data-harborfm-dialog] input:focus,
+.orbitlab-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--teal, #3dffe0) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal, #3dffe0) 25%, transparent) !important;
+  outline: none !important;
+}
+.orbitlab-theme [data-harborfm-dialog] button {
+  border-radius: 999px !important;
+  font-family: inherit !important;
+}
+.orbitlab-theme [data-harborfm-dialog] button[type="submit"],
+.orbitlab-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.orbitlab-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--teal, #3dffe0) !important;
+  color: var(--accent-fg, #041814) !important;
+  border: 1px solid var(--teal, #3dffe0) !important;
+  font-weight: 650 !important;
+}
+.orbitlab-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid #243352 !important;
+  color: #8b9bb8 !important;
+}
+.orbitlab-theme [data-harborfm-dialog] button[aria-label="Close"]:hover {
+  border-color: var(--teal, #3dffe0) !important;
+  color: #e8eefc !important;
+}
+
+
+
+/* reviews: telemetry packets */
+.orbitlab-theme .reviews-block { margin: 1.25rem 0; }
+.orbitlab-theme .reviews-block__head h2 {
+  font-family: "Space Grotesk", sans-serif; margin: 0 0 0.85rem; font-size: 1.15rem;
+}
+.orbitlab-theme .telemetry-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem; margin-bottom: 1rem;
+}
+.orbitlab-theme .telemetry-packet {
+  border: 1px solid var(--line); border-radius: 12px;
+  background: rgba(0,0,0,0.28); overflow: hidden;
+}
+.orbitlab-theme .telemetry-packet__head {
+  display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 0.75rem; background: rgba(45,226,197,0.08);
+  border-bottom: 1px solid var(--line);
+}
+.orbitlab-theme .telemetry-packet__call {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.75rem; color: var(--teal);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.orbitlab-theme .telemetry-packet__meter { display: flex; gap: 3px; }
+.orbitlab-theme .telemetry-packet__meter i {
+  display: block; width: 8px; height: 14px; border-radius: 2px;
+  background: rgba(255,255,255,0.12); border: 1px solid var(--line);
+}
+.orbitlab-theme .telemetry-packet__meter i.on {
+  background: var(--teal); border-color: var(--teal);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--teal) 45%, transparent);
+}
+.orbitlab-theme .telemetry-packet__payload {
+  margin: 0; padding: 0.75rem; font-size: 0.9rem; line-height: 1.45; color: var(--ink);
+}
+.orbitlab-theme .telemetry-packet__flag {
+  margin: 0; padding: 0 0.75rem 0.65rem; font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem; letter-spacing: 0.1em; color: var(--teal);
+}
+
+/* Stripe plan cards stay rectangular; do not inherit pill CTAs */
+.orbitlab-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 10px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* unique-site-footer */
+.orbitlab-theme .site-foot.ol-telemetry {
+  margin: 2.5rem 1rem 1.5rem; position: relative; z-index: 1;
+  border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  background: color-mix(in srgb, var(--panel) 90%, #000);
+}
+.orbitlab-theme .ol-tel-grid {
+  display: grid; grid-template-columns: 1.2fr 0.8fr 1.2fr; gap: 0;
+}
+@media (max-width: 720px) {
+  .orbitlab-theme .ol-tel-grid { grid-template-columns: 1fr; }
+}
+.orbitlab-theme .ol-tel-cell {
+  padding: 1rem 1.15rem; border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+@media (max-width: 720px) {
+  .orbitlab-theme .ol-tel-cell { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+.orbitlab-theme .ol-tel-cell:last-child { border-right: 0; }
+.orbitlab-theme .ol-tel-label {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+  color: var(--muted); text-transform: uppercase;
+}
+.orbitlab-theme .ol-tel-value { font-weight: 600; font-size: 1rem; }
+.orbitlab-theme .ol-tel-live { color: var(--teal); }
+.orbitlab-theme .ol-tel-links {
+  flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.65rem 1rem;
+}
+.orbitlab-theme .ol-tel-links a {
+  color: var(--teal); text-decoration: none; font-size: 0.85rem; font-weight: 600;
+}
+.orbitlab-theme .ol-tel-links a:hover { text-decoration: underline; }
+.orbitlab-theme .ol-tel-foot {
+  margin: 0; padding: 0.65rem 1.15rem; border-top: 1px solid var(--line);
+  font-size: 0.75rem; color: var(--muted); font-family: "IBM Plex Mono", monospace;
+}
+.orbitlab-theme .ol-tel-foot a { color: var(--teal); }
+
+.orbitlab-theme .topnav { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.orbitlab-theme .topnav-brand { font-weight: 700; color: var(--teal); text-decoration: none; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (min-width: 760px) {
+  .orbitlab-theme .topnav { justify-content: center; flex-wrap: wrap; }
+  .orbitlab-theme .topnav-brand { display: none; }
+}
+
+/* mobile hamburger nav */
+.orbitlab-theme .topnav { position: relative; }
+.orbitlab-theme .nav-menu { margin: 0 0 0 auto; position: static; }
+.orbitlab-theme .nav-menu__toggle {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--line);
+  background: rgba(5,11,22,0.9);
+  color: var(--teal);
+}
+.orbitlab-theme .nav-menu__toggle::-webkit-details-marker { display: none; }
+.orbitlab-theme .nav-menu__icon,
+.orbitlab-theme .nav-menu__icon::before,
+.orbitlab-theme .nav-menu__icon::after {
+  display: block; width: 1.1rem; height: 2px; border-radius: 1px; background: currentColor; position: relative;
+}
+.orbitlab-theme .nav-menu__icon::before,
+.orbitlab-theme .nav-menu__icon::after { content: ""; position: absolute; left: 0; }
+.orbitlab-theme .nav-menu__icon::before { top: -6px; }
+.orbitlab-theme .nav-menu__icon::after { top: 6px; }
+@media (max-width: 759px) {
+  .orbitlab-theme .nav-menu nav {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 30;
+    display: flex; flex-direction: column; gap: 0.15rem;
+    padding: 0.75rem 1rem 1rem; background: rgba(10,24,40,0.98); border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+  }
+  .orbitlab-theme .nav-menu nav a { display: block; padding: 0.55rem 0.35rem; }
+}
+@media (min-width: 760px) {
+  /* Closed <details> stays hidden via ::details-content in Chromium; force open on desktop. */
+  .orbitlab-theme .nav-menu::details-content {
+    display: contents;
+    content-visibility: visible;
+    height: auto;
+    overflow: visible;
+  }
+
+  .orbitlab-theme .nav-menu__toggle { display: none; }
+  .orbitlab-theme .nav-menu { position: static; margin-left: auto; }
+  .orbitlab-theme .nav-menu nav {
+    position: static !important; display: flex !important; flex-direction: row; flex-wrap: wrap;
+    align-items: center; gap: 0.45rem 0.85rem; min-width: 0; padding: 0;
+    background: transparent; border: 0; box-shadow: none;
+  }
+}
+
+/* episode card skin */
+.orbitlab-theme .ep-crumbs--orbit {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.55rem;
+  margin: 0 0 1rem; padding: 0; font-family: "IBM Plex Mono", monospace; font-size: 0.78rem;
+}
+.orbitlab-theme .ep-crumbs--orbit a { color: var(--teal); text-decoration: none; }
+.orbitlab-theme .ep-crumbs--orbit a:hover { text-decoration: underline; }
+.orbitlab-theme .ep-crumbs--orbit span { color: var(--muted); }
+.orbitlab-theme .ep-mast--orbit { margin: 0 0 0.85rem; }
+.orbitlab-theme .ep-mast__readout {
+  display: inline-flex; gap: 0.65rem; align-items: baseline; margin-bottom: 0.4rem;
+  padding: 0.3rem 0.6rem; border: 1px solid var(--line); border-radius: 2px;
+  background: rgba(0,0,0,0.35); font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
+}
+.orbitlab-theme .ep-mast__label { color: var(--muted); }
+.orbitlab-theme .ep-mast__value { color: var(--teal); }
+.orbitlab-theme .ep-player--orbit { margin: 0.75rem 0 1.5rem; }
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-card] {
+  background: rgba(5,11,22,0.92) !important;
+  border: 1px solid var(--teal) !important;
+  border-radius: 2px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(45,226,197,0.15), 0 0 28px rgba(45,226,197,0.08);
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-header] {
+  margin: 0 !important; padding: 0 !important; border: 0 !important; gap: 0 !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-row] {
+  display: grid !important;
+  grid-template-columns: 1fr 7.5rem !important;
+  grid-template-areas:
+    "meta art"
+    "title art"
+    "actions art" !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-artwork] {
+  grid-area: art; width: 100% !important; height: 100% !important; min-height: 7.5rem;
+  border-radius: 0 !important; border: 0 !important; border-left: 1px solid var(--teal) !important;
+  object-fit: cover !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-body] {
+  display: contents !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-meta] {
+  grid-area: meta;
+  margin: 0 !important; padding: 0.55rem 0.85rem !important;
+  background: rgba(45,226,197,0.08); border-bottom: 1px solid var(--line);
+  font-family: "IBM Plex Mono", monospace; color: var(--teal) !important;
+  text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-title] {
+  grid-area: title; margin: 0 !important; padding: 0.85rem !important;
+  color: var(--ink) !important; font-size: clamp(1.35rem, 3.2vw, 1.85rem) !important;
+  font-family: "Space Grotesk", sans-serif !important; line-height: 1.2 !important;
+  border-bottom: 1px solid var(--line);
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-actions] {
+  grid-area: actions; margin: 0 !important; padding: 0.75rem 0.85rem !important;
+  display: flex !important; flex-wrap: wrap !important; gap: 0.4rem !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-actions] > div {
+  display: flex !important; flex-wrap: wrap !important; gap: 0.4rem !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-actions] button {
+  border-radius: 2px !important; border: 1px solid var(--line) !important;
+  background: transparent !important; color: var(--teal) !important;
+  font-family: "IBM Plex Mono", monospace !important; font-size: 0.7rem !important;
+  text-transform: uppercase; letter-spacing: 0.06em; padding: 0.4rem 0.65rem !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-actions] button:hover {
+  border-color: var(--teal) !important; background: rgba(45,226,197,0.1) !important;
+}
+.orbitlab-theme .ep-player--orbit [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  padding: 0.85rem !important; border-top: 1px solid var(--line);
+}
+@media (max-width: 640px) {
+  .orbitlab-theme .ep-player--orbit [data-harborfm-episode-row] {
+    grid-template-columns: 1fr !important;
+    grid-template-areas: "art" "meta" "title" "actions" !important;
+  }
+  .orbitlab-theme .ep-player--orbit [data-harborfm-episode-artwork] {
+    min-height: 10rem; border-left: 0 !important; border-bottom: 1px solid var(--teal) !important;
+  }
+}
+
+/* credit plate wall */
+.orbitlab-theme .plates { margin-top: 0.25rem; }
+.orbitlab-theme .plates__head { margin: 0 0 1.35rem; }
+.orbitlab-theme .plates__lede {
+  margin: 0.5rem 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55;
+}
+.orbitlab-theme .plate-wall {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.85rem;
+}
+.orbitlab-theme .plate {
+  grid-column: span 2; min-width: 0;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.orbitlab-theme .plate:nth-child(1),
+.orbitlab-theme .plate:nth-child(2) { grid-column: span 3; }
+.orbitlab-theme .plate__frame {
+  display: block; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 80%, transparent);
+  overflow: clip; line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.orbitlab-theme .plate__frame:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+.orbitlab-theme .plate__frame img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+}
+.orbitlab-theme .plate:nth-child(1) .plate__frame img,
+.orbitlab-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 16 / 10; }
+.orbitlab-theme .plate__meta { min-width: 0; }
+.orbitlab-theme .plate__name {
+  margin: 0; font-weight: 700; letter-spacing: -0.02em; font-size: 1.15rem; color: var(--ink);
+}
+.orbitlab-theme .plate__file {
+  margin: 0.15rem 0 0; font-size: 0.75rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--muted); font-weight: 650;
+}
+.orbitlab-theme .plate__by {
+  margin: 0.35rem 0 0; font-size: 0.95rem; line-height: 1.45; color: var(--ink);
+}
+.orbitlab-theme .plate__by a { color: var(--teal); font-weight: 650; text-decoration: none; }
+.orbitlab-theme .plate__by a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .orbitlab-theme .plate-wall { grid-template-columns: 1fr 1fr; }
+  .orbitlab-theme .plate,
+  .orbitlab-theme .plate:nth-child(1),
+  .orbitlab-theme .plate:nth-child(2) { grid-column: span 1; }
+  .orbitlab-theme .plate:nth-child(1) .plate__frame img,
+  .orbitlab-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) {
+  .orbitlab-theme .plate-wall { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbitlab-theme .plate__frame:hover { transform: none; }
+}
+/* episodes list skin */
+.orbitlab-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  background: rgba(5, 11, 22, 0.55) !important;
+}
+.orbitlab-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 0.95rem 1rem !important;
+  box-shadow: none !important;
+  font-family: "IBM Plex Mono", monospace !important;
+}
+.orbitlab-theme [data-harborfm-episode-item]:last-child {
+  border-bottom: none !important;
+}
+.orbitlab-theme [data-harborfm-episode-item]:hover {
+  background: rgba(45, 226, 197, 0.06) !important;
+  border-color: var(--line) !important;
+  transform: none !important;
+  box-shadow: inset 3px 0 0 var(--teal) !important;
+}
+.orbitlab-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.75rem !important;
+  min-width: 0 !important;
+}
+.orbitlab-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+  text-transform: none !important;
+}
+.orbitlab-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+.orbitlab-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  border-radius: 2px !important;
+  border: 1px solid var(--teal) !important;
+  background: transparent !important;
+  color: var(--teal) !important;
+  padding: 0.3rem 0.65rem !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+.orbitlab-theme [data-harborfm-episode-item-link]:hover {
+  background: var(--teal) !important;
+  color: #041018 !important;
+}
+.orbitlab-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  color: var(--muted) !important;
+  font-size: 0.82rem !important;
+  line-height: 1.5 !important;
+  margin: 0.55rem 0 0 !important;
+  overflow-wrap: anywhere !important;
+}
+.orbitlab-theme [data-harborfm-episode-item-type] {
+  border-radius: 2px !important;
+  background: transparent !important;
+  border: 1px solid var(--teal) !important;
+  color: var(--teal) !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+.orbitlab-theme [data-harborfm-episodes-load-more] {
+  border-radius: 2px !important;
+  border: 1px solid var(--line) !important;
+  background: rgba(10, 24, 40, 0.9) !important;
+  color: var(--teal) !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+/* reviews mount (paged ReviewsCard) */
+.orbitlab-theme .reviews-block [data-harborfm-reviews-title] { display: none !important; }
+.orbitlab-theme .reviews-block [data-harborfm-reviews] {
+  margin: 0 !important; padding: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important;
+}
+.orbitlab-theme .reviews-block [data-harborfm-reviews-list] {
+  list-style: none !important; margin: 0 0 1rem !important; padding: 0 !important;
+  border: 1px solid var(--line) !important; border-radius: 4px !important; overflow: hidden !important;
+}
+.orbitlab-theme .reviews-block [data-harborfm-review] {
+  min-width: 0 !important; background: transparent !important; border: none !important;
+  border-bottom: 1px solid var(--line) !important; border-radius: 0 !important; box-shadow: none !important;
+  padding: 0.9rem 1rem !important; font-family: "IBM Plex Mono", monospace !important;
+}
+.orbitlab-theme .reviews-block [data-harborfm-review]:last-child { border-bottom: none !important; }
+.orbitlab-theme .reviews-block [data-harborfm-review-body] { font-size: 0.88rem !important; color: var(--muted) !important; }
+.orbitlab-theme .reviews-block [data-harborfm-reviews-write],
+.orbitlab-theme .reviews-block [data-harborfm-reviews-load-more] {
+  border-radius: 2px !important; border: 1px solid var(--teal) !important; background: transparent !important;
+  color: var(--teal) !important; font-family: "IBM Plex Mono", monospace !important;
+  letter-spacing: 0.06em !important; text-transform: uppercase !important; font-size: 0.72rem !important;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>On the trail | {{ podcast.title | escape }}</title>
+</head>
+<body class="timberline-theme timberline-page-{{ page }}">
+  <div class="shell">
+    {% render '_pathhead', title: 'On the trail', podcast: podcast, urls: urls %}
+    <main class="main">
+      <section class="panel">
+        <p class="lede">Markers for who is hiking with us and how to join.</p>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+      </section>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+
+      {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+      <section class="panel">
+        <h2>Party of hikers</h2>
+        <div class="hiker-grid">
+          {% for host in cast.hosts %}
+          <div class="hiker-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="hiker-name">{{ host.name | escape }}</p>
+            <p class="hiker-role">{% if host.role != "" %}{{ host.role | escape }}{% else %}Host{% endif %}</p>
+            {% if host.description != "" %}<p class="hiker-desc">{{ host.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <div class="hiker-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="hiker-name">{{ guest.name | escape }}</p>
+            <p class="hiker-role">{% if guest.role != "" %}{{ guest.role | escape }}{% else %}Guest{% endif %}</p>
+            {% if guest.description != "" %}<p class="hiker-desc">{{ guest.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      <div class="waypoint-strip">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+<nav class="bottom-nav" aria-label="Show pages">
+    <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Basecamp</a>
+    <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Trail</a>
+    <a href="{{ urls.pages.guides }}"{% if page == "guides" %} aria-current="page"{% endif %}>Guides</a>
+    <a href="{{ urls.pages.campfund }}"{% if page == "campfund" %} aria-current="page"{% endif %}>Camp Fund</a>
+    <a href="{{ urls.pages.fieldnotes }}"{% if page == "fieldnotes" %} aria-current="page"{% endif %}>Field Notes</a>
+  </nav>
+  </div>
+</body>
+</html>

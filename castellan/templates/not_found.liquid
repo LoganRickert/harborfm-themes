@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="castellan-theme castellan-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    {% render '_pathhead', title: 'Lost in the mist', podcast: podcast, urls: urls %}
+    <main class="main">
+      <section class="panel panel--parchment">
+        <p class="lede">No gate opens on this path. Return to the ramparts before the fog thickens.</p>
+        <div class="action-row">
+          <a class="btn-gold" href="{{ urls.home }}">Back to ramparts</a>
+        </div>
+      </section>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    <nav class="battlement-nav" aria-label="Show pages">
+      <a href="{{ urls.home }}">Ramparts</a>
+      <a href="{{ urls.pages.podcast }}">Chronicle</a>
+      <a href="{{ urls.pages.court }}">Court</a>
+      <a href="{{ urls.pages.tithes }}">Tithes</a>
+      <a href="{{ urls.pages.reliquary }}">Reliquary</a>
+      <a href="{{ urls.pages.illuminations }}">Illuminations</a>
+    </nav>
+  </div>
+</body>
+</html>

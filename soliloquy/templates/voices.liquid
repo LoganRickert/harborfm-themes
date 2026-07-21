@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Voices | {{ podcast.title | escape }}</title>
+</head>
+<body class="soliloquy-theme soliloquy-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+
+  <main class="sol-journal sol-journal--page">
+    <header class="sol-page-head">
+      <p class="sol-kicker">A room for unguarded thought</p>
+      <h1 class="sol-display sol-display--page">Voices</h1>
+      <p class="sol-lede">The people who speak, listen, and shape each monologue.</p>
+    </header>
+
+    <section class="sol-sheet">
+      {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+        <div class="sol-voice-grid">
+          {% for host in cast.hosts %}
+          <article class="sol-voice-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="sol-voice-name">{{ host.name | escape }}</p>
+            <p class="sol-voice-role">{% if host.role != "" %}{{ host.role | escape }}{% else %}Host{% endif %}</p>
+            {% if host.description != "" %}<p class="sol-voice-desc">{{ host.description | escape }}</p>{% endif %}
+          </article>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <article class="sol-voice-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="sol-voice-name">{{ guest.name | escape }}</p>
+            <p class="sol-voice-role">{% if guest.role != "" %}{{ guest.role | escape }}{% else %}Guest{% endif %}</p>
+            {% if guest.description != "" %}<p class="sol-voice-desc">{{ guest.description | escape }}</p>{% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="sol-lede">Add hosts and guests in HarborFM to populate this page.</p>
+      {% endif %}{% else %}
+        <p class="sol-lede">Enable cast on the show in HarborFM to populate this page.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

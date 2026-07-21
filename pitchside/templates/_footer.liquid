@@ -1,0 +1,16 @@
+<footer class="site-foot ps-board" aria-label="Match board">
+  <div class="ps-board-top">
+    <span class="ps-badge">FT</span>
+    <span class="ps-score">{{ podcast.title | escape }}</span>
+    <span class="ps-badge ps-badge-dim">90+3</span>
+  </div>
+  <div class="ps-board-bottom">
+    <a href="{{ urls.home }}">Kickoff</a>
+    <a href="{{ urls.pages.podcast }}">Clubhouse</a>
+    <span class="ps-credit">
+      Kit:
+      {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+      · <a href="{{ urls.pages.stills }}">Stills credits</a>
+    </span>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="hotmic-theme hotmic-page-{{ page }}">
+  <div class="hm-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="hm-main">
+      <header class="hm-page-head">
+        <p class="hm-kicker">Mic's dead</p>
+        <h1 class="hm-display">Wrong room</h1>
+      </header>
+      <section class="hm-stage-panel hm-dead-mic">
+        <p class="hm-lede">That link bombed harder than a first-timer at open mic. Head back to Tonight before the crowd leaves.</p>
+        <div class="hm-actions">
+          <a class="hm-ticket" href="{{ urls.home }}">Back to Tonight</a>
+        </div>
+      </section>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

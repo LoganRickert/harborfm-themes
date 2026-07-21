@@ -1,0 +1,24 @@
+<footer class="site-foot nr-endcard" aria-label="End credits">
+  <div class="nr-sprockets" aria-hidden="true"></div>
+  <div class="nr-end-inner">
+    <p class="nr-end-kicker">Feature presentation</p>
+    <p class="nr-end-title">{{ podcast.title | escape }}</p>
+    <div class="nr-end-ticker">
+      <a href="{{ urls.pages.podcast }}">Reel</a>
+      <span>·</span>
+      <a href="{{ urls.pages.talent }}">Talent</a>
+      <span>·</span>
+      <a href="{{ urls.pages.boxoffice }}">Box Office</a>
+      <span>·</span>
+      <a href="{{ urls.pages.marquee }}">Marquee</a>
+      <span>·</span>
+      <a href="{{ urls.pages.premiere }}">Premiere</a>
+    </div>
+    <p class="nr-end-credit">
+      <a href="{{ urls.pages.marquee }}">Marquee photo credits</a>
+      ·
+      {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+    </p>
+  </div>
+  <div class="nr-sprockets nr-sprockets-b" aria-hidden="true"></div>
+</footer>

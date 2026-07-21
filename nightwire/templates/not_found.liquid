@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="nightwire-theme nightwire-page-{{ page }}">
+  <div class="hud">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="stage">
+      <header>
+        <p class="eyebrow">err=404</p>
+        <h1 class="title display">Signal not found</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">No packet for that path. Drop back to the uplink.</p>
+        <div class="action-row">
+          <a class="btn-acid" href="{{ urls.home }}">Re-establish uplink</a>
+        </div>
+      </section>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<footer class="ann-colophon" aria-label="Colophon">
+  <div class="ann-colophon__rule" aria-hidden="true"></div>
+  <div class="ann-colophon__inner">
+    <p class="ann-colophon__stamp">Ex Libris</p>
+    <p class="ann-colophon__title">{{ podcast.title | escape }}</p>
+    <p class="ann-colophon__meta">
+      Reading room ·
+      {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+      · {{ theme.version | escape }}
+    </p>
+    <nav class="ann-colophon__links">
+      <a href="{{ urls.pages.podcast }}">Catalogue</a>
+      <a href="{{ urls.pages.contributors }}">Contributors</a>
+      <a href="{{ urls.pages.endowments }}">Endowments</a>
+      <a href="{{ urls.pages.provenance }}">Provenance</a>
+    </nav>
+  </div>
+</footer>

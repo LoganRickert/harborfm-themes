@@ -1,0 +1,768 @@
+.timberline-theme {
+  --ink: #1d2a22; --muted: #5d6f63; --bg: #e8eee6; --panel: #f7faf6; --line: #c5d1c4;
+  --forest: var(--accent); --amber: #c9852d; --font: "Figtree", "Fraunces", sans-serif;
+  margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+  font-family: "Figtree", system-ui, sans-serif; color-scheme: light;
+  padding-bottom: 4.5rem;
+}
+.timberline-theme .display { font-family: "Fraunces", Georgia, serif; }
+.timberline-theme .trailhead {
+  position: relative;
+  min-height: min(78vh, 760px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  color: #f4f7f2;
+  background: #152019;
+}
+.timberline-theme .trailhead__sky {
+  position: absolute;
+  inset: -4% -2%;
+  background: #152019 center/cover no-repeat;
+  will-change: transform;
+  animation: tl-pan 32s ease-in-out infinite alternate;
+}
+.timberline-theme .trailhead__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(12, 20, 16, 0.2) 0%, transparent 28%, rgba(12, 20, 16, 0.55) 58%, rgba(12, 20, 16, 0.94) 100%),
+    linear-gradient(90deg, rgba(12, 20, 16, 0.35) 0%, transparent 42%);
+  pointer-events: none;
+}
+.timberline-theme .trailhead__copy {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 100%);
+  padding: clamp(1.75rem, 5vw, 3.25rem) clamp(1.25rem, 4vw, 2.75rem) clamp(2.25rem, 6vw, 3.75rem);
+  animation: tl-rise 0.9s ease-out both;
+}
+.timberline-theme .trailhead .eyebrow {
+  color: #e8b56a;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+.timberline-theme .trailhead .title {
+  color: #f7faf6;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
+}
+.timberline-theme .trailhead .lede {
+  margin: 0.85rem 0 0;
+  color: color-mix(in srgb, #f4f7f2 90%, transparent);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+.timberline-theme .trailhead .action-row { margin-top: 1.15rem; }
+.timberline-theme .trailhead .btn-bark {
+  background: rgba(247, 250, 246, 0.12);
+  color: #f7faf6;
+  border-color: rgba(247, 250, 246, 0.38);
+  backdrop-filter: blur(6px);
+}
+.timberline-theme .trailhead .btn-bark:hover {
+  background: rgba(247, 250, 246, 0.2);
+  border-color: #f7faf6;
+}
+.timberline-theme .trailhead-strip {
+  margin: -1.25rem 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+.timberline-theme .trailhead-strip img {
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 28px rgba(29, 42, 34, 0.12);
+}
+.timberline-theme .title { font-family: "Fraunces", serif; font-size: clamp(2rem, 5vw, 3.2rem); margin: 0; color: var(--forest); }
+.timberline-theme .lede { color: var(--muted); line-height: 1.55; }
+.timberline-theme .pathhead {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--forest) 10%, #f4f7f2) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--line);
+}
+.timberline-theme .pathhead__inner {
+  width: min(900px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 1.35rem 0 1.45rem;
+}
+.timberline-theme .pathhead__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--forest);
+  font-weight: 650;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+.timberline-theme .pathhead__brand:hover .pathhead__show {
+  border-bottom-color: var(--forest);
+}
+.timberline-theme .pathhead__blaze {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 auto;
+  background: var(--forest);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+.timberline-theme .pathhead__show {
+  border-bottom: 1px solid color-mix(in srgb, var(--forest) 30%, transparent);
+}
+.timberline-theme .pathhead__title {
+  margin: 0.55rem 0 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.timberline-theme .main { width: min(900px, 100% - 2rem); margin: 1.25rem auto 2rem; }
+.timberline-theme .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 1.25rem; margin: 1rem 0; }
+.timberline-theme .bottom-nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; gap: 0.25rem;
+  overflow-x: auto; padding: 0.55rem 0.75rem calc(0.55rem + env(safe-area-inset-bottom));
+  background: rgba(247,250,246,0.94); border-top: 1px solid var(--line); backdrop-filter: blur(8px); }
+.timberline-theme .bottom-nav a { flex: 0 0 auto; padding: 0.45rem 0.7rem; border-radius: 999px; text-decoration: none;
+  color: var(--forest); font-weight: 600; font-size: 0.85rem; }
+.timberline-theme .bottom-nav a[aria-current="page"] {
+  background: var(--forest); color: var(--accent-fg, #f7faf6);
+}
+.timberline-theme .credits-list { list-style: none; padding: 0; }
+.timberline-theme .credits-list li { margin: 0.75rem 0; }
+
+.timberline-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 8px;
+  overflow-x: clip;
+}
+.timberline-theme *,
+.timberline-theme *::before,
+.timberline-theme *::after { box-sizing: border-box; }
+.timberline-theme img { max-width: 100%; height: auto; }
+.timberline-theme [data-harborfm-block] { display: block; min-width: 0; max-width: 100%; }
+.timberline-theme [data-harborfm-block="show_header"] img {
+  width: 8rem !important;
+  height: 8rem !important;
+  max-width: 8rem !important;
+  object-fit: cover !important;
+}
+.timberline-theme .theme-figure { width: 100%; max-height: 360px; object-fit: cover; margin: 1rem 0; display: block; }
+@media (max-width: 720px) {
+  .timberline-theme .film-nav,
+  .timberline-theme .scorebar,
+  .timberline-theme .mag-top nav,
+  .timberline-theme .util nav,
+  .timberline-theme .topnav,
+  .timberline-theme .bottom-nav {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .timberline-theme .rail nav,
+  .timberline-theme .itinerary nav,
+  .timberline-theme .terminal nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+  }
+  .timberline-theme .rail a,
+  .timberline-theme .itinerary a,
+  .timberline-theme .terminal a {
+    display: inline-block;
+    padding: 0.45rem 0.65rem;
+  }
+  .timberline-theme .masonry { columns: 1 !important; }
+  .timberline-theme .trailhead { min-height: 62vh; }
+  .timberline-theme .main,
+  .timberline-theme .page,
+  .timberline-theme .content,
+  .timberline-theme .console { padding-left: max(0.75rem, env(safe-area-inset-left)); padding-right: max(0.75rem, env(safe-area-inset-right)); }
+}
+
+.timberline-theme .eyebrow { color: var(--amber); font-size: 0.85rem; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 600; }
+.timberline-theme .action-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.85rem; }
+.timberline-theme .btn-forest,
+.timberline-theme .btn-bark { font-family: "Figtree", sans-serif; font-weight: 600; font-size: 0.85rem; padding: 0.55rem 1.1rem;
+  border-radius: 999px; cursor: pointer; text-decoration: none; display: inline-block; }
+.timberline-theme .btn-forest {
+  background: var(--forest); color: var(--accent-fg, #f2f7ef); border: 1px solid var(--forest);
+}
+.timberline-theme .btn-forest:hover { background: color-mix(in srgb, var(--forest) 82%, black); }
+.timberline-theme .btn-bark { background: rgba(255,255,255,0.5); color: var(--forest); border: 1px solid var(--line); }
+.timberline-theme .btn-bark:hover { border-color: var(--forest); }
+.timberline-theme .hiker-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; }
+.timberline-theme .hiker-card { background: #eef4ec; border: 1px solid var(--line); border-radius: 14px; padding: 0.75rem; }
+.timberline-theme .hiker-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; margin-bottom: 0.5rem; }
+.timberline-theme .hiker-name { color: var(--forest); font-weight: 700; margin: 0; }
+.timberline-theme .hiker-role { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; margin: 0.1rem 0; }
+.timberline-theme .hiker-desc { font-size: 0.85rem; margin: 0.35rem 0 0; }
+.timberline-theme .waypoint-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.6rem; margin-top: 1rem; }
+.timberline-theme .waypoint-strip img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; }
+.timberline-theme .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.timberline-theme .tag { border: 1px solid var(--line); color: var(--forest); padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.8rem; text-decoration: none; background: #eef4ec; }
+.timberline-theme .tag.tag-fund { border-color: var(--amber); color: var(--amber); }
+.timberline-theme .podroll-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; }
+.timberline-theme .podroll-card { display: block; text-decoration: none; color: var(--ink); text-align: center; font-size: 0.8rem; }
+.timberline-theme .podroll-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 0.35rem; }
+
+@keyframes tl-drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes tl-pan { 0% { transform: scale(1.08) translate3d(0, 0, 0); } 100% { transform: scale(1.08) translate3d(-2.2%, 1.2%, 0); } }
+@keyframes tl-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes tl-glow { 0%, 100% { box-shadow: 0 0 0 rgba(201,133,45,0.25); } 50% { box-shadow: 0 0 14px rgba(201,133,45,0.45); } }
+
+.timberline-theme .trailhead .eyebrow { animation: tl-drift 5s ease-in-out infinite; }
+.timberline-theme .bottom-nav a[aria-current="page"] { animation: tl-glow 3s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .timberline-theme .trailhead__sky,
+  .timberline-theme .trailhead__copy,
+  .timberline-theme .trailhead .eyebrow,
+  .timberline-theme .bottom-nav a[aria-current="page"] {
+    animation: none;
+  }
+  .timberline-theme .trailhead__sky { transform: none; inset: 0; }
+}
+
+.timberline-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.timberline-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* harborfm-themed-dialogs */
+.timberline-theme [data-harborfm-dialog="feedback"],
+.timberline-theme [data-harborfm-dialog="alerts"],
+.timberline-theme [data-harborfm-dialog="share"],
+.timberline-theme [data-harborfm-dialog="subscription"],
+.timberline-theme [data-harborfm-dialog="review"] {
+  --bg: #ebe4d7;
+  --bg-elevated: #f4efe6;
+  --bg-muted: color-mix(in srgb, #ebe4d7 85%, #1f2a1c 15%);
+  --text: #1f2a1c;
+  --text-muted: #5d6b55;
+  --border: #c9bba6;
+  --radius: 14px;
+  font-family: "Figtree", system-ui, sans-serif !important;
+  background: #f4efe6 !important;
+  border: 1px solid #c9bba6 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 40px rgba(31,42,28,0.16) !important;
+  color: #1f2a1c !important;
+}
+.timberline-theme [data-harborfm-dialog-overlay="feedback"],
+.timberline-theme [data-harborfm-dialog-overlay="alerts"],
+.timberline-theme [data-harborfm-dialog-overlay="share"],
+.timberline-theme [data-harborfm-dialog-overlay="subscription"],
+.timberline-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(31, 42, 28, 0.45) !important;
+}
+.timberline-theme [data-harborfm-dialog] h2,
+.timberline-theme [data-harborfm-dialog] h3,
+.timberline-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: "Fraunces", Georgia, serif !important;
+  color: #1f2a1c !important;
+}
+.timberline-theme [data-harborfm-dialog] input,
+.timberline-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #f4efe6 70%, #ebe4d7) !important;
+  border: 1px solid #c9bba6 !important;
+  border-radius: 14px !important;
+  color: #1f2a1c !important;
+  font-family: inherit !important;
+}
+.timberline-theme [data-harborfm-dialog] input:focus,
+.timberline-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--forest, #2f5d3a) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--forest, #2f5d3a) 25%, transparent) !important;
+  outline: none !important;
+}
+.timberline-theme [data-harborfm-dialog] button {
+  border-radius: 10px !important;
+  font-family: inherit !important;
+}
+.timberline-theme [data-harborfm-dialog] button[type="submit"],
+.timberline-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.timberline-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--forest, #2f5d3a) !important;
+  color: var(--accent-fg, #f4faf5) !important;
+  border: 1px solid var(--forest, #2f5d3a) !important;
+  font-weight: 650 !important;
+}
+.timberline-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid #c9bba6 !important;
+  color: #5d6b55 !important;
+}
+.timberline-theme [data-harborfm-dialog] button[aria-label="Close"]:hover {
+  border-color: var(--forest, #2f5d3a) !important;
+  color: #1f2a1c !important;
+}
+
+
+
+/* reviews: trail log */
+.timberline-theme .reviews-block { margin: 1.5rem 0; }
+.timberline-theme .reviews-block__head h2 {
+  font-family: "Fraunces", Georgia, serif; margin: 0 0 1rem; font-size: 1.5rem;
+}
+.timberline-theme .trail-log {
+  position: relative; margin: 0 0 1.25rem; padding-left: 1.35rem;
+}
+.timberline-theme .trail-log::before {
+  content: ""; position: absolute; left: 0.45rem; top: 0.35rem; bottom: 0.35rem;
+  width: 2px; background: color-mix(in srgb, var(--forest) 55%, var(--line));
+}
+.timberline-theme .trail-entry {
+  position: relative; display: grid; grid-template-columns: 1fr; gap: 0.35rem;
+  margin-bottom: 1.15rem;
+}
+.timberline-theme .trail-blaze {
+  position: absolute; left: -1.22rem; top: 0.35rem;
+  width: 0.85rem; height: 0.85rem; border-radius: 50%;
+  background: var(--forest); box-shadow: 0 0 0 3px var(--bg);
+}
+.timberline-theme .trail-note {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 0.85rem 1rem;
+}
+.timberline-theme .trail-ticks { display: flex; gap: 0.25rem; margin: 0 0 0.4rem; }
+.timberline-theme .trail-ticks i {
+  width: 0.55rem; height: 0.55rem; border-radius: 50%;
+  background: color-mix(in srgb, var(--forest) 25%, var(--line)); display: block;
+}
+.timberline-theme .trail-ticks i.lit { background: var(--forest); }
+.timberline-theme .trail-body { margin: 0; line-height: 1.5; color: var(--ink); }
+.timberline-theme .trail-by { margin: 0.45rem 0 0; font-size: 0.85rem; color: var(--muted); font-style: italic; }
+
+/* Stripe plan cards stay rectangular; do not inherit pill CTAs */
+.timberline-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 10px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* unique-site-footer: trail register (not Castellan-style numbered posts) */
+.timberline-theme .site-foot.tl-register {
+  margin: 3rem 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: #f4f7f2;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(201, 133, 45, 0.12), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 100%, rgba(90, 130, 100, 0.18), transparent 50%),
+    repeating-linear-gradient(
+      -12deg,
+      transparent 0,
+      transparent 11px,
+      rgba(244, 247, 242, 0.03) 11px,
+      rgba(244, 247, 242, 0.03) 12px
+    ),
+    #152019;
+}
+
+.timberline-theme .tl-register__inner {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 2.75rem) clamp(1.25rem, 4vw, 2.75rem) clamp(2.25rem, 5vw, 3rem);
+  display: grid;
+  gap: 1.75rem;
+}
+
+.timberline-theme .tl-register__mast {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.timberline-theme .tl-register__you {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e8b56a;
+}
+
+.timberline-theme .tl-register__name {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.55rem, 3.5vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #f7faf6;
+}
+
+.timberline-theme .tl-register__mapped {
+  margin: 0.25rem 0 0;
+  color: color-mix(in srgb, #f4f7f2 68%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.timberline-theme .tl-register__mapped a {
+  color: #e8b56a;
+  font-weight: 650;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, #e8b56a 40%, transparent);
+}
+
+.timberline-theme .tl-register__mapped a:hover {
+  border-bottom-color: #e8b56a;
+}
+
+.timberline-theme .tl-register__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid color-mix(in srgb, #f4f7f2 14%, transparent);
+}
+
+.timberline-theme .tl-register__nav a {
+  color: #f4f7f2;
+  font-weight: 650;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 0.2rem 0.85rem;
+  border-radius: 4px;
+}
+
+.timberline-theme .tl-register__nav a + a {
+  border-left: 1px solid color-mix(in srgb, #f4f7f2 22%, transparent);
+}
+
+.timberline-theme .tl-register__nav a:first-child {
+  padding-left: 0;
+}
+
+.timberline-theme .tl-register__nav a:hover {
+  color: #e8b56a;
+}
+
+.timberline-theme .tl-register__credit {
+  margin: 0;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, #f4f7f2 55%, transparent);
+}
+
+.timberline-theme .tl-register__credit a {
+  color: #e8b56a;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, #e8b56a 35%, transparent);
+}
+
+.timberline-theme .tl-register__credit a:hover {
+  border-bottom-color: #e8b56a;
+}
+
+/* episode: trail register (pathhead owns the title) */
+.timberline-theme .ep-crumbs--trail {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 0.55rem; align-items: center;
+  margin: 0 0 0.65rem; font-weight: 650; font-size: 0.9rem;
+}
+.timberline-theme .ep-crumbs--trail a {
+  color: var(--forest); text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--forest) 30%, transparent);
+}
+.timberline-theme .ep-crumbs--trail span { color: var(--muted); }
+.timberline-theme .ep-trail__dek {
+  margin: 0 0 1.15rem; color: var(--muted); line-height: 1.55; font-size: 1.02rem;
+}
+.timberline-theme .ep-player--trail { margin: 0 0 1.5rem; }
+.timberline-theme .ep-player--trail [data-harborfm-episode-card] {
+  position: relative;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--panel) 92%, #d9cbb3), var(--panel)) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 24px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(29, 42, 34, 0.1);
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-card]::before {
+  content: "";
+  position: absolute; top: 0.95rem; right: 0.95rem; z-index: 3;
+  width: 1.2rem; height: 1.2rem; background: var(--forest);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  filter: drop-shadow(0 1px 2px rgba(12, 20, 16, 0.35));
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-header] {
+  margin: 0 !important; padding: 0 !important; border: 0 !important; gap: 0 !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-title] {
+  position: absolute !important; width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important; overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-row] {
+  display: flex !important; flex-direction: column !important; gap: 0 !important;
+  align-items: stretch !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-artwork] {
+  width: 100% !important; height: auto !important; max-height: min(20rem, 48vh);
+  aspect-ratio: 16 / 10; border-radius: 0 !important; border: 0 !important;
+  border-bottom: 1px solid var(--line) !important; object-fit: cover !important;
+  box-shadow: none !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-body] {
+  display: flex !important; flex-direction: column !important; gap: 0.75rem !important;
+  padding: 1.05rem 1.2rem 1.15rem !important; min-width: 0 !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-meta] {
+  margin: 0 !important; color: var(--amber) !important; font-weight: 700 !important;
+  letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.72rem !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-meta] span {
+  border: 0 !important; background: transparent !important; padding: 0 !important;
+  border-radius: 0 !important; color: inherit !important; font: inherit !important;
+  box-shadow: none !important; width: auto !important; height: auto !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] {
+  margin: 0.15rem 0 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 0.55rem !important;
+  align-items: center !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] > div {
+  display: contents !important;
+  background: transparent !important; border: 0 !important; padding: 0 !important;
+  border-radius: 0 !important; box-shadow: none !important; gap: 0 !important;
+}
+/* Match .btn-bark / .btn-forest; kill Fluid plain-mode strip styles. */
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem !important;
+  margin: 0 !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--line) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: var(--ink) !important;
+  font-family: "Figtree", system-ui, sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  line-height: 1.2 !important;
+  padding: 0.55rem 1.05rem !important;
+  box-shadow: none !important;
+  inset: auto !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] button svg {
+  width: 1rem !important;
+  height: 1rem !important;
+  flex: 0 0 auto;
+  color: var(--forest) !important;
+  stroke: currentColor !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] button:hover {
+  background: #fff !important;
+  border-color: var(--forest) !important;
+  color: var(--forest) !important;
+  box-shadow: none !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] button:hover svg {
+  color: var(--forest) !important;
+}
+/* Subscribe / lock: solid trail marker */
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] > button:last-of-type {
+  background: var(--forest) !important;
+  border-color: var(--forest) !important;
+  color: var(--accent-fg, #f2f7ef) !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] > button:last-of-type svg {
+  color: inherit !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-actions] > button:last-of-type:hover {
+  background: color-mix(in srgb, var(--forest) 82%, black) !important;
+  border-color: color-mix(in srgb, var(--forest) 82%, black) !important;
+  color: var(--accent-fg, #f2f7ef) !important;
+}
+.timberline-theme .ep-player--trail [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  padding: 0 1.2rem 1.2rem !important;
+  border-top: 1px dashed color-mix(in srgb, var(--line) 80%, var(--amber));
+}
+
+/* credit plate wall */
+.timberline-theme .plates { margin-top: 0.25rem; }
+.timberline-theme .plates__head { margin: 0 0 1.35rem; }
+.timberline-theme .plates__lede {
+  margin: 0.5rem 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55;
+}
+.timberline-theme .plate-wall {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.85rem;
+}
+.timberline-theme .plate {
+  grid-column: span 2; min-width: 0;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.timberline-theme .plate:nth-child(1),
+.timberline-theme .plate:nth-child(2) { grid-column: span 3; }
+.timberline-theme .plate__frame {
+  display: block; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 80%, transparent);
+  overflow: clip; line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.timberline-theme .plate__frame:hover {
+  border-color: var(--forest);
+  transform: translateY(-2px);
+}
+.timberline-theme .plate__frame img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+}
+.timberline-theme .plate:nth-child(1) .plate__frame img,
+.timberline-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 16 / 10; }
+.timberline-theme .plate__meta { min-width: 0; }
+.timberline-theme .plate__name {
+  margin: 0; font-weight: 700; letter-spacing: -0.02em; font-size: 1.15rem; color: var(--ink);
+}
+.timberline-theme .plate__file {
+  margin: 0.15rem 0 0; font-size: 0.75rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--muted); font-weight: 650;
+}
+.timberline-theme .plate__by {
+  margin: 0.35rem 0 0; font-size: 0.95rem; line-height: 1.45; color: var(--ink);
+}
+.timberline-theme .plate__by a { color: var(--forest); font-weight: 650; text-decoration: none; }
+.timberline-theme .plate__by a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .timberline-theme .plate-wall { grid-template-columns: 1fr 1fr; }
+  .timberline-theme .plate,
+  .timberline-theme .plate:nth-child(1),
+  .timberline-theme .plate:nth-child(2) { grid-column: span 1; }
+  .timberline-theme .plate:nth-child(1) .plate__frame img,
+  .timberline-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) {
+  .timberline-theme .plate-wall { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .timberline-theme .plate__frame:hover { transform: none; }
+}
+/* episodes list skin */
+.timberline-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.8rem !important;
+  border: none !important;
+}
+.timberline-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 12px !important;
+  padding: 1.05rem 1.15rem !important;
+  box-shadow: 0 8px 20px rgba(29, 42, 34, 0.05) !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+.timberline-theme [data-harborfm-episode-item]:hover {
+  border-color: color-mix(in srgb, var(--forest) 40%, var(--line)) !important;
+  box-shadow: 0 12px 26px rgba(29, 42, 34, 0.09) !important;
+  background: #fbfdf9 !important;
+  transform: none !important;
+}
+.timberline-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.8rem !important;
+  min-width: 0 !important;
+}
+.timberline-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: "Fraunces", Georgia, serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 550 !important;
+  letter-spacing: -0.015em !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+.timberline-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted) !important;
+  font-size: 0.8rem !important;
+}
+.timberline-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--forest) 16%, #fff) !important;
+  color: var(--forest) !important;
+  border: 1px solid color-mix(in srgb, var(--forest) 35%, var(--line)) !important;
+  padding: 0.4rem 0.85rem !important;
+  font-weight: 650 !important;
+  font-size: 0.8rem !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+.timberline-theme [data-harborfm-episode-item-link]:hover {
+  background: var(--forest) !important;
+  color: var(--accent-fg, #f4f7f2) !important;
+}
+.timberline-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  color: var(--muted) !important;
+  margin: 0.6rem 0 0 !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere !important;
+}
+.timberline-theme [data-harborfm-episode-item-type] {
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--amber) 18%, #fff) !important;
+  color: #8a5a12 !important;
+  border: 1px solid color-mix(in srgb, var(--amber) 40%, var(--line)) !important;
+}
+.timberline-theme [data-harborfm-episodes-load-more] {
+  border-radius: 999px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--ink) !important;
+  font-weight: 650 !important;
+}
+/* reviews mount (paged ReviewsCard) */
+.timberline-theme .reviews-block [data-harborfm-reviews-title] { display: none !important; }
+.timberline-theme .reviews-block [data-harborfm-reviews] {
+  margin: 0 !important; padding: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important;
+}
+.timberline-theme .reviews-block [data-harborfm-reviews-list] {
+  list-style: none !important; margin: 0 0 1rem !important; padding: 0 !important;
+  display: flex !important; flex-direction: column !important; gap: 0.75rem !important;
+}
+.timberline-theme .reviews-block [data-harborfm-review] {
+  min-width: 0 !important; background: var(--panel) !important; border: 1px solid var(--line) !important;
+  border-radius: 12px !important; box-shadow: 0 8px 20px rgba(29,42,34,0.05) !important; padding: 1rem 1.1rem !important;
+}
+.timberline-theme .reviews-block [data-harborfm-review-name] {
+  font-family: "Fraunces", Georgia, serif !important; font-size: 1.05rem !important;
+}
+.timberline-theme .reviews-block [data-harborfm-reviews-write],
+.timberline-theme .reviews-block [data-harborfm-reviews-load-more] {
+  border-radius: 999px !important; border: 1px solid var(--line) !important; background: var(--panel) !important;
+  color: var(--ink) !important; font-weight: 650 !important;
+}
+.timberline-theme .reviews-block [data-harborfm-reviews-write] {
+  background: color-mix(in srgb, var(--forest) 16%, #fff) !important; color: var(--forest) !important;
+  border-color: color-mix(in srgb, var(--forest) 35%, var(--line)) !important;
+}

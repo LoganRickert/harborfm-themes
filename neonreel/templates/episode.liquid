@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="neonreel-theme neonreel-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header class="ep-mast ep-mast--neon" aria-label="Now screening">
+        <p class="ep-mast__stub">Now screening</p>
+        <p class="eyebrow">Film culture after dark</p>
+      </header>
+      <nav class="ep-crumbs ep-crumbs--neon" aria-label="Breadcrumb">
+        <a href="{{ urls.home }}">Lobby</a><span aria-hidden="true">·</span>
+        <a href="{{ urls.pages.podcast }}">Reel</a><span aria-hidden="true">·</span>
+        <span>Now playing</span>
+      </nav>
+      <section class="ep-player ep-player--neon">{% render 'harborfm/player' %}</section>
+      {% if show.episode_description %}{% if episode.description != "" %}
+      <section class="panel"><h2>Director’s notes</h2><p class="lede">{{ episode.description | escape }}</p></section>
+      {% endif %}{% endif %}
+      {% if show.funding %}{% if funding_links.size > 0 %}
+      <section class="panel">
+        <h2>Keep it going</h2>
+        <div class="ticket-row">
+          {% for f in funding_links %}<a class="ticket-tag" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_episode %}
+      <section class="panel reviews-block" aria-label="Audience cards">
+        <header class="reviews-block__head">
+          <h2>Audience cards</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}</main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+</body>
+</html>

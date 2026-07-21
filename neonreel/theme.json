@@ -1,0 +1,19 @@
+{
+  "id": "neonreel",
+  "name": "Neon Reel",
+  "version": "1.0.0",
+  "description": "Film and culture reel with neon marque energy.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-neonreel",
+  "pages": {
+    "podcast": "reel.html",
+    "synopsis": "synopsis.html",
+    "talent": "talent.html",
+    "backstage": "backstage.html",
+    "boxoffice": "boxoffice.html",
+    "premiere": "premiere.html",
+    "marquee": "marquee.html"
+  },
+  "not_found": "not_found"
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Pre-flight briefing | {{ podcast.title | escape }}</title>
+</head>
+<body class="orbitlab-theme orbitlab-page-{{ page }}">
+  <div class="orbit-wrap">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="console">
+
+      <header>
+        <p class="eyebrow">Deep dives from the console</p>
+        <h1 class="title display">Pre-flight briefing</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">Read in before you open the logs.</p>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+      </section>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+
+      {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+      <section class="panel">
+        <h2>Crew roster</h2>
+        <div class="crew-grid">
+          {% for host in cast.hosts %}
+          <div class="crew-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="crew-name">{{ host.name | escape }}</p>
+            <p class="crew-role">{% if host.role != "" %}{{ host.role | escape }}{% else %}Host{% endif %}</p>
+            {% if host.description != "" %}<p class="crew-desc">{{ host.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <div class="crew-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="crew-name">{{ guest.name | escape }}</p>
+            <p class="crew-role">{% if guest.role != "" %}{{ guest.role | escape }}{% else %}Guest{% endif %}</p>
+            {% if guest.description != "" %}<p class="crew-desc">{{ guest.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+
+      {% if show.funding %}{% if funding_links.size > 0 %}
+      <section class="panel">
+        <h2>Support the work</h2>
+        <div class="orbit-tags">
+          {% for f in funding_links %}<a class="orbit-tag" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

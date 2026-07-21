@@ -1,0 +1,768 @@
+.glasshouse-theme {
+  --ink: #152033; --muted: #66748a; --bg: #e8edf4; --panel: rgba(255,255,255,0.78); --line: #d5dbe6;
+  --cobalt: var(--accent);
+  --font: "Source Sans 3", "Segoe UI", sans-serif;
+  --display: "Instrument Serif", "Times New Roman", serif;
+  margin: 0; min-height: 100vh;
+  background: linear-gradient(180deg, #eef2f7 0%, #e8edf4 55%, #e4e9f0 100%);
+  color: var(--ink); font-family: var(--font); color-scheme: light;
+}
+.glasshouse-theme .util { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; align-items: center; justify-content: space-between;
+  padding: 0.65rem 1.25rem; background: rgba(255,255,255,0.65); border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 20; }
+.glasshouse-theme .util nav { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+.glasshouse-theme .util a { color: var(--ink); text-decoration: none; font-size: 0.82rem; font-weight: 600; }
+.glasshouse-theme .util a[aria-current="page"] { color: var(--cobalt); }
+.glasshouse-theme .brand {
+  font-family: var(--font); font-weight: 700; letter-spacing: -0.02em;
+  text-decoration: none; color: var(--ink);
+}
+.glasshouse-theme .title {
+  font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3rem);
+  letter-spacing: -0.02em; margin: 0; font-weight: 400;
+}
+.glasshouse-theme .main { width: min(1100px, 100% - 2rem); margin: 0 auto 2.5rem; }
+.glasshouse-theme .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem;
+  margin: 1rem 0; backdrop-filter: blur(8px); }
+.glasshouse-theme .credits-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; }
+.glasshouse-theme .credits-list a { color: var(--cobalt); font-weight: 600; }
+
+/* Attribution: curtain-wall plate ledger */
+.glasshouse-theme .plates { padding-top: 1.5rem; }
+.glasshouse-theme .plates__head { margin: 0 0 1.5rem; }
+.glasshouse-theme .plates__lede {
+  margin: 0.55rem 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55;
+}
+.glasshouse-theme .plate-wall {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.85rem;
+}
+.glasshouse-theme .plate {
+  grid-column: span 2; min-width: 0;
+  display: flex; flex-direction: column; gap: 0.65rem;
+}
+.glasshouse-theme .plate:nth-child(1),
+.glasshouse-theme .plate:nth-child(2) { grid-column: span 3; }
+.glasshouse-theme .plate__frame {
+  display: block; border: 1px solid var(--line); background: #fff;
+  overflow: clip; line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.glasshouse-theme .plate__frame:hover {
+  border-color: color-mix(in srgb, var(--cobalt) 55%, var(--line));
+  transform: translateY(-2px);
+}
+.glasshouse-theme .plate__frame img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+}
+.glasshouse-theme .plate:nth-child(1) .plate__frame img,
+.glasshouse-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 16 / 10; }
+.glasshouse-theme .plate__meta { min-width: 0; }
+.glasshouse-theme .plate__name {
+  margin: 0; font-family: var(--display); font-weight: 400;
+  letter-spacing: -0.015em; font-size: 1.35rem; color: var(--ink);
+}
+.glasshouse-theme .plate__file {
+  margin: 0.15rem 0 0; font-size: 0.78rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--muted); font-weight: 650;
+}
+.glasshouse-theme .plate__by {
+  margin: 0.35rem 0 0; font-size: 0.95rem; line-height: 1.45; color: var(--ink);
+}
+.glasshouse-theme .plate__by a { color: var(--cobalt); font-weight: 650; text-decoration: none; }
+.glasshouse-theme .plate__by a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .glasshouse-theme .plate-wall { grid-template-columns: 1fr 1fr; }
+  .glasshouse-theme .plate,
+  .glasshouse-theme .plate:nth-child(1),
+  .glasshouse-theme .plate:nth-child(2) { grid-column: span 1; }
+  .glasshouse-theme .plate:nth-child(1) .plate__frame img,
+  .glasshouse-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) {
+  .glasshouse-theme .plate-wall { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glasshouse-theme .plate__frame:hover { transform: none; }
+}
+
+/* Home: skyline atrium with a centered glass pavilion card */
+.glasshouse-theme .lobby {
+  position: relative; isolation: isolate;
+  min-height: calc(100vh - 3.25rem);
+  display: grid; place-items: center;
+  padding: 2rem 1.25rem;
+  overflow: clip;
+  color: var(--ink);
+}
+.glasshouse-theme .lobby__media {
+  position: absolute; inset: 0; z-index: 0;
+}
+.glasshouse-theme .lobby__img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+  display: block;
+  animation: gh-lobby-drift 28s ease-in-out infinite alternate;
+}
+.glasshouse-theme .lobby__shade {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgba(15, 22, 34, 0.18) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(15, 22, 34, 0.22) 0%, rgba(15, 22, 34, 0.08) 40%, rgba(15, 22, 34, 0.35) 100%);
+}
+.glasshouse-theme .lobby__pane {
+  position: relative; z-index: 2;
+  width: min(34rem, 100%);
+  text-align: center;
+  padding: clamp(1.85rem, 4vw, 2.65rem) clamp(1.6rem, 4vw, 2.9rem) clamp(1.7rem, 3.5vw, 2.35rem);
+  background:
+    linear-gradient(155deg,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(236, 243, 250, 0.28) 45%,
+      rgba(255, 255, 255, 0.34) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 -1px 0 rgba(21, 32, 51, 0.04) inset,
+    0 0 0 1px rgba(21, 32, 51, 0.08),
+    0 28px 70px rgba(8, 14, 26, 0.35);
+  backdrop-filter: blur(28px) saturate(1.35);
+  -webkit-backdrop-filter: blur(28px) saturate(1.35);
+  animation: gh-fade-in 0.85s ease-out both;
+}
+.glasshouse-theme .lobby__pane::before {
+  content: "";
+  position: absolute; inset: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 13px;
+  pointer-events: none;
+}
+.glasshouse-theme .lobby__pane::after {
+  content: "";
+  position: absolute; left: 18%; right: 18%; top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  pointer-events: none;
+}
+.glasshouse-theme .lobby__cover {
+  position: relative;
+  display: block;
+  width: clamp(7.5rem, 18vw, 9.5rem); height: clamp(7.5rem, 18vw, 9.5rem);
+  margin: 0 auto 1.15rem;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 10px 28px rgba(10, 16, 28, 0.22);
+  background: rgba(255, 255, 255, 0.35);
+}
+.glasshouse-theme .lobby__title {
+  position: relative;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 6.5vw, 4.4rem);
+  font-weight: 400; letter-spacing: -0.03em; line-height: 1.05;
+  margin: 0; color: var(--ink);
+  text-wrap: balance;
+}
+.glasshouse-theme .lobby__lede {
+  position: relative;
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.45; color: color-mix(in srgb, var(--ink) 72%, var(--muted));
+  font-weight: 500;
+  animation: gh-fade-in 0.9s ease-out 0.08s both;
+}
+.glasshouse-theme .lobby__actions {
+  position: relative;
+  justify-content: center;
+  margin: 1.4rem 0 0;
+  animation: gh-fade-in 0.9s ease-out 0.16s both;
+}
+.glasshouse-theme a.minutes-link.lobby__minutes {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
+  text-decoration: none;
+  animation: gh-fade-in 0.9s ease-out 0.24s both;
+}
+.glasshouse-theme a.minutes-link.lobby__minutes:hover {
+  color: var(--cobalt);
+  border-bottom-color: var(--cobalt);
+  text-decoration: none;
+}
+.glasshouse-theme.glasshouse-page-home .site-foot.gh-util {
+  margin-top: 0;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 720px) {
+  .glasshouse-theme .lobby {
+    min-height: calc(100dvh - 3.5rem);
+    padding: 1.25rem 1rem 2rem;
+  }
+  .glasshouse-theme .lobby__pane {
+    padding: 1.5rem 1.25rem 1.6rem;
+    border-radius: 16px;
+  }
+  .glasshouse-theme .lobby__pane::before { inset: 8px; border-radius: 10px; }
+}
+
+.glasshouse-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 8px;
+  overflow-x: clip;
+}
+.glasshouse-theme *,
+.glasshouse-theme *::before,
+.glasshouse-theme *::after { box-sizing: border-box; }
+.glasshouse-theme img { max-width: 100%; height: auto; }
+.glasshouse-theme [data-harborfm-block] { display: block; min-width: 0; max-width: 100%; }
+.glasshouse-theme [data-harborfm-block="show_header"] img {
+  width: 8rem !important;
+  height: 8rem !important;
+  max-width: 8rem !important;
+  object-fit: cover !important;
+}
+.glasshouse-theme .theme-figure { width: 100%; max-height: 360px; object-fit: cover; margin: 1rem 0; display: block; }
+@media (max-width: 720px) {
+  .glasshouse-theme .film-nav,
+  .glasshouse-theme .scorebar,
+  .glasshouse-theme .mag-top nav,
+  .glasshouse-theme .util nav,
+  .glasshouse-theme .topnav,
+  .glasshouse-theme .bottom-nav {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .glasshouse-theme .rail nav,
+  .glasshouse-theme .itinerary nav { columns: 1 !important; }
+  .glasshouse-theme .panels > * { min-height: 140px; }
+  .glasshouse-theme .lobby { min-height: calc(100dvh - 3.5rem); }
+  .glasshouse-theme .main,
+  .glasshouse-theme .page,
+  .glasshouse-theme .content,
+  .glasshouse-theme .console { padding-left: max(0.75rem, env(safe-area-inset-left)); padding-right: max(0.75rem, env(safe-area-inset-right)); }
+}
+
+.glasshouse-theme .eyebrow { color: var(--cobalt); font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+.glasshouse-theme .action-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+.glasshouse-theme .btn-cobalt,
+.glasshouse-theme .btn-glass {
+  font-family: var(--font); font-weight: 650; font-size: 0.92rem; padding: 0.7rem 1.25rem;
+  border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.glasshouse-theme .btn-cobalt { background: var(--cobalt); color: var(--accent-fg, #f5f8ff); border: 1px solid var(--cobalt); }
+.glasshouse-theme .btn-cobalt:hover { background: color-mix(in srgb, var(--cobalt) 82%, black); transform: translateY(-1px); }
+.glasshouse-theme .btn-glass {
+  background: rgba(255,255,255,0.72); color: var(--ink); border: 1px solid rgba(21, 32, 51, 0.16);
+  backdrop-filter: blur(8px);
+}
+.glasshouse-theme .btn-glass:hover { border-color: var(--cobalt); color: var(--cobalt); }
+.glasshouse-theme .minutes-link { color: var(--cobalt); font-weight: 600; text-decoration: none; }
+.glasshouse-theme .minutes-link:hover { text-decoration: underline; }
+.glasshouse-theme .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.85rem; margin-top: 0.75rem; }
+.glasshouse-theme .partner-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 0.85rem; backdrop-filter: blur(6px); }
+.glasshouse-theme .partner-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; margin-bottom: 0.5rem; }
+.glasshouse-theme .partner-name { color: var(--ink); font-weight: 700; margin: 0; }
+.glasshouse-theme .partner-role { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; margin: 0.1rem 0; }
+.glasshouse-theme .partner-desc { font-size: 0.85rem; margin: 0.35rem 0 0; }
+.glasshouse-theme .glass-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.glasshouse-theme .glass-tag { border: 1px solid var(--line); border-radius: 999px; color: var(--cobalt); padding: 0.4rem 0.85rem; font-size: 0.8rem; text-decoration: none; background: rgba(255,255,255,0.5); }
+.glasshouse-theme .podroll-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+.glasshouse-theme .podroll-card { display: block; text-decoration: none; color: var(--ink); text-align: center; font-size: 0.8rem; }
+.glasshouse-theme .podroll-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 0.35rem; }
+
+@keyframes gh-shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes gh-fade-in { 0% { opacity: 0; transform: translateY(8px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes gh-lobby-drift { 0% { transform: scale(1.02); } 100% { transform: scale(1.07); } }
+
+.glasshouse-theme .util { background-size: 200% 200%; background-image: linear-gradient(120deg, rgba(255,255,255,0.65), rgba(255,255,255,0.85), rgba(255,255,255,0.65));
+  animation: gh-shimmer 10s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .glasshouse-theme .util,
+  .glasshouse-theme .lobby__img,
+  .glasshouse-theme .lobby__copy,
+  .glasshouse-theme .lobby__lede,
+  .glasshouse-theme .lobby__actions,
+  .glasshouse-theme .lobby__minutes {
+    animation: none;
+  }
+  .glasshouse-theme .lobby__img { transform: none; }
+  .glasshouse-theme .btn-cobalt:hover { transform: none; }
+}
+
+.glasshouse-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.glasshouse-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* harborfm-themed-dialogs */
+.glasshouse-theme [data-harborfm-dialog="feedback"],
+.glasshouse-theme [data-harborfm-dialog="alerts"],
+.glasshouse-theme [data-harborfm-dialog="share"],
+.glasshouse-theme [data-harborfm-dialog="subscription"],
+.glasshouse-theme [data-harborfm-dialog="review"] {
+  --bg: #eef3f8;
+  --bg-elevated: rgba(255,255,255,0.88);
+  --bg-muted: color-mix(in srgb, #eef3f8 85%, #0f172a 15%);
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: rgba(15,23,42,0.12);
+  --radius: 20px;
+  font-family: var(--font), system-ui, sans-serif !important;
+  background: rgba(255,255,255,0.88) !important;
+  border: 1px solid rgba(15,23,42,0.12) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 24px 60px rgba(15,23,42,0.16) !important;
+  color: #0f172a !important;
+}
+.glasshouse-theme [data-harborfm-dialog-overlay="feedback"],
+.glasshouse-theme [data-harborfm-dialog-overlay="alerts"],
+.glasshouse-theme [data-harborfm-dialog-overlay="share"],
+.glasshouse-theme [data-harborfm-dialog-overlay="subscription"],
+.glasshouse-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(15, 23, 42, 0.35) !important;
+  backdrop-filter: blur(10px);
+}
+.glasshouse-theme [data-harborfm-dialog] h2,
+.glasshouse-theme [data-harborfm-dialog] h3,
+.glasshouse-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: var(--display), system-ui, sans-serif !important;
+  color: #0f172a !important;
+}
+.glasshouse-theme [data-harborfm-dialog] input,
+.glasshouse-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, rgba(255,255,255,0.88) 70%, #eef3f8) !important;
+  border: 1px solid rgba(15,23,42,0.12) !important;
+  border-radius: 20px !important;
+  color: #0f172a !important;
+  font-family: inherit !important;
+}
+.glasshouse-theme [data-harborfm-dialog] input:focus,
+.glasshouse-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--cobalt, #2563eb) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cobalt, #2563eb) 25%, transparent) !important;
+  outline: none !important;
+}
+.glasshouse-theme [data-harborfm-dialog] button {
+  border-radius: 8px !important;
+  font-family: inherit !important;
+}
+.glasshouse-theme [data-harborfm-dialog] button[type="submit"],
+.glasshouse-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.glasshouse-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--cobalt, #2563eb) !important;
+  color: var(--accent-fg, #f5f8ff) !important;
+  border: 1px solid var(--cobalt, #2563eb) !important;
+  font-weight: 650 !important;
+}
+.glasshouse-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid rgba(15,23,42,0.12) !important;
+  color: #64748b !important;
+}
+.glasshouse-theme [data-harborfm-dialog] button[aria-label="Close"]:hover {
+  border-color: var(--cobalt, #2563eb) !important;
+  color: #0f172a !important;
+}
+
+
+
+/* reviews: board minutes */
+.glasshouse-theme .reviews-block { margin: 1.5rem 0; }
+.glasshouse-theme .reviews-block__head h2 {
+  font-size: 1.15rem; font-weight: 700; margin: 0 0 0.85rem; letter-spacing: -0.01em;
+}
+.glasshouse-theme .minutes {
+  border-top: 1px solid var(--line); margin-bottom: 1rem;
+}
+.glasshouse-theme .minutes-row {
+  display: grid; grid-template-columns: minmax(7rem, 0.35fr) 1fr;
+  gap: 1rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+@media (max-width: 640px) {
+  .glasshouse-theme .minutes-row { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+.glasshouse-theme .minutes-motion {
+  margin: 0; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600;
+}
+.glasshouse-theme .minutes-rate {
+  margin: 0.25rem 0 0; font-size: 1.35rem; font-weight: 700; color: var(--cobalt);
+}
+.glasshouse-theme .minutes-who {
+  margin: 0.35rem 0 0; font-size: 0.85rem; color: var(--ink); font-weight: 600;
+}
+.glasshouse-theme .minutes-ok {
+  margin: 0.2rem 0 0; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+}
+.glasshouse-theme .minutes-quote {
+  margin: 0; padding: 0; border: none; color: var(--ink);
+}
+.glasshouse-theme .minutes-quote p {
+  margin: 0; font-size: 1.05rem; line-height: 1.55;
+}
+
+/* Stripe plan cards stay rectangular; do not inherit pill CTAs */
+.glasshouse-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 10px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* unique-site-footer */
+.glasshouse-theme .site-foot.gh-util {
+  margin-top: 3rem; padding: 1.75rem 1.25rem 2rem;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.35), rgba(238,243,248,0.9));
+  backdrop-filter: blur(8px);
+}
+.glasshouse-theme .gh-util-inner {
+  display: grid; grid-template-columns: 1.2fr 2fr; gap: 2rem; max-width: 960px; margin: 0 auto;
+}
+@media (max-width: 720px) {
+  .glasshouse-theme .gh-util-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+.glasshouse-theme .gh-util-name {
+  margin: 0; font-family: var(--display); font-weight: 400; font-size: 1.35rem; color: var(--ink);
+}
+.glasshouse-theme .gh-util-tag { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.9rem; }
+.glasshouse-theme .gh-util-cols {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+}
+@media (max-width: 520px) {
+  .glasshouse-theme .gh-util-cols { grid-template-columns: 1fr 1fr; }
+}
+.glasshouse-theme .gh-util-h {
+  margin: 0 0 0.5rem; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); font-weight: 700;
+}
+.glasshouse-theme .gh-util-cols a {
+  display: block; color: var(--cobalt); text-decoration: none; font-weight: 600;
+  font-size: 0.92rem; margin: 0.3rem 0;
+}
+.glasshouse-theme .gh-util-cols a:hover { text-decoration: underline; }
+
+.glasshouse-theme .gh-util-tag a { color: var(--cobalt); text-decoration: none; font-weight: 650; }
+.glasshouse-theme .gh-util-tag a:hover { text-decoration: underline; }
+
+.glasshouse-theme .util { flex-wrap: nowrap; }
+.glasshouse-theme .util .brand { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* mobile hamburger nav */
+.glasshouse-theme .util { position: relative; }
+.glasshouse-theme .nav-menu { margin: 0 0 0 auto; position: static; }
+.glasshouse-theme .nav-menu__toggle {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--line);
+  background: rgba(255,255,255,0.9);
+  color: var(--ink);
+}
+.glasshouse-theme .nav-menu__toggle::-webkit-details-marker { display: none; }
+.glasshouse-theme .nav-menu__icon,
+.glasshouse-theme .nav-menu__icon::before,
+.glasshouse-theme .nav-menu__icon::after {
+  display: block; width: 1.1rem; height: 2px; border-radius: 1px; background: currentColor; position: relative;
+}
+.glasshouse-theme .nav-menu__icon::before,
+.glasshouse-theme .nav-menu__icon::after { content: ""; position: absolute; left: 0; }
+.glasshouse-theme .nav-menu__icon::before { top: -6px; }
+.glasshouse-theme .nav-menu__icon::after { top: 6px; }
+@media (max-width: 759px) {
+  .glasshouse-theme .nav-menu nav {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 30;
+    display: flex; flex-direction: column; gap: 0.15rem;
+    padding: 0.75rem 1rem 1rem; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+  }
+  .glasshouse-theme .nav-menu nav a { display: block; padding: 0.55rem 0.35rem; }
+}
+@media (min-width: 760px) {
+  /* Closed <details> stays hidden via ::details-content in Chromium; force open on desktop. */
+  .glasshouse-theme .nav-menu::details-content {
+    display: contents;
+    content-visibility: visible;
+    height: auto;
+    overflow: visible;
+  }
+
+  .glasshouse-theme .nav-menu__toggle { display: none; }
+  .glasshouse-theme .nav-menu { position: static; margin-left: auto; }
+  .glasshouse-theme .nav-menu nav {
+    position: static !important; display: flex !important; flex-direction: row; flex-wrap: wrap;
+    align-items: center; gap: 0.45rem 0.85rem; min-width: 0; padding: 0;
+    background: transparent; border: 0; box-shadow: none;
+  }
+}
+
+/* episode: open brief + glass player pane (Liquid owns the title) */
+.glasshouse-theme .ep-crumbs--glass {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 0.55rem; align-items: center;
+  margin: 1.35rem 0 0.85rem;
+  font-size: 0.8rem; font-weight: 650; letter-spacing: 0.02em;
+}
+.glasshouse-theme .ep-crumbs--glass a {
+  color: var(--cobalt); text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--cobalt) 30%, transparent);
+}
+.glasshouse-theme .ep-crumbs--glass a:hover { border-bottom-color: var(--cobalt); }
+.glasshouse-theme .ep-crumbs--glass span { color: var(--muted); }
+.glasshouse-theme .ep-mast--glass {
+  margin: 0 0 1.25rem;
+  padding: 0 0 1.25rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  border-radius: 0;
+  backdrop-filter: none;
+}
+.glasshouse-theme .ep-mast--glass .eyebrow { margin: 0 0 0.45rem; }
+.glasshouse-theme .ep-mast__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 6vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.glasshouse-theme .ep-mast__dek {
+  margin: 0.65rem 0 0;
+  max-width: 36rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.glasshouse-theme .ep-player--glass { margin: 0 0 1.5rem; }
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-card] {
+  background:
+    linear-gradient(155deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.58) 100%) !important;
+  border: 1px solid rgba(255,255,255,0.7) !important;
+  border-radius: 18px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.65) inset,
+    0 14px 36px rgba(21,32,51,0.08);
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-header] {
+  margin: 0 !important; padding: 0 !important; border: 0 !important; gap: 0 !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-title] {
+  position: absolute !important; width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important; overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-row] {
+  display: grid !important;
+  grid-template-columns: 7rem minmax(0, 1fr) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-artwork] {
+  width: 100% !important; height: 100% !important; min-height: 7rem;
+  border-radius: 0 !important; border: 0 !important;
+  border-right: 1px solid var(--line) !important;
+  box-shadow: none !important; object-fit: cover !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-body] {
+  display: flex !important; flex-direction: column !important; justify-content: center !important;
+  gap: 0.65rem !important; min-width: 0 !important;
+  padding: 1rem 1.15rem !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-meta] {
+  margin: 0 !important; color: var(--cobalt) !important; font-weight: 700 !important;
+  font-size: 0.75rem !important; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-meta] span {
+  border: 0 !important; background: transparent !important; padding: 0 !important;
+  border-radius: 0 !important; color: inherit !important; font: inherit !important;
+  box-shadow: none !important; width: auto !important; height: auto !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-actions] {
+  margin: 0 !important;
+  display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;
+  gap: 0.45rem !important; align-items: center !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-actions] > div {
+  display: contents !important;
+  background: transparent !important; border: 0 !important; padding: 0 !important;
+  border-radius: 0 !important; box-shadow: none !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-actions] button {
+  border-radius: 999px !important;
+  border: 1px solid color-mix(in srgb, var(--cobalt) 22%, var(--line)) !important;
+  background: rgba(255,255,255,0.72) !important;
+  color: var(--ink) !important;
+  font-family: var(--font) !important;
+  font-size: 0.82rem !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  padding: 0.45rem 0.9rem !important;
+  box-shadow: none !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-actions] button:hover {
+  border-color: var(--cobalt) !important;
+  color: var(--cobalt) !important;
+  background: #fff !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-actions] > button:last-of-type {
+  background: var(--cobalt) !important;
+  border-color: var(--cobalt) !important;
+  color: var(--accent-fg, #fff) !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-actions] > button:last-of-type:hover {
+  background: color-mix(in srgb, var(--cobalt) 86%, black) !important;
+  border-color: color-mix(in srgb, var(--cobalt) 86%, black) !important;
+  color: var(--accent-fg, #fff) !important;
+}
+.glasshouse-theme .ep-player--glass [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  padding: 1rem 1.15rem 1.15rem !important;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 640px) {
+  .glasshouse-theme .ep-player--glass [data-harborfm-episode-row] {
+    grid-template-columns: 1fr !important;
+  }
+  .glasshouse-theme .ep-player--glass [data-harborfm-episode-artwork] {
+    min-height: 11rem; max-height: 14rem; border-right: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+}
+/* episodes list skin */
+.glasshouse-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.85rem !important;
+  border: none !important;
+}
+.glasshouse-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  background: rgba(255,255,255,0.72) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 16px !important;
+  padding: 1.15rem 1.25rem !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 10px 28px rgba(21, 32, 51, 0.06) !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease !important;
+}
+.glasshouse-theme [data-harborfm-episode-item]:hover {
+  border-color: color-mix(in srgb, var(--cobalt) 45%, var(--line)) !important;
+  box-shadow: 0 14px 34px rgba(21, 32, 51, 0.1) !important;
+  transform: translateY(-1px) !important;
+  background: rgba(255,255,255,0.86) !important;
+}
+.glasshouse-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.85rem !important;
+  min-width: 0 !important;
+}
+.glasshouse-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: var(--display) !important;
+  font-weight: 400 !important;
+  font-size: 1.35rem !important;
+  letter-spacing: -0.02em !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+.glasshouse-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted) !important;
+  font-size: 0.82rem !important;
+  gap: 0.55rem !important;
+}
+.glasshouse-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  padding: 0.45rem 0.9rem !important;
+  border-radius: 999px !important;
+  background: var(--cobalt) !important;
+  color: var(--accent-fg, #fff) !important;
+  border: none !important;
+  text-decoration: none !important;
+  font-weight: 650 !important;
+  font-size: 0.82rem !important;
+  box-shadow: none !important;
+}
+.glasshouse-theme [data-harborfm-episode-item-link]:hover {
+  filter: brightness(1.05) !important;
+}
+.glasshouse-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  color: var(--muted) !important;
+  line-height: 1.55 !important;
+  margin: 0.65rem 0 0 !important;
+  overflow-wrap: anywhere !important;
+}
+.glasshouse-theme [data-harborfm-episode-item-type] {
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--cobalt) 14%, #fff) !important;
+  color: var(--cobalt) !important;
+  border: 1px solid color-mix(in srgb, var(--cobalt) 35%, var(--line)) !important;
+}
+.glasshouse-theme [data-harborfm-episodes-load-more] {
+  border-radius: 999px !important;
+  border: 1px solid var(--line) !important;
+  background: rgba(255,255,255,0.75) !important;
+  color: var(--ink) !important;
+  font-weight: 650 !important;
+  backdrop-filter: blur(8px) !important;
+}
+/* reviews mount (paged ReviewsCard) */
+.glasshouse-theme .reviews-block [data-harborfm-reviews-title] { display: none !important; }
+.glasshouse-theme .reviews-block [data-harborfm-reviews] {
+  margin: 0 !important; padding: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important;
+}
+.glasshouse-theme .reviews-block [data-harborfm-reviews-list] {
+  list-style: none !important; margin: 0 0 1rem !important; padding: 0 !important;
+  display: flex !important; flex-direction: column !important; gap: 0.75rem !important;
+}
+.glasshouse-theme .reviews-block [data-harborfm-review] {
+  min-width: 0 !important; background: rgba(255,255,255,0.72) !important; border: 1px solid var(--line) !important;
+  border-radius: 14px !important; box-shadow: 0 8px 22px rgba(21,32,51,0.06) !important;
+  padding: 1rem 1.1rem !important; backdrop-filter: blur(8px) !important;
+}
+.glasshouse-theme .reviews-block [data-harborfm-review-body] {
+  font-family: var(--display) !important; font-size: 1.15rem !important; line-height: 1.45 !important; color: var(--ink) !important;
+}
+.glasshouse-theme .reviews-block [data-harborfm-reviews-write],
+.glasshouse-theme .reviews-block [data-harborfm-reviews-load-more] {
+  border-radius: 999px !important; border: 1px solid var(--line) !important;
+  background: rgba(255,255,255,0.75) !important; color: var(--ink) !important;
+  font-weight: 650 !important; backdrop-filter: blur(8px) !important;
+}
+.glasshouse-theme .reviews-block [data-harborfm-reviews-write] {
+  background: var(--cobalt) !important; color: var(--accent-fg, #fff) !important; border: none !important;
+}

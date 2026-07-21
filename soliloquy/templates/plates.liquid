@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Plates | {{ podcast.title | escape }}</title>
+</head>
+<body class="soliloquy-theme soliloquy-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+
+  <main class="sol-journal sol-journal--page sol-plates">
+    <header class="sol-page-head">
+      <p class="sol-kicker">A room for unguarded thought</p>
+      <h1 class="sol-display sol-display--page">Plates</h1>
+      <p class="sol-lede">Four editorial stills in the Soliloquy package, licensed from Unsplash. Each plate links to the original.</p>
+    </header>
+
+    <ul class="sol-plate-wall">
+      <li class="sol-plate">
+        <a class="sol-plate__frame" href="https://unsplash.com/photos/a-chalkboard-with-the-word-possible-written-on-it-Jxi526YIQgA" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="A chalkboard with the word possible written on it" />
+        </a>
+        <div class="sol-plate__meta">
+          <p class="sol-plate__name">Possible</p>
+          <p class="sol-plate__file">hero.jpg · Opening, gallery preview</p>
+          <p class="sol-plate__by">
+            Photo by
+            <a href="https://unsplash.com/@towfiqu999999" rel="noopener noreferrer">Towfiqu barbhuiya</a>
+            on
+            <a href="https://unsplash.com/photos/a-chalkboard-with-the-word-possible-written-on-it-Jxi526YIQgA" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="sol-plate">
+        <a class="sol-plate__frame" href="https://unsplash.com/photos/woman-doing-yoga-meditation-on-brown-parquet-flooring-NTyBbu66_SI" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Woman doing yoga meditation on brown parquet flooring" />
+        </a>
+        <div class="sol-plate__meta">
+          <p class="sol-plate__name">Yoga golden hour</p>
+          <p class="sol-plate__file">a.jpg · Opening moments</p>
+          <p class="sol-plate__by">
+            Photo by
+            <a href="https://unsplash.com/@jareddrice" rel="noopener noreferrer">Jared Rice</a>
+            on
+            <a href="https://unsplash.com/photos/woman-doing-yoga-meditation-on-brown-parquet-flooring-NTyBbu66_SI" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="sol-plate">
+        <a class="sol-plate__frame" href="https://unsplash.com/photos/love-to-learn-pencil-signage-on-wall-near-walking-man-WE_Kv_ZB1l0" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Love to learn pencil signage on wall near walking man" />
+        </a>
+        <div class="sol-plate__meta">
+          <p class="sol-plate__name">Love to learn</p>
+          <p class="sol-plate__file">b.jpg · Opening moments</p>
+          <p class="sol-plate__by">
+            Photo by
+            <a href="https://unsplash.com/@timmossholder" rel="noopener noreferrer">Tim Mossholder</a>
+            on
+            <a href="https://unsplash.com/photos/love-to-learn-pencil-signage-on-wall-near-walking-man-WE_Kv_ZB1l0" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="sol-plate">
+        <a class="sol-plate__frame" href="https://unsplash.com/photos/person-reading-book-during-daytime-Ej_GTF0JPss" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Person reading a book during daytime at a desk" />
+        </a>
+        <div class="sol-plate__meta">
+          <p class="sol-plate__name">Branding desk</p>
+          <p class="sol-plate__file">c.jpg · Opening moments, Support</p>
+          <p class="sol-plate__by">
+            Photo by
+            <a href="https://unsplash.com/@austindistel" rel="noopener noreferrer">Austin Distel</a>
+            on
+            <a href="https://unsplash.com/photos/person-reading-book-during-daytime-Ej_GTF0JPss" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

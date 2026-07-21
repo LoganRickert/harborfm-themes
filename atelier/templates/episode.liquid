@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="atelier-theme atelier-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <nav class="ep-crumbs ep-crumbs--atelier" aria-label="Breadcrumb">
+        <a href="{{ urls.home }}">Issue</a><span aria-hidden="true">/</span>
+        <a href="{{ urls.pages.podcast }}">Archive</a><span aria-hidden="true">/</span>
+        <span>Feature</span>
+      </nav>
+      <header class="ep-mast ep-mast--atelier">
+        <p class="eyebrow">Feature interview</p>
+        <h1 class="display ep-mast__title">{{ episode.title | escape }}</h1>
+        <p class="ep-mast__dek">A sitting in sharp light. Press play when you are ready.</p>
+      </header>
+      <section class="ep-player ep-player--atelier">{% render 'harborfm/player' %}</section>
+      {% if show.episode_description %}{% if episode.description != "" %}
+      <section class="panel"><h2>Sitting notes</h2><p class="lede">{{ episode.description | escape }}</p></section>
+      {% endif %}{% endif %}
+      {% if show.funding %}{% if funding_links.size > 0 %}
+      <section class="panel">
+        <h2>Keep it going</h2>
+        <div class="masthead-tags">
+          {% for f in funding_links %}<a class="masthead-tag" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_episode %}
+      <section class="panel reviews-block" aria-label="Listener notes">
+        <header class="reviews-block__head">
+          <h2>Listener notes</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

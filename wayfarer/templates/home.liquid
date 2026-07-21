@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="wayfarer-theme wayfarer-page-{{ page }}">
+  <div class="journal">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="content">
+      <div class="photo-stack" aria-hidden="true">
+        <img class="photo-stack__portrait" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+        <img class="photo-stack__wide" src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" />
+      </div>
+      <p class="script" style="font-size:1.6rem;color:var(--coral);margin:0">Stories from the road</p>
+      <h1 class="title">{{ podcast.title | escape }}</h1>
+      {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+      <div class="action-row">
+        <button type="button" class="btn-ocean" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+        <a class="btn-postcard" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+        <button type="button" class="btn-postcard" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+      </div>
+      <p class="lede"><a class="dispatch-link" href="{{ urls.pages.podcast }}">Open Dispatches &rarr;</a></p>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

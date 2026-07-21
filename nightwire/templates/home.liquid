@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="nightwire-theme nightwire-page-{{ page }}">
+  <div class="hud">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="stage">
+      <div class="glitch" style="top:12%" aria-hidden="true"></div>
+      <div class="glitch g2" aria-hidden="true"></div>
+      <img class="hero-cyber" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+      <p class="eyebrow" style="color:var(--orange)">Underground signal, open channel</p>
+      <h1 class="title">{{ podcast.title | escape }}</h1>
+      {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+
+      <div class="action-row">
+        <button type="button" class="btn-acid" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+        <a class="btn-ghost" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+        <button type="button" class="btn-ghost" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+        <button type="button" class="btn-ghost" data-harborfm-action="message"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Message</button>
+        <button type="button" class="btn-ghost" data-harborfm-action="alerts"><i class="fa-solid fa-bell" aria-hidden="true"></i> Alerts</button>
+      </div>
+
+      <div class="log-grid">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+      <section class="panel"><h2>Signal log</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

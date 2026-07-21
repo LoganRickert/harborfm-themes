@@ -1,0 +1,16 @@
+<header class="ann-topnav" aria-label="Reading room navigation">
+  <div class="ann-topnav__bar">
+    <a class="ann-brand" href="{{ urls.home }}">{{ podcast.title | escape }}</a>
+    <details class="ann-nav-menu">
+      <summary class="ann-nav-menu__toggle" aria-label="Menu"><span class="ann-nav-menu__icon" aria-hidden="true"></span></summary>
+      <nav aria-label="Show pages">
+        <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}><span class="ann-folio">I</span> Reading room</a>
+        <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}><span class="ann-folio">II</span> Catalogue</a>
+        <a href="{{ urls.pages.contributors }}"{% if page == "contributors" %} aria-current="page"{% endif %}><span class="ann-folio">III</span> Contributors</a>
+        <a href="{{ urls.pages.endowments }}"{% if page == "endowments" %} aria-current="page"{% endif %}><span class="ann-folio">IV</span> Endowments</a>
+        <a href="{{ urls.pages.provenance }}"{% if page == "provenance" %} aria-current="page"{% endif %}><span class="ann-folio">V</span> Provenance</a>
+      </nav>
+    </details>
+  </div>
+  <div class="ann-topnav__rule" aria-hidden="true"></div>
+</header>

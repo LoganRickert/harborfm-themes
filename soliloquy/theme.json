@@ -1,0 +1,16 @@
+{
+  "id": "soliloquy",
+  "name": "Soliloquy",
+  "version": "1.0.0",
+  "description": "Personal growth journal tone for reflective solo shows.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-soliloquy",
+  "pages": {
+    "podcast": "episodes.html",
+    "voices": "voices.html",
+    "support": "support.html",
+    "plates": "plates.html"
+  },
+  "not_found": "not_found"
+}

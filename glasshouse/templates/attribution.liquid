@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Photo attribution | {{ podcast.title | escape }}</title>
+</head>
+<body class="glasshouse-theme glasshouse-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main plates">
+    <header class="plates__head">
+      <h1 class="title">Photo attribution</h1>
+      <p class="plates__lede">Still photography in the Glasshouse package, licensed from Unsplash. Each plate links to the original.</p>
+    </header>
+
+    <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/photo-of-dining-table-and-chairs-inside-room-eHD8Y1Znfpk" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Glass-walled boardroom with a long wood table" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Boardroom</p>
+          <p class="plate__file">a.jpg · Partners</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@sunday_digital" rel="noopener noreferrer">Nastuh Abootalebi</a>
+            on
+            <a href="https://unsplash.com/photos/photo-of-dining-table-and-chairs-inside-room-eHD8Y1Znfpk" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/low-angle-photo-of-city-high-rise-buildings-during-daytime-PhYq704ffdA" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Looking up at glass towers against an overcast sky" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Tower canyon</p>
+          <p class="plate__file">hero.jpg · Atrium, Brief, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@seanpollock" rel="noopener noreferrer">Sean Pollock</a>
+            on
+            <a href="https://unsplash.com/photos/low-angle-photo-of-city-high-rise-buildings-during-daytime-PhYq704ffdA" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/hallway-between-glass-panel-doors-yWwob8kwOCk" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Hallway lined with black-framed glass partitions" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Glass corridor</p>
+          <p class="plate__file">b.jpg · Partners</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@sunday_digital" rel="noopener noreferrer">Nastuh Abootalebi</a>
+            on
+            <a href="https://unsplash.com/photos/hallway-between-glass-panel-doors-yWwob8kwOCk" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/people-inside-dinosaur-fossil-museum-during-daytime-tXmc2mVDxJc" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Bright museum hall with a large fossil skeleton" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Daylit hall</p>
+          <p class="plate__file">c.jpg · Partners</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@cspek" rel="noopener noreferrer">Chris Nguyen</a>
+            on
+            <a href="https://unsplash.com/photos/people-inside-dinosaur-fossil-museum-during-daytime-tXmc2mVDxJc" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/person-in-white-top-HYQvV8wWX18" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Vaulted market hall with a glass skylight roof" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Market vault</p>
+          <p class="plate__file">d.jpg · Charter</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@jezar" rel="noopener noreferrer">Jezael Melgoza</a>
+            on
+            <a href="https://unsplash.com/photos/person-in-white-top-HYQvV8wWX18" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

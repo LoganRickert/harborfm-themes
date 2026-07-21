@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="soliloquy-theme soliloquy-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+
+  <main class="sol-journal sol-journal--page">
+    <header class="sol-page-head">
+      <p class="sol-kicker">Off the page</p>
+      <h1 class="sol-display sol-display--page">This monologue was never written</h1>
+    </header>
+
+    <section class="sol-sheet">
+      <p class="sol-lede">That page is not in this journal. Return to the opening, or browse episodes.</p>
+      <div class="sol-actions">
+        <a class="sol-btn-fill" href="{{ urls.home }}">Back to opening</a>
+        <a class="sol-btn-line" href="{{ urls.pages.podcast }}">Browse episodes</a>
+      </div>
+    </section>
+  </main>
+
+  {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

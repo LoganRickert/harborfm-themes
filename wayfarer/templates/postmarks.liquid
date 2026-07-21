@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Postmarks | {{ podcast.title | escape }}</title>
+</head>
+<body class="wayfarer-theme wayfarer-page-{{ page }}">
+  <div class="journal">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="content plates">
+      <header class="plates__head">
+        <p class="eyebrow">Stories from the road</p>
+        <h1 class="title display">Postmarks</h1>
+        <p class="plates__lede">Scenes from the road in the Wayfarer package, licensed from Unsplash. Each postmark links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/white-and-brown-concrete-building-CepDpEiALqM" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="White and brown concrete building facade" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Arrival facade</p>
+          <p class="plate__file">hero.jpg · Home, Map, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@gersonrepreza" rel="noopener noreferrer">Gerson Repreza</a>
+            on
+            <a href="https://unsplash.com/photos/white-and-brown-concrete-building-CepDpEiALqM" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/gray-airplane-on-parking-RSYBi_1fhfM" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Airplane parked on the tarmac" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Tarmac wait</p>
+          <p class="plate__file">a.jpg · Home stack, Companions</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@starocker" rel="noopener noreferrer">Rocker Sta</a>
+            on
+            <a href="https://unsplash.com/photos/gray-airplane-on-parking-RSYBi_1fhfM" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/the-sun-is-setting-through-the-window-of-an-airport-6xQFm9TFwmk" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Sunset through an airport window" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Gate light</p>
+          <p class="plate__file">b.jpg · Companions</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@safwan_mahmud" rel="noopener noreferrer">Safwan Mahmud</a>
+            on
+            <a href="https://unsplash.com/photos/the-sun-is-setting-through-the-window-of-an-airport-6xQFm9TFwmk" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/crowded-beach-with-people-white-buildings-and-clear-blue-water-RjrzMCCjLKo" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Crowded beach with white buildings and blue water" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Shore day</p>
+          <p class="plate__file">c.jpg · Companions</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@jeancarloemer" rel="noopener noreferrer">Jean Carlo Emer</a>
+            on
+            <a href="https://unsplash.com/photos/crowded-beach-with-people-white-buildings-and-clear-blue-water-RjrzMCCjLKo" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/white-bed-linen-with-throw-pillows-Yrxr3bsPdS0" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Hotel bed with linen and throw pillows" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Room key</p>
+          <p class="plate__file">d.jpg · Package still</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@vojtechbruzek" rel="noopener noreferrer">Vojtech Bruzek</a>
+            on
+            <a href="https://unsplash.com/photos/white-bed-linen-with-throw-pillows-Yrxr3bsPdS0" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

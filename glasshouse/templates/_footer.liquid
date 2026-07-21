@@ -1,0 +1,28 @@
+<footer class="site-foot gh-util" aria-label="Site utility">
+  <div class="gh-util-inner">
+    <div class="gh-util-brand">
+      <p class="gh-util-name">{{ podcast.title | escape }}</p>
+      <p class="gh-util-tag">
+        {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+        · clear air briefing
+      </p>
+    </div>
+    <nav class="gh-util-cols" aria-label="Footer">
+      <div>
+        <p class="gh-util-h">Program</p>
+        <a href="{{ urls.pages.podcast }}">Minutes</a>
+        <a href="{{ urls.pages.brief }}">Brief</a>
+      </div>
+      <div>
+        <p class="gh-util-h">House</p>
+        <a href="{{ urls.pages.charter }}">Charter</a>
+        <a href="{{ urls.pages.partners }}">Partners</a>
+        <a href="{{ urls.pages.underwrite }}">Underwrite</a>
+      </div>
+      <div>
+        <p class="gh-util-h">Credits</p>
+        <a href="{{ urls.pages.attribution }}">Photo attribution</a>
+      </div>
+    </nav>
+  </div>
+</footer>

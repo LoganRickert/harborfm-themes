@@ -1,0 +1,17 @@
+{
+  "id": "casefile",
+  "name": "Casefile",
+  "version": "1.0.0",
+  "description": "True-crime dossier styling with evidence-board clarity.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-casefile",
+  "pages": {
+    "podcast": "caselog.html",
+    "persons": "persons.html",
+    "tips": "tips.html",
+    "channels": "channels.html",
+    "exhibits": "exhibits.html"
+  },
+  "not_found": "not_found"
+}

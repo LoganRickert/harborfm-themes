@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="timberline-theme timberline-page-{{ page }}">
+  <div class="shell">
+    {% render '_pathhead', title: episode.title, podcast: podcast, urls: urls %}
+    <main class="main">
+      <nav class="ep-crumbs ep-crumbs--trail" aria-label="Breadcrumb">
+        <a href="{{ urls.home }}">Basecamp</a><span aria-hidden="true">/</span>
+        <a href="{{ urls.pages.podcast }}">Trail</a><span aria-hidden="true">/</span>
+        <span>Waypoint</span>
+      </nav>
+      <p class="ep-trail__dek">Field register for this stretch of trail. Press play when you are ready to hike.</p>
+      <section class="ep-player ep-player--trail">{% render 'harborfm/player' %}</section>
+      {% if show.episode_description %}{% if episode.description != "" %}
+      <section class="panel"><h2>Trail notes</h2><p class="lede">{{ episode.description | escape }}</p></section>
+      {% endif %}{% endif %}
+      {% if show.funding %}{% if funding_links.size > 0 %}
+      <section class="panel">
+        <h2>Keep it going</h2>
+        <div class="tag-row">
+          {% for f in funding_links %}<a class="tag tag-fund" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_episode %}
+      <section class="panel reviews-block" aria-label="Trip reports">
+        <header class="reviews-block__head">
+          <h2>Trip reports</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}</main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+<nav class="bottom-nav" aria-label="Show pages">
+    <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Basecamp</a>
+    <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Trail</a>
+    <a href="{{ urls.pages.guides }}"{% if page == "guides" %} aria-current="page"{% endif %}>Guides</a>
+    <a href="{{ urls.pages.campfund }}"{% if page == "campfund" %} aria-current="page"{% endif %}>Camp Fund</a>
+    <a href="{{ urls.pages.fieldnotes }}"{% if page == "fieldnotes" %} aria-current="page"{% endif %}>Field Notes</a>
+  </nav>
+  </div>
+</body>
+</html>

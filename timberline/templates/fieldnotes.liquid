@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Field notes | {{ podcast.title | escape }}</title>
+</head>
+<body class="timberline-theme timberline-page-{{ page }}">
+  <div class="shell">
+    {% render '_pathhead', title: 'Field notes', podcast: podcast, urls: urls %}
+    <main class="main plates">
+      <header class="plates__head">
+        <p class="plates__lede">Trail photography in the Timberline package, licensed from Unsplash. Each blaze links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/a-mountain-with-snow-X3Si3mYUOlA" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Snow-covered mountain ridge" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Snow line</p>
+          <p class="plate__file">a.jpg · Basecamp sky, Trail strip</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@joshuakettle" rel="noopener noreferrer">Joshua Kettle</a>
+            on
+            <a href="https://unsplash.com/photos/a-mountain-with-snow-X3Si3mYUOlA" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/dark-lake-surrounded-by-vibrant-green-forest-aerial-view-bVy49uEJbpw" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Aerial view of a dark lake surrounded by forest" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Lake canopy</p>
+          <p class="plate__file">hero.jpg · Basecamp strip, Trail, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@kristapsungurs" rel="noopener noreferrer">Kristaps Ungurs</a>
+            on
+            <a href="https://unsplash.com/photos/dark-lake-surrounded-by-vibrant-green-forest-aerial-view-bVy49uEJbpw" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/abstract-blue-flowers-with-green-blurred-background-RSXFLGmZiMQ" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Blue wildflowers against a soft green background" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Wild bloom</p>
+          <p class="plate__file">b.jpg · Basecamp strip, Trail strip</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@eugene_golovesov" rel="noopener noreferrer">Eugene Golovesov</a>
+            on
+            <a href="https://unsplash.com/photos/abstract-blue-flowers-with-green-blurred-background-RSXFLGmZiMQ" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/rugged-mountain-peaks-under-dramatic-cloudy-sky-q-QFgPIZ-_U" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Rugged mountain peaks under a cloudy sky" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Ridgeline</p>
+          <p class="plate__file">c.jpg · Basecamp strip, Trail strip</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@alingavriliuc" rel="noopener noreferrer">Alin Gavriliuc</a>
+            on
+            <a href="https://unsplash.com/photos/rugged-mountain-peaks-under-dramatic-cloudy-sky-q-QFgPIZ-_U" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/warm-colored-clouds-scattered-across-a-sunset-sky-hk3E1Y2oKlI" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Warm clouds across a sunset sky" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Trail dusk</p>
+          <p class="plate__file">d.jpg · Package still</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@gopitri_prem" rel="noopener noreferrer">Diego Romeo</a>
+            on
+            <a href="https://unsplash.com/photos/warm-colored-clouds-scattered-across-a-sunset-sky-hk3E1Y2oKlI" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+<nav class="bottom-nav" aria-label="Show pages">
+    <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Basecamp</a>
+    <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Trail</a>
+    <a href="{{ urls.pages.guides }}"{% if page == "guides" %} aria-current="page"{% endif %}>Guides</a>
+    <a href="{{ urls.pages.campfund }}"{% if page == "campfund" %} aria-current="page"{% endif %}>Camp Fund</a>
+    <a href="{{ urls.pages.fieldnotes }}"{% if page == "fieldnotes" %} aria-current="page"{% endif %}>Field Notes</a>
+  </nav>
+  </div>
+</body>
+</html>

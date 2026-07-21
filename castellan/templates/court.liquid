@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Court | {{ podcast.title | escape }}</title>
+</head>
+<body class="castellan-theme castellan-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    {% render '_pathhead', title: 'Court', podcast: podcast, urls: urls %}
+    <main class="main">
+      <section class="panel panel--parchment">
+        <p class="lede">Knights, scribes, and sworn companions who stand watch in the hall.</p>
+        {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+        <div class="court-grid">
+          {% for host in cast.hosts %}
+          <div class="court-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="court-name">{{ host.name | escape }}</p>
+            <p class="court-role">{% if host.role != "" %}{{ host.role | escape }}{% else %}Host{% endif %}</p>
+            {% if host.description != "" %}<p class="court-desc">{{ host.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <div class="court-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="court-name">{{ guest.name | escape }}</p>
+            <p class="court-role">{% if guest.role != "" %}{{ guest.role | escape }}{% else %}Guest{% endif %}</p>
+            {% if guest.description != "" %}<p class="court-desc">{{ guest.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Enable cast on the show in HarborFM to populate this page.</p>{% endif %}
+      </section>
+      <div class="knight-strip knight-strip--interior">
+        <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    <nav class="battlement-nav" aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Ramparts</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Chronicle</a>
+      <a href="{{ urls.pages.court }}"{% if page == "court" %} aria-current="page"{% endif %}>Court</a>
+      <a href="{{ urls.pages.tithes }}"{% if page == "tithes" %} aria-current="page"{% endif %}>Tithes</a>
+      <a href="{{ urls.pages.reliquary }}"{% if page == "reliquary" %} aria-current="page"{% endif %}>Reliquary</a>
+      <a href="{{ urls.pages.illuminations }}"{% if page == "illuminations" %} aria-current="page"{% endif %}>Illuminations</a>
+    </nav>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Case log | {{ podcast.title | escape }}</title>
+</head>
+<body class="casefile-theme casefile-page-{{ page }}">
+  <div class="dossier">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <div class="dossier-main">
+      <header class="page-head">
+        <p class="eyebrow">Noir dossier, open file</p>
+        <h1 class="title display">Case log</h1>
+        <p class="lede">Search the archive and pull every recorded episode from the file.</p>
+      </header>
+
+      <section class="panel dossier-panel">
+        <h2><span class="evidence-label">Ref</span> Episodes on record</h2>
+        {% render 'harborfm/search' %}
+        {% render 'harborfm/episodes' %}
+      </section>
+
+      {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    </div>
+  </div>
+</body>
+</html>

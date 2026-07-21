@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="pitchside-theme pitchside-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <header class="split-hero">
+      <div class="copy">
+        <p class="eyebrow">Match-day talk, no fluff</p>
+        <h1 class="title display">{{ podcast.title | escape }}</h1>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+        <div class="action-row">
+          <button type="button" class="btn-pitch" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+          <a class="btn-outline" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+          <button type="button" class="btn-outline" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+          <button type="button" class="btn-outline" data-harborfm-action="alerts"><i class="fa-solid fa-bell" aria-hidden="true"></i> Alerts</button>
+        </div>
+      </div>
+      <div class="photo" style="background-image:url('{{ urls.theme_asset_base }}/images/hero.jpg')"></div>
+    </header>
+    <main class="main">
+      <div class="match-grid">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+      <section class="panel"><h2>Fixtures</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+</body>
+</html>

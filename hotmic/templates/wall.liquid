@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Wall of fame | {{ podcast.title | escape }}</title>
+</head>
+<body class="hotmic-theme hotmic-page-{{ page }}">
+  <div class="hm-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="hm-main hm-plates">
+      <header class="hm-plates__head">
+        <p class="hm-kicker">Comedy club night, mic hot</p>
+        <h1 class="hm-display">Wall of fame</h1>
+        <p class="hm-plates__lede">Four club stills in the Hot Mic package, licensed from Unsplash. Each panel links to the original.</p>
+      </header>
+
+      <ul class="hm-plate-wall">
+        <li class="hm-plate">
+          <a class="hm-plate__frame" href="https://unsplash.com/photos/laugh-neon-signage-imlD5dbcLM4" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Neon LAUGH sign glowing in a comedy club" />
+          </a>
+          <div class="hm-plate__meta">
+            <p class="hm-plate__name">LAUGH neon</p>
+            <p class="hm-plate__file">hero.jpg · Tonight spotlight strip, gallery preview</p>
+            <p class="hm-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@timmossholder" rel="noopener noreferrer">Tim Mossholder</a>
+              on
+              <a href="https://unsplash.com/photos/laugh-neon-signage-imlD5dbcLM4" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="hm-plate">
+          <a class="hm-plate__frame" href="https://unsplash.com/photos/a-stage-set-up-for-a-concert-with-a-neon-sign-208lP_RmP78" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Open mic stage with neon sign and microphone stand" />
+          </a>
+          <div class="hm-plate__meta">
+            <p class="hm-plate__name">Open mic stage</p>
+            <p class="hm-plate__file">a.jpg · Tonight spotlight strip</p>
+            <p class="hm-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@erinwith" rel="noopener noreferrer">Erin With</a>
+              on
+              <a href="https://unsplash.com/photos/a-stage-set-up-for-a-concert-with-a-neon-sign-208lP_RmP78" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="hm-plate">
+          <a class="hm-plate__frame" href="https://unsplash.com/photos/a-microphone-that-is-sitting-on-a-stand-ekHSHvgr27k" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Microphone on a stand under stage lights" />
+          </a>
+          <div class="hm-plate__meta">
+            <p class="hm-plate__name">Hot mic</p>
+            <p class="hm-plate__file">b.jpg · Tonight spotlight strip</p>
+            <p class="hm-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@bogomi" rel="noopener noreferrer">Bogomil Mihaylov</a>
+              on
+              <a href="https://unsplash.com/photos/a-microphone-that-is-sitting-on-a-stand-ekHSHvgr27k" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="hm-plate">
+          <a class="hm-plate__frame" href="https://unsplash.com/photos/people-in-dark-room-jKTCVwtltYQ" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Audience laughing in a dark comedy club" />
+          </a>
+          <div class="hm-plate__meta">
+            <p class="hm-plate__name">Crowd night</p>
+            <p class="hm-plate__file">c.jpg · Tonight spotlight strip</p>
+            <p class="hm-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@jibarox" rel="noopener noreferrer">Luis Quintero</a>
+              on
+              <a href="https://unsplash.com/photos/people-in-dark-room-jKTCVwtltYQ" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

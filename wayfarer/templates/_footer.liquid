@@ -1,0 +1,19 @@
+<footer class="site-foot wf-postcard" aria-label="Postcard">
+  <div class="wf-card">
+    <div class="wf-card-stamp" aria-hidden="true"><span></span></div>
+    <p class="wf-card-from">Wish you were listening</p>
+    <p class="wf-card-title">{{ podcast.title | escape }}</p>
+    <div class="wf-card-itinerary">
+      <a href="{{ urls.pages.map }}">Map</a>
+      <a href="{{ urls.pages.companions }}">Companions</a>
+      <a href="{{ urls.pages.tipjar }}">Tip Jar</a>
+      <a href="{{ urls.pages.postmarks }}">Postmarks</a>
+      <a href="{{ urls.pages.podcast }}">Dispatches</a>
+    </div>
+    <p class="wf-card-postmark">
+      Posted with
+      {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+      · <a href="{{ urls.pages.postmarks }}">Postmark credits</a>
+    </p>
+  </div>
+</footer>

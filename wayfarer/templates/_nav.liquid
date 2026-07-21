@@ -1,0 +1,16 @@
+<aside class="itinerary">
+  <div class="itinerary-bar">
+    <a class="brand" href="{{ urls.home }}">{{ podcast.title | escape }}</a>
+    <details class="nav-menu">
+      <summary class="nav-menu__toggle" aria-label="Menu"><span class="nav-menu__icon" aria-hidden="true"></span></summary>
+      <nav aria-label="Show pages">
+        <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Trailhead</a>
+        <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Dispatches</a>
+        <a href="{{ urls.pages.map }}"{% if page == "map" %} aria-current="page"{% endif %}>Map</a>
+        <a href="{{ urls.pages.companions }}"{% if page == "companions" %} aria-current="page"{% endif %}>Companions</a>
+        <a href="{{ urls.pages.tipjar }}"{% if page == "tipjar" %} aria-current="page"{% endif %}>Tip Jar</a>
+        <a href="{{ urls.pages.postmarks }}"{% if page == "postmarks" %} aria-current="page"{% endif %}>Postmarks</a>
+      </nav>
+    </details>
+  </div>
+</aside>

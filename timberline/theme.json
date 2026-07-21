@@ -1,0 +1,16 @@
+{
+  "id": "timberline",
+  "name": "Timberline",
+  "version": "1.0.0",
+  "description": "Outdoors trail mood with timber tones and wide horizons.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-timberline",
+  "pages": {
+    "podcast": "trail.html",
+    "guides": "guides.html",
+    "campfund": "campfund.html",
+    "fieldnotes": "fieldnotes.html"
+  },
+  "not_found": "not_found"
+}

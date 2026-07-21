@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Catalogue | {{ podcast.title | escape }}</title>
+</head>
+<body class="stacks-theme stacks-page-{{ page }}">
+  <div class="layout">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div>
+    <main class="page">
+      <header>
+        <p class="eyebrow">Ideas between the shelves</p>
+        <h1 class="title display">Catalogue</h1>
+      </header>
+      <section class="panel"><h2>Full run</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<footer class="site-foot st-plate" aria-label="Bookplate">
+  <div class="st-plate-inner">
+    <p class="st-plate-stamp">Ex Libris</p>
+    <p class="st-plate-title">{{ podcast.title | escape }}</p>
+    <p class="st-plate-meta">
+      Reading Room ·
+      {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+      shelfmark
+    </p>
+    <nav class="st-plate-links">
+      <a href="{{ urls.pages.podcast }}">Catalogue</a>
+      <a href="{{ urls.pages.colophon }}">Colophon</a>
+      <a href="{{ urls.pages.colophon }}">Image credits</a>
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Partners at the table | {{ podcast.title | escape }}</title>
+</head>
+<body class="glasshouse-theme glasshouse-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Leadership in clear air</p>
+        <h1 class="title display">Partners at the table</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">Operators and guests shaping each brief.</p>
+        {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+        <div class="partner-grid">
+          {% for host in cast.hosts %}
+          <div class="partner-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="partner-name">{{ host.name | escape }}</p>
+            <p class="partner-role">{% if host.role != "" %}{{ host.role | escape }}{% else %}Host{% endif %}</p>
+            {% if host.description != "" %}<p class="partner-desc">{{ host.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <div class="partner-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="partner-name">{{ guest.name | escape }}</p>
+            <p class="partner-role">{% if guest.role != "" %}{{ guest.role | escape }}{% else %}Guest{% endif %}</p>
+            {% if guest.description != "" %}<p class="partner-desc">{{ guest.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Enable cast on the show in HarborFM to populate this page.</p>{% endif %}
+      </section>
+      <div class="portraits" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.6rem;margin-top:1rem">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px" />
+        <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px" />
+        <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px" />
+      </div>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

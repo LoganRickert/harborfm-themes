@@ -1,0 +1,14 @@
+{
+  "id": "nightwire",
+  "name": "Nightwire",
+  "version": "1.0.0",
+  "description": "Cyber underground look with neon contrast and a cleartext feed layout.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-nightwire",
+  "pages": {
+    "podcast": "cleartext.html",
+    "capture": "capture.html"
+  },
+  "not_found": "not_found"
+}

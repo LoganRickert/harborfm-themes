@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="glasshouse-theme glasshouse-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+
+  <header class="lobby">
+    <div class="lobby__media" aria-hidden="true">
+      <img class="lobby__img" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+    </div>
+    <div class="lobby__shade" aria-hidden="true"></div>
+    <div class="lobby__pane">
+      {% if podcast.artwork_url != "" %}
+        <img class="lobby__cover" src="{{ podcast.artwork_url | escape }}" alt="" width="152" height="152" />
+      {% endif %}
+      <h1 class="lobby__title">{{ podcast.title | escape }}</h1>
+      <p class="lobby__lede">Leadership in clear air.</p>
+      <div class="action-row lobby__actions">
+        <button type="button" class="btn-cobalt" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+        <a class="btn-glass" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+      </div>
+      <a class="minutes-link lobby__minutes" href="{{ urls.pages.podcast }}">Open Minutes &rarr;</a>
+    </div>
+  </header>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

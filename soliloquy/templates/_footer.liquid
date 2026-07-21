@@ -1,0 +1,16 @@
+<footer class="site-foot sol-foot" aria-label="Colophon">
+  <div class="sol-foot-inner">
+    <p class="sol-foot-kicker">Soliloquy</p>
+    <p class="sol-foot-title">{{ podcast.title | escape }}</p>
+    <p class="sol-foot-note">
+      Set in {% if theme.homepage != "" %}<a class="sol-link-grow" href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}.
+      Editorial stills licensed from Unsplash.
+    </p>
+    <nav class="sol-foot-nav" aria-label="Footer">
+      <a class="sol-link-grow" href="{{ urls.pages.podcast }}">Episodes</a>
+      <a class="sol-link-grow" href="{{ urls.pages.voices }}">Voices</a>
+      <a class="sol-link-grow" href="{{ urls.pages.support }}">Support</a>
+      <a class="sol-link-grow" href="{{ urls.pages.plates }}">Plate credits</a>
+    </nav>
+  </div>
+</footer>

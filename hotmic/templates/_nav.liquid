@@ -1,0 +1,18 @@
+<div class="hm-marquee" aria-hidden="true">
+  {%- comment -%} Two identical groups, each wider than ultra-wide viewports, so translateX(-50%) loops with no gap. {%- endcomment -%}
+  <div class="hm-marquee__track">
+    <span class="hm-marquee__group">Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic ·</span>
+    <span class="hm-marquee__group">Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic · Live tonight · Hot Mic · Stand-up · Open mic · Laugh track optional · Hot Mic ·</span>
+  </div>
+</div>
+<div class="hm-topbar">
+  <a class="hm-brand" href="{{ urls.home }}"><strong>{{ podcast.title | escape }}</strong></a>
+  <details class="hm-nav-menu">
+    <summary class="hm-nav-menu__toggle" aria-label="Menu"><span class="hm-nav-menu__icon" aria-hidden="true"></span></summary>
+    <nav aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Tonight</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Green room</a>
+      <a href="{{ urls.pages.wall }}"{% if page == "wall" %} aria-current="page"{% endif %}>Wall of fame</a>
+    </nav>
+  </details>
+</div>

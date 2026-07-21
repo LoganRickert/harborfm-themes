@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="wayfarer-theme wayfarer-page-{{ page }}">
+  <div class="journal">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="content">
+      <header>
+        <p class="eyebrow">Detour</p>
+        <h1 class="title display">This stop is not on the itinerary</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">The postcard for that place was never written. Head home to the journey.</p>
+        <div class="action-row">
+          <a class="btn-ocean" href="{{ urls.home }}">Back to journey</a>
+        </div>
+      </section>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

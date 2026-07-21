@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Green room | {{ podcast.title | escape }}</title>
+</head>
+<body class="hotmic-theme hotmic-page-{{ page }}">
+  <div class="hm-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="hm-main">
+      <header class="hm-page-head">
+        <p class="hm-kicker">Comedy club night, mic hot</p>
+        <h1 class="hm-display">Green room</h1>
+      </header>
+      <section class="hm-stage-panel">
+        <p class="hm-lede">Backstage bios, links, and who is on the bill. Episodes and search live on Tonight.</p>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="hm-lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+        {% if show.author %}{% if podcast.author_name != "" %}<p class="hm-lede">Hosted by {{ podcast.author_name | escape }}.</p>{% endif %}{% endif %}
+      </section>
+      <img class="hm-figure" src="{{ urls.theme_asset_base }}/images/d.jpg" alt="" />
+
+      {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+      <section class="hm-stage-panel">
+        <h2>On the bill</h2>
+        <div class="hm-comic-grid">
+          {% for host in cast.hosts %}
+          <div class="hm-comic-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="hm-comic-name">{{ host.name | escape }}</p>
+            <p class="hm-comic-role">{% if host.role != "" %}{{ host.role | escape }}{% else %}Host{% endif %}</p>
+            {% if host.description != "" %}<p class="hm-comic-desc">{{ host.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <div class="hm-comic-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="hm-comic-name">{{ guest.name | escape }}</p>
+            <p class="hm-comic-role">{% if guest.role != "" %}{{ guest.role | escape }}{% else %}Guest{% endif %}</p>
+            {% if guest.description != "" %}<p class="hm-comic-desc">{{ guest.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+
+      <div class="hm-backstage-split">
+        {% if show.links %}{% if links.size > 0 %}
+        <section class="hm-stage-panel">
+          <h2>Follow the club</h2>
+          <div class="hm-chip-row">
+            {% for link in links %}<a class="hm-chip hm-chip--{{ link.group }}" href="{{ link.url | escape }}">{{ link.label | escape }}</a>{% endfor %}
+          </div>
+        </section>
+        {% endif %}{% endif %}
+        {% if show.funding %}{% if funding_links.size > 0 %}
+        <section class="hm-stage-panel">
+          <h2>Tip the comic</h2>
+          <div class="hm-chip-row">
+            {% for f in funding_links %}<a class="hm-chip hm-chip--fund" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+          </div>
+        </section>
+        {% endif %}{% endif %}
+      </div>
+
+      {% if show.reviews_podcast %}
+      <section class="hm-stage-panel hm-reviews" aria-label="Crowd reactions">
+        <header class="hm-reviews__head">
+          <h2>Crowd reactions</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<footer class="site-foot mag-colophon" aria-label="Colophon">
+  <div class="mag-colophon-inner">
+    <div class="mag-colophon-rule mag-colophon-rule--top" aria-hidden="true"></div>
+
+    <div class="mag-colophon-mast">
+      <div class="mag-colophon-brand">
+        <p class="mag-colophon-kicker">Colophon</p>
+        <p class="mag-colophon-title">{{ podcast.title | escape }}</p>
+      </div>
+      <nav class="mag-colophon-nav" aria-label="Footer">
+        <a href="{{ urls.pages.podcast }}">Archive</a>
+        <a href="{{ urls.pages.salon }}">Salon</a>
+        <a href="{{ urls.pages.patronage }}">Patronage</a>
+        <a href="{{ urls.pages.plates }}">Plate credits</a>
+      </nav>
+    </div>
+
+    <p class="mag-colophon-note">
+      Set in {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}.
+      Portrait stills licensed from Unsplash.
+      Printed for the sitting, not the scroll.
+    </p>
+
+    <div class="mag-colophon-rule mag-colophon-rule--bottom" aria-hidden="true"></div>
+  </div>
+</footer>

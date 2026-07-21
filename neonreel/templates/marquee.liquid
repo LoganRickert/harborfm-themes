@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Marquee credits | {{ podcast.title | escape }}</title>
+</head>
+<body class="neonreel-theme neonreel-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main plates">
+    <header class="plates__head">
+      <p class="eyebrow">Film culture after dark</p>
+      <h1 class="title display">Marquee credits</h1>
+      <p class="plates__lede">Still photography in the Neon Reel package, licensed from Unsplash. Each plate links to the original.</p>
+    </header>
+
+    <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/photography-of-cinema-atsUqIm3wxo" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Cinema marquee lights at night" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Marquee lights</p>
+          <p class="plate__file">hero.jpg · Home, Backstage, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@myke_simon" rel="noopener noreferrer">Myke Simon</a>
+            on
+            <a href="https://unsplash.com/photos/photography-of-cinema-atsUqIm3wxo" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/red-padded-theater-chairs-OaVJQZ-nFD0" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Rows of red padded theater chairs" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Red seats</p>
+          <p class="plate__file">a.jpg · Home strip, Talent</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@dmjdenise" rel="noopener noreferrer">Denise Jans</a>
+            on
+            <a href="https://unsplash.com/photos/red-padded-theater-chairs-OaVJQZ-nFD0" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/brown-wooden-chairs-inside-theater-ebsrin6WqxQ" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Wooden theater chairs in an empty house" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Empty house</p>
+          <p class="plate__file">b.jpg · Home strip, Talent</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@liammcgarry" rel="noopener noreferrer">Liam McGarry</a>
+            on
+            <a href="https://unsplash.com/photos/brown-wooden-chairs-inside-theater-ebsrin6WqxQ" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/red-and-gold-theater-seats-eH-IOSeI0Yk" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Red and gold theater seats" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Gold trim</p>
+          <p class="plate__file">c.jpg · Home strip, Talent</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@giusiborrasi" rel="noopener noreferrer">Giusi Borrasi</a>
+            on
+            <a href="https://unsplash.com/photos/red-and-gold-theater-seats-eH-IOSeI0Yk" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/people-walking-on-corridor-looking-at-painting-H3APOiYLyzk" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="People walking a corridor lined with paintings" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Gallery walk</p>
+          <p class="plate__file">d.jpg · Synopsis</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@amyb99" rel="noopener noreferrer">Amy-Leigh Barnard</a>
+            on
+            <a href="https://unsplash.com/photos/people-walking-on-corridor-looking-at-painting-H3APOiYLyzk" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+</body>
+</html>

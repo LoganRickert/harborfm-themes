@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="stacks-theme stacks-page-{{ page }}">
+  <div class="layout">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div>
+    <main class="page">
+      <header>
+        <p class="eyebrow">Misfiled</p>
+        <h1 class="title display">Volume not on the shelf</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">That call number does not exist in this collection. Return to the stacks.</p>
+        <div class="action-row">
+          <a class="btn-stamp" href="{{ urls.home }}">Return to stacks</a>
+        </div>
+      </section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

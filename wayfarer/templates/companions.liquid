@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Travel companions | {{ podcast.title | escape }}</title>
+</head>
+<body class="wayfarer-theme wayfarer-page-{{ page }}">
+  <div class="journal">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="content">
+
+      <header>
+        <p class="eyebrow">Stories from the road</p>
+        <h1 class="title display">Travel companions</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">People sharing the passenger seat and the mic.</p>
+        {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+        <div class="companion-grid">
+          {% for host in cast.hosts %}
+          <div class="companion-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="companion-name">{{ host.name | escape }}</p>
+            <p class="companion-role">{% if host.role != "" %}{{ host.role | escape }}{% else %}Host{% endif %}</p>
+            {% if host.description != "" %}<p class="companion-desc">{{ host.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <div class="companion-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="companion-name">{{ guest.name | escape }}</p>
+            <p class="companion-role">{% if guest.role != "" %}{{ guest.role | escape }}{% else %}Guest{% endif %}</p>
+            {% if guest.description != "" %}<p class="companion-desc">{{ guest.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Enable cast on the show in HarborFM to populate this page.</p>{% endif %}
+      </section>
+      <div class="portrait-strip">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+      {% if show.reviews_podcast %}
+      <section class="panel reviews-block" aria-label="Guestbook postcards">
+        <header class="reviews-block__head">
+          <h2>Guestbook postcards</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

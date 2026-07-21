@@ -1,0 +1,16 @@
+{
+  "id": "orbitlab",
+  "name": "Orbit Lab",
+  "version": "1.0.0",
+  "description": "Science and tech lab aesthetic with crisp panels and orbit cues.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-orbitlab",
+  "pages": {
+    "podcast": "dossier.html",
+    "briefing": "briefing.html",
+    "channels": "channels.html",
+    "sources": "sources.html"
+  },
+  "not_found": "not_found"
+}

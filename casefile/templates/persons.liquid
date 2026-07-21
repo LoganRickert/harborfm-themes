@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Persons | {{ podcast.title | escape }}</title>
+</head>
+<body class="casefile-theme casefile-page-{{ page }}">
+  <div class="dossier">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <div class="dossier-main">
+      <header class="page-head">
+        <p class="eyebrow">Noir dossier, open file</p>
+        <h1 class="title display">Persons</h1>
+        <p class="lede">Hosts, guests, and voices named in the case file.</p>
+      </header>
+
+      <section class="panel dossier-panel">
+        {% if show.cast %}{% if cast.hosts.size > 0 or cast.guests.size > 0 %}
+        <div class="person-grid">
+          {% for host in cast.hosts %}
+          <div class="person-card">
+            {% if host.image_url != "" %}<img src="{{ host.image_url | escape }}" alt="" />{% endif %}
+            <p class="person-name">{{ host.name | escape }}</p>
+            <p class="person-role"><span class="evidence-label">Host</span> {% if host.role != "" %}{{ host.role | escape }}{% else %}Primary{% endif %}</p>
+            {% if host.description != "" %}<p class="person-desc">{{ host.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+          {% for guest in cast.guests %}
+          <div class="person-card">
+            {% if guest.image_url != "" %}<img src="{{ guest.image_url | escape }}" alt="" />{% endif %}
+            <p class="person-name">{{ guest.name | escape }}</p>
+            <p class="person-role"><span class="evidence-label">Guest</span> {% if guest.role != "" %}{{ guest.role | escape }}{% else %}Interview{% endif %}</p>
+            {% if guest.description != "" %}<p class="person-desc">{{ guest.description | escape }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}{% else %}
+        <p class="lede">Enable cast on the show in HarborFM to populate this page.</p>
+        {% endif %}
+      </section>
+
+      {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    </div>
+  </div>
+</body>
+</html>

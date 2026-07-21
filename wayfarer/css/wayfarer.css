@@ -1,0 +1,697 @@
+.wayfarer-theme {
+  --ink: #243038; --muted: #5f737c; --bg: #f6efe4; --panel: #fffdf8; --line: #e0d2c0;
+  --ocean: var(--accent); --coral: var(--accent-dim); --font: "Nunito", "Caveat", sans-serif;
+  margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+  font-family: "Nunito", system-ui, sans-serif; color-scheme: light;
+}
+.wayfarer-theme .script { font-family: "Caveat", cursive; }
+/* minmax(0, 1fr) so the content column can shrink; plain 1fr is minmax(auto, 1fr)
+   and postcard auto-fit grids inflate the page past the viewport. */
+.wayfarer-theme .journal {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 0;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 880px) { .wayfarer-theme .journal { grid-template-columns: minmax(0, 1fr); } }
+.wayfarer-theme .itinerary { position: sticky; top: 0; align-self: start; padding: 1.5rem 1rem; background: #efe4d4;
+  border-right: 1px dashed var(--line); min-height: 100vh; min-width: 0; }
+@media (max-width: 880px) { .wayfarer-theme .itinerary { position: static; min-height: 0; border-right: 0; border-bottom: 1px dashed var(--line); } }
+.wayfarer-theme .itinerary a { display: block; padding: 0.4rem 0; color: var(--ocean); text-decoration: none; font-weight: 700; }
+.wayfarer-theme .itinerary a[aria-current="page"] { color: var(--coral); }
+.wayfarer-theme .brand { font-family: "Caveat", cursive; font-size: 2rem; color: var(--ocean); text-decoration: none; display: block; margin-bottom: 1rem; }
+.wayfarer-theme .content {
+  min-width: 0;
+  max-width: 100%;
+  padding: 1.5rem 1.25rem 3rem;
+  box-sizing: border-box;
+}
+.wayfarer-theme .photo-stack {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0 auto 1.35rem;
+  max-width: 34rem;
+}
+.wayfarer-theme .photo-stack img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px 4px 18px 4px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 24px rgba(36, 48, 56, 0.12);
+}
+/* Portrait courtyard stays a postcard; do not flatten into a wide strip. */
+.wayfarer-theme .photo-stack__portrait {
+  aspect-ratio: 3 / 4;
+  object-position: center 45%;
+  transform: rotate(-0.5deg);
+  max-width: 22rem;
+  margin-inline: auto;
+}
+/* Plane + sunset live high in frame; bias the crop upward. */
+.wayfarer-theme .photo-stack__wide {
+  aspect-ratio: 16 / 10;
+  object-position: center 18%;
+  transform: rotate(0.8deg);
+}
+@media (min-width: 881px) {
+  .wayfarer-theme .photo-stack {
+    grid-template-columns: minmax(11.5rem, 15.5rem) minmax(16rem, 1fr);
+    align-items: end;
+    gap: 1rem 1.15rem;
+    max-width: 38rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .wayfarer-theme .photo-stack__portrait {
+    max-width: none;
+    margin: 0;
+    aspect-ratio: 3 / 4;
+  }
+  .wayfarer-theme .photo-stack__wide {
+    aspect-ratio: 4 / 3;
+    object-position: center 16%;
+    align-self: center;
+  }
+}
+.wayfarer-theme .title { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0; color: var(--ocean); }
+.wayfarer-theme .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; margin: 1.25rem 0; }
+.wayfarer-theme .credits-list { list-style: none; padding: 0; }
+.wayfarer-theme .credits-list li { margin: 0.75rem 0; }
+
+.wayfarer-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 8px;
+  overflow-x: clip;
+}
+.wayfarer-theme *,
+.wayfarer-theme *::before,
+.wayfarer-theme *::after { box-sizing: border-box; }
+.wayfarer-theme img { max-width: 100%; height: auto; }
+.wayfarer-theme [data-harborfm-block] { display: block; min-width: 0; max-width: 100%; }
+.wayfarer-theme [data-harborfm-block="show_header"] img {
+  width: 8rem !important;
+  height: 8rem !important;
+  max-width: 8rem !important;
+  object-fit: cover !important;
+}
+.wayfarer-theme .theme-figure { width: 100%; max-height: 360px; object-fit: cover; margin: 1rem 0; display: block; }
+@media (max-width: 720px) {
+  .wayfarer-theme .film-nav,
+  .wayfarer-theme .scorebar,
+  .wayfarer-theme .mag-top nav,
+  .wayfarer-theme .util nav,
+  .wayfarer-theme .topnav,
+  .wayfarer-theme .bottom-nav {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .wayfarer-theme .rail nav,
+  .wayfarer-theme .itinerary nav,
+  .wayfarer-theme .masonry { columns: 1 !important; }
+  .wayfarer-theme .panels > * { min-height: 140px; }
+  .wayfarer-theme .hero-bleed { min-height: 56vh; }
+  .wayfarer-theme .main,
+  .wayfarer-theme .page,
+  .wayfarer-theme .content,
+  .wayfarer-theme .console { padding-left: max(0.75rem, env(safe-area-inset-left)); padding-right: max(0.75rem, env(safe-area-inset-right)); }
+}
+
+.wayfarer-theme .eyebrow { font-family: "Caveat", cursive; font-size: 1.3rem; color: var(--coral); }
+.wayfarer-theme .action-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+.wayfarer-theme .btn-ocean,
+.wayfarer-theme .btn-postcard { font-family: "Nunito", sans-serif; font-weight: 700; font-size: 0.85rem; padding: 0.55rem 1.1rem;
+  border-radius: 999px; cursor: pointer; text-decoration: none; display: inline-block; }
+.wayfarer-theme .btn-ocean { background: var(--ocean); color: var(--accent-fg, #f5fbfa); border: 1px solid var(--ocean); }
+.wayfarer-theme .btn-ocean:hover { background: color-mix(in srgb, var(--ocean) 82%, black); }
+.wayfarer-theme .btn-postcard { background: #fff; color: var(--ocean); border: 1px dashed var(--line); }
+.wayfarer-theme .btn-postcard:hover { border-color: var(--ocean); }
+.wayfarer-theme .dispatch-link { color: var(--coral); font-weight: 700; text-decoration: none; }
+.wayfarer-theme .stamp-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.wayfarer-theme .stamp { border: 2px dotted var(--line); border-radius: 999px; color: var(--ocean); padding: 0.4rem 0.85rem; font-size: 0.8rem; text-decoration: none; }
+.wayfarer-theme .stamp.stamp-fund { border-color: var(--coral); color: var(--coral); }
+.wayfarer-theme .podroll-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+.wayfarer-theme .podroll-card { display: block; text-decoration: none; color: var(--ink); text-align: center; font-size: 0.8rem; }
+.wayfarer-theme .podroll-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(36,48,56,0.12); margin-bottom: 0.35rem; }
+.wayfarer-theme .companion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.85rem; margin-top: 0.75rem; }
+.wayfarer-theme .companion-card { background: #fffaf2; border: 1px solid var(--line); border-radius: 14px; padding: 0.85rem; }
+.wayfarer-theme .companion-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; margin-bottom: 0.5rem; }
+.wayfarer-theme .companion-name { color: var(--ocean); font-weight: 700; margin: 0; }
+.wayfarer-theme .companion-role { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; margin: 0.1rem 0; }
+.wayfarer-theme .companion-desc { font-size: 0.85rem; margin: 0.35rem 0 0; }
+.wayfarer-theme .portrait-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.6rem; margin-top: 1rem; }
+.wayfarer-theme .portrait-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+
+@keyframes wf-bob { 0%, 100% { transform: rotate(-0.5deg) translateY(0); } 50% { transform: rotate(-0.5deg) translateY(-5px); } }
+@keyframes wf-bob-2 { 0%, 100% { transform: rotate(0.8deg) translateY(0); } 50% { transform: rotate(0.8deg) translateY(-4px); } }
+@keyframes wf-flutter { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+.wayfarer-theme .photo-stack__portrait { animation: wf-bob 6s ease-in-out infinite; }
+.wayfarer-theme .photo-stack__wide { animation: wf-bob-2 7s ease-in-out infinite; }
+.wayfarer-theme .script { animation: wf-flutter 4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wayfarer-theme .photo-stack__portrait,
+  .wayfarer-theme .photo-stack__wide,
+  .wayfarer-theme .script {
+    animation: none;
+  }
+}
+
+.wayfarer-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.wayfarer-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* harborfm-themed-dialogs */
+.wayfarer-theme [data-harborfm-dialog="feedback"],
+.wayfarer-theme [data-harborfm-dialog="alerts"],
+.wayfarer-theme [data-harborfm-dialog="share"],
+.wayfarer-theme [data-harborfm-dialog="subscription"],
+.wayfarer-theme [data-harborfm-dialog="review"] {
+  --bg: #f7efe6;
+  --bg-elevated: #fff8f2;
+  --bg-muted: color-mix(in srgb, #f7efe6 85%, #2a2118 15%);
+  --text: #2a2118;
+  --text-muted: #7a6554;
+  --border: #e2d0bf;
+  --radius: 20px;
+  font-family: "Nunito", system-ui, sans-serif !important;
+  background: #fff8f2 !important;
+  border: 1px solid #e2d0bf !important;
+  border-radius: 20px !important;
+  box-shadow: 0 22px 48px rgba(42,33,24,0.14) !important;
+  color: #2a2118 !important;
+}
+.wayfarer-theme [data-harborfm-dialog-overlay="feedback"],
+.wayfarer-theme [data-harborfm-dialog-overlay="alerts"],
+.wayfarer-theme [data-harborfm-dialog-overlay="share"],
+.wayfarer-theme [data-harborfm-dialog-overlay="subscription"],
+.wayfarer-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(42, 33, 24, 0.4) !important;
+}
+.wayfarer-theme [data-harborfm-dialog] h2,
+.wayfarer-theme [data-harborfm-dialog] h3,
+.wayfarer-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: "Caveat", cursive !important;
+  color: #2a2118 !important;
+}
+.wayfarer-theme [data-harborfm-dialog] input,
+.wayfarer-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #fff8f2 70%, #f7efe6) !important;
+  border: 1px solid #e2d0bf !important;
+  border-radius: 20px !important;
+  color: #2a2118 !important;
+  font-family: inherit !important;
+}
+.wayfarer-theme [data-harborfm-dialog] input:focus,
+.wayfarer-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--ocean, #1f6f7a) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ocean, #1f6f7a) 25%, transparent) !important;
+  outline: none !important;
+}
+.wayfarer-theme [data-harborfm-dialog] button {
+  border-radius: 999px !important;
+  font-family: inherit !important;
+}
+.wayfarer-theme [data-harborfm-dialog] button[type="submit"],
+.wayfarer-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.wayfarer-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--ocean, #1f6f7a) !important;
+  color: var(--accent-fg, #f5fbfa) !important;
+  border: 1px solid var(--ocean, #1f6f7a) !important;
+  font-weight: 650 !important;
+}
+.wayfarer-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid #e2d0bf !important;
+  color: #7a6554 !important;
+}
+.wayfarer-theme [data-harborfm-dialog] button[aria-label="Close"]:hover {
+  border-color: var(--ocean, #1f6f7a) !important;
+  color: #2a2118 !important;
+}
+
+
+
+/* reviews: postcard deck */
+.wayfarer-theme .reviews-block {
+  margin: 1.5rem 0;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+.wayfarer-theme .reviews-block__head h2 {
+  font-family: "Caveat", "Nunito", cursive; font-size: 2rem; margin: 0 0 0.85rem; color: var(--coral);
+}
+.wayfarer-theme .pc-deck {
+  display: grid;
+  /* min() keeps tracks from forcing page wider than the panel when a long review sits clamped. */
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 1.1rem; margin-bottom: 1.1rem;
+  min-width: 0; max-width: 100%;
+}
+.wayfarer-theme .pc-card {
+  position: relative; min-width: 0; max-width: 100%;
+  background: #fffdf8; border: 1px solid var(--line);
+  border-radius: 4px 18px 4px 18px; padding: 1.1rem 1rem 0.9rem;
+  box-shadow: 4px 6px 0 rgba(36,48,56,0.06);
+  transform: rotate(-1.2deg);
+}
+.wayfarer-theme .pc-card:nth-child(even) { transform: rotate(1.4deg); border-radius: 18px 4px 18px 4px; }
+.wayfarer-theme .pc-card:nth-child(3n) { transform: rotate(-0.4deg); }
+.wayfarer-theme .pc-stamp {
+  position: absolute; top: 0.65rem; right: 0.65rem;
+  border: 2px dashed var(--coral); color: var(--coral);
+  font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.4rem;
+  transform: rotate(8deg); letter-spacing: 0.04em;
+}
+.wayfarer-theme .pc-body {
+  margin: 0 2.5rem 0.55rem 0; font-family: "Caveat", "Nunito", cursive;
+  font-size: 1.45rem; line-height: 1.3; color: var(--ink);
+  min-width: 0; max-width: 100%;
+  overflow-wrap: anywhere; word-break: break-word;
+}
+.wayfarer-theme .pc-more {
+  display: inline-flex; align-items: center; margin: 0 0 0.55rem;
+  padding: 0.2rem 0; border: 0; background: transparent; cursor: pointer;
+  font-family: "Nunito", system-ui, sans-serif; font-size: 0.82rem; font-weight: 700;
+  color: var(--ocean); text-decoration: underline; text-underline-offset: 0.15em;
+}
+.wayfarer-theme .pc-more:hover { color: var(--coral); }
+.wayfarer-theme .pc-address {
+  margin: 0; padding-top: 0.45rem; border-top: 1px solid var(--line);
+  font-size: 0.8rem; color: var(--muted); letter-spacing: 0.02em;
+}
+.wayfarer-theme .pc-popover {
+  margin: auto; border: 0; padding: 0; background: transparent;
+  max-width: min(34rem, calc(100vw - 2rem));
+  max-height: min(36rem, calc(100dvh - 2.5rem));
+}
+/* Keep closed popovers out of any intrinsic size / scroll calculations. */
+.wayfarer-theme .pc-popover:not(:popover-open) {
+  display: none !important;
+  position: fixed !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  contain: size layout style !important;
+}
+.wayfarer-theme .pc-popover::backdrop {
+  background: rgba(36, 48, 56, 0.45); backdrop-filter: blur(2px);
+}
+.wayfarer-theme .pc-popover:popover-open {
+  display: flex; flex-direction: column;
+}
+.wayfarer-theme .pc-popover__inner {
+  position: relative;
+  display: flex; flex-direction: column; min-height: 0;
+  max-height: min(36rem, calc(100dvh - 2.5rem));
+  background: #fffdf8; border: 2px dashed var(--coral);
+  border-radius: 8px; padding: 1.35rem 1.25rem 1.15rem;
+  box-shadow: 0 18px 40px rgba(36, 48, 56, 0.22);
+  overflow: hidden;
+}
+.wayfarer-theme .pc-popover__stamp {
+  position: absolute; top: 0.85rem; right: 0.85rem; z-index: 1;
+  border: 2px dashed var(--coral); color: var(--coral);
+  font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.4rem;
+  transform: rotate(6deg); letter-spacing: 0.04em; margin: 0;
+  background: #fffdf8;
+}
+.wayfarer-theme .pc-popover__body {
+  flex: 1 1 auto; min-height: 0; min-width: 0; overflow-y: auto; overscroll-behavior: contain;
+  margin: 0 2.75rem 0.9rem 0; padding-right: 0.25rem;
+  font-family: "Caveat", "Nunito", cursive;
+  font-size: 1.55rem; line-height: 1.35; color: var(--ink); white-space: pre-wrap;
+  overflow-wrap: anywhere; word-break: break-word;
+  scrollbar-gutter: stable;
+}
+.wayfarer-theme .pc-popover__address {
+  flex: 0 0 auto;
+  margin: 0 0 0.85rem; padding-top: 0.55rem; border-top: 1px solid var(--line);
+  font-size: 0.85rem; color: var(--muted);
+}
+.wayfarer-theme .pc-popover__close {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  font-family: "Nunito", system-ui, sans-serif; font-weight: 700; font-size: 0.85rem;
+  padding: 0.5rem 1.05rem; border-radius: 999px; cursor: pointer;
+  background: var(--ocean); color: #fff; border: 1px solid var(--ocean);
+}
+.wayfarer-theme .pc-popover__close:hover {
+  background: color-mix(in srgb, var(--ocean) 85%, black);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wayfarer-theme .pc-card,
+  .wayfarer-theme .pc-card:nth-child(even),
+  .wayfarer-theme .pc-card:nth-child(3n) { transform: none; }
+}
+
+/* Stripe plan cards stay rectangular; do not inherit pill CTAs */
+.wayfarer-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 10px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* unique-site-footer */
+.wayfarer-theme .site-foot.wf-postcard {
+  margin: 2.5rem 1rem 2rem; display: flex; justify-content: center;
+}
+.wayfarer-theme .wf-card {
+  position: relative; width: min(100%, 34rem); background: #fffdf8;
+  border: 2px dashed var(--coral, #e07a5f); border-radius: 4px; padding: 1.5rem 1.5rem 1.25rem;
+  box-shadow: 0 12px 28px rgba(42,33,24,0.08); transform: rotate(0.4deg);
+}
+.wayfarer-theme .wf-card-stamp {
+  position: absolute; top: 0.85rem; right: 1rem; width: 3.25rem; height: 3.25rem;
+  border: 2px solid var(--ocean); border-radius: 6px; display: grid; place-items: center;
+  background: #f3faf9; transform: rotate(8deg);
+}
+.wayfarer-theme .wf-card-stamp span {
+  width: 1.1rem; height: 1.1rem; border-radius: 50%;
+  border: 2px solid var(--ocean);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ocean) 18%, transparent);
+}
+.wayfarer-theme .wf-card-from {
+  margin: 0; font-family: "Caveat", cursive; font-size: 1.55rem; color: var(--coral, #e07a5f);
+}
+.wayfarer-theme .wf-card-title {
+  margin: 0.25rem 0 1rem; font-weight: 800; font-size: 1.15rem; color: var(--ocean);
+  padding-right: 3.5rem;
+}
+.wayfarer-theme .wf-card-itinerary {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 0.85rem; margin-bottom: 0.85rem;
+}
+.wayfarer-theme .wf-card-itinerary a {
+  text-decoration: none; color: var(--ocean); font-weight: 700; font-size: 0.85rem;
+  background: #eef7f6; padding: 0.3rem 0.7rem; border-radius: 999px;
+}
+.wayfarer-theme .wf-card-itinerary a:hover { background: color-mix(in srgb, var(--ocean) 18%, white); }
+.wayfarer-theme .wf-card-postmark { margin: 0; font-size: 0.8rem; color: var(--muted); }
+.wayfarer-theme .wf-card-postmark a { color: var(--coral, #e07a5f); }
+
+.wayfarer-theme .itinerary .brand { margin-bottom: 0; }
+@media (min-width: 881px) {
+  .wayfarer-theme .itinerary .brand { margin-bottom: 1rem; }
+}
+
+.wayfarer-theme .brand { margin-bottom: 0; }
+@media (min-width: 881px) {
+  .wayfarer-theme .brand { margin-bottom: 1rem; }
+}
+/* mobile hamburger nav */
+.wayfarer-theme .itinerary { position: relative; z-index: 20; }
+.wayfarer-theme .terminal-bar,
+.wayfarer-theme .rail-bar,
+.wayfarer-theme .itinerary-bar {
+  display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 0.65rem 1rem;
+}
+.wayfarer-theme .nav-menu { margin: 0; position: static; flex: 0 0 auto; }
+.wayfarer-theme .nav-menu__toggle {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--line);
+  background: #efe4d4; color: var(--ocean);
+}
+.wayfarer-theme .nav-menu__toggle::-webkit-details-marker { display: none; }
+.wayfarer-theme .nav-menu__icon,
+.wayfarer-theme .nav-menu__icon::before,
+.wayfarer-theme .nav-menu__icon::after {
+  display: block; width: 1.1rem; height: 2px; border-radius: 1px; background: currentColor; position: relative;
+}
+.wayfarer-theme .nav-menu__icon::before,
+.wayfarer-theme .nav-menu__icon::after { content: ""; position: absolute; left: 0; }
+.wayfarer-theme .nav-menu__icon::before { top: -6px; }
+.wayfarer-theme .nav-menu__icon::after { top: 6px; }
+@media (max-width: 880px) {
+  .wayfarer-theme .brand { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wayfarer-theme .nav-menu nav {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 30;
+    display: flex; flex-direction: column; gap: 0.1rem;
+    padding: 0.75rem 1rem 1rem; background: #efe4d4; border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  }
+  .wayfarer-theme .nav-menu nav a { display: block; padding: 0.55rem 0.35rem; }
+}
+@media (min-width: 881px) {
+  /* Closed <details> stays hidden via ::details-content in Chromium; force open on desktop. */
+  .wayfarer-theme .nav-menu::details-content {
+    display: contents;
+    content-visibility: visible;
+    height: auto;
+    overflow: visible;
+  }
+
+  .wayfarer-theme .terminal-bar,
+  .wayfarer-theme .rail-bar,
+  .wayfarer-theme .itinerary-bar { display: block; }
+  .wayfarer-theme .nav-menu__toggle { display: none; }
+  .wayfarer-theme .nav-menu nav {
+    position: static !important; display: block !important; min-width: 0; padding: 0;
+    background: transparent; border: 0; box-shadow: none;
+  }
+  .wayfarer-theme .nav-menu nav a { display: block; padding: 0.35rem 0; }
+}
+
+/* episode card skin */
+.wayfarer-theme .ep-crumbs--way {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 0.55rem; align-items: center;
+  margin: 0 0 0.85rem; font-weight: 700; font-size: 0.9rem;
+}
+.wayfarer-theme .ep-crumbs--way a { color: var(--coral); text-decoration: none; }
+.wayfarer-theme .ep-crumbs--way span { color: var(--muted); }
+.wayfarer-theme .ep-mast--way {
+  position: relative; margin: 0 0 0.85rem; padding: 0.9rem 1.1rem;
+  background: #fffdf8; border: 1px dashed var(--line); border-radius: 4px 18px 4px 18px;
+}
+.wayfarer-theme .ep-mast__stamp {
+  position: absolute; top: 0.55rem; right: 0.7rem; width: 2.2rem; height: 2.2rem;
+  border: 2px dotted var(--coral); border-radius: 4px; transform: rotate(8deg);
+  background: color-mix(in srgb, var(--coral) 12%, #fff);
+}
+.wayfarer-theme .ep-mast__dek { margin: 0.3rem 0 0; color: var(--muted); }
+.wayfarer-theme .ep-player--way { margin: 0.75rem 0 1.5rem; }
+.wayfarer-theme .ep-player--way [data-harborfm-episode-card] {
+  background: #fffdf8 !important; border: 2px dashed var(--line) !important;
+  border-radius: 18px 4px 18px 4px !important; padding: 1.15rem !important;
+  box-shadow: 0 8px 24px rgba(36,48,56,0.1); transform: rotate(-0.3deg);
+}
+.wayfarer-theme .ep-player--way [data-harborfm-episode-header] {
+  margin: 0 !important; padding: 0 !important; border: 0 !important; gap: 0.85rem !important;
+}
+.wayfarer-theme .ep-player--way [data-harborfm-episode-row] {
+  display: flex !important; flex-direction: row-reverse !important; gap: 1rem !important; align-items: flex-start !important;
+}
+.wayfarer-theme .ep-player--way [data-harborfm-episode-artwork] {
+  width: 6.5rem !important; height: 6.5rem !important; border-radius: 8px !important;
+  border: 3px solid #fff !important; box-shadow: 0 4px 12px rgba(36,48,56,0.14);
+  transform: rotate(3deg); object-fit: cover !important; flex: 0 0 auto;
+}
+.wayfarer-theme .ep-player--way [data-harborfm-episode-title] {
+  color: var(--ocean) !important; font-size: clamp(1.55rem, 4vw, 2.3rem) !important;
+  font-weight: 800 !important; margin: 0 !important;
+}
+.wayfarer-theme .ep-player--way [data-harborfm-episode-meta] { color: var(--coral) !important; font-weight: 700; }
+.wayfarer-theme .ep-player--way [data-harborfm-episode-actions] button {
+  border-radius: 999px !important; border: 1px dashed var(--line) !important;
+  background: #fff !important; color: var(--ocean) !important; font-weight: 700;
+}
+@media (max-width: 560px) {
+  .wayfarer-theme .ep-player--way [data-harborfm-episode-row] { flex-direction: column !important; }
+}
+
+/* credit plate wall */
+.wayfarer-theme .plates { margin-top: 0.25rem; }
+.wayfarer-theme .plates__head { margin: 0 0 1.35rem; }
+.wayfarer-theme .plates__lede {
+  margin: 0.5rem 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55;
+}
+.wayfarer-theme .plate-wall {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.85rem;
+}
+.wayfarer-theme .plate {
+  grid-column: span 2; min-width: 0;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.wayfarer-theme .plate:nth-child(1),
+.wayfarer-theme .plate:nth-child(2) { grid-column: span 3; }
+.wayfarer-theme .plate__frame {
+  display: block; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 80%, transparent);
+  overflow: clip; line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.wayfarer-theme .plate__frame:hover {
+  border-color: var(--ocean);
+  transform: translateY(-2px);
+}
+.wayfarer-theme .plate__frame img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+}
+.wayfarer-theme .plate:nth-child(1) .plate__frame img,
+.wayfarer-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 16 / 10; }
+.wayfarer-theme .plate__meta { min-width: 0; }
+.wayfarer-theme .plate__name {
+  margin: 0; font-weight: 700; letter-spacing: -0.02em; font-size: 1.15rem; color: var(--ink);
+}
+.wayfarer-theme .plate__file {
+  margin: 0.15rem 0 0; font-size: 0.75rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--muted); font-weight: 650;
+}
+.wayfarer-theme .plate__by {
+  margin: 0.35rem 0 0; font-size: 0.95rem; line-height: 1.45; color: var(--ink);
+}
+.wayfarer-theme .plate__by a { color: var(--ocean); font-weight: 650; text-decoration: none; }
+.wayfarer-theme .plate__by a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .wayfarer-theme .plate-wall { grid-template-columns: 1fr 1fr; }
+  .wayfarer-theme .plate,
+  .wayfarer-theme .plate:nth-child(1),
+  .wayfarer-theme .plate:nth-child(2) { grid-column: span 1; }
+  .wayfarer-theme .plate:nth-child(1) .plate__frame img,
+  .wayfarer-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) {
+  .wayfarer-theme .plate-wall { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wayfarer-theme .plate__frame:hover { transform: none; }
+}
+/* episodes list skin */
+.wayfarer-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.9rem !important;
+  border: none !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.wayfarer-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  background: var(--panel) !important;
+  border: 2px dashed color-mix(in srgb, var(--coral) 55%, var(--line)) !important;
+  border-radius: 18px 6px 18px 6px !important;
+  padding: 1.05rem 1.15rem !important;
+  box-shadow: 4px 4px 0 color-mix(in srgb, var(--ocean) 22%, transparent) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+.wayfarer-theme [data-harborfm-episode-item]:hover {
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 6px 6px 0 color-mix(in srgb, var(--ocean) 28%, transparent) !important;
+  border-color: color-mix(in srgb, var(--ocean) 55%, var(--line)) !important;
+  background: #fffdf8 !important;
+}
+.wayfarer-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.75rem !important;
+  min-width: 0 !important;
+}
+.wayfarer-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: "Caveat", cursive !important;
+  font-size: 1.55rem !important;
+  font-weight: 600 !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+  line-height: 1.15 !important;
+  overflow-wrap: anywhere !important;
+}
+.wayfarer-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted) !important;
+  font-size: 0.8rem !important;
+}
+.wayfarer-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  color: var(--ocean) !important;
+  border: 2px solid var(--ocean) !important;
+  padding: 0.35rem 0.8rem !important;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+.wayfarer-theme [data-harborfm-episode-item-link]:hover {
+  background: var(--ocean) !important;
+  color: var(--accent-fg, #fff) !important;
+}
+.wayfarer-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  color: var(--muted) !important;
+  margin: 0.55rem 0 0 !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+.wayfarer-theme [data-harborfm-episode-item-type] {
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--coral) 18%, #fff) !important;
+  color: color-mix(in srgb, var(--coral) 80%, #243038) !important;
+  border: 1px dashed var(--coral) !important;
+}
+.wayfarer-theme [data-harborfm-episodes-load-more] {
+  border-radius: 999px !important;
+  border: 2px dashed var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+}
+/* reviews mount (paged ReviewsCard) */
+.wayfarer-theme .reviews-block [data-harborfm-reviews-title] { display: none !important; }
+.wayfarer-theme .reviews-block [data-harborfm-reviews] {
+  margin: 0 !important; padding: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important;
+}
+.wayfarer-theme .reviews-block [data-harborfm-reviews-list] {
+  list-style: none !important; margin: 0 0 1rem !important; padding: 0 !important;
+  display: flex !important; flex-direction: column !important; gap: 0.85rem !important;
+  min-width: 0 !important; max-width: 100% !important;
+}
+.wayfarer-theme .reviews-block [data-harborfm-review] {
+  min-width: 0 !important; max-width: 100% !important; box-sizing: border-box !important;
+  background: var(--panel) !important; border: 2px dashed color-mix(in srgb, var(--coral) 55%, var(--line)) !important;
+  border-radius: 18px 6px 18px 6px !important; box-shadow: 4px 4px 0 color-mix(in srgb, var(--ocean) 22%, transparent) !important;
+  padding: 1rem 1.1rem !important;
+}
+.wayfarer-theme .reviews-block [data-harborfm-review-name] {
+  font-family: "Caveat", cursive !important; font-size: 1.35rem !important;
+}
+.wayfarer-theme .reviews-block [data-harborfm-review-body] {
+  min-width: 0 !important; overflow-wrap: anywhere !important; word-break: break-word !important;
+}
+.wayfarer-theme .reviews-block [data-harborfm-reviews-write],
+.wayfarer-theme .reviews-block [data-harborfm-reviews-load-more] {
+  border-radius: 999px !important; border: 2px dashed var(--line) !important; background: var(--panel) !important;
+  color: var(--ink) !important; font-weight: 700 !important;
+}
+.wayfarer-theme .reviews-block [data-harborfm-reviews-write] {
+  border: 2px solid var(--ocean) !important; color: var(--ocean) !important;
+}

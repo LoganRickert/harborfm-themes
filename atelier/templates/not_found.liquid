@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="atelier-theme atelier-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Off the masthead</p>
+        <h1 class="title display">This plate was never printed</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">That page is not in this issue. Return to the sitting room, or open the archive.</p>
+        <div class="action-row">
+          <a class="btn-ink" href="{{ urls.home }}">Back to the issue</a>
+        </div>
+      </section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

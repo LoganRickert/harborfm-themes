@@ -1,0 +1,22 @@
+<footer class="site-foot nw-log" aria-label="Signal log">
+  <pre class="nw-log-pre" aria-hidden="true">// channel close</pre>
+  <div class="nw-log-rows">
+    <span class="nw-log-ok">OK</span>
+    <span>{{ podcast.title | escape }}</span>
+    <span class="nw-log-muted">uplink idle</span>
+  </div>
+  <div class="nw-log-rows">
+    <a href="{{ urls.pages.capture }}">capture/</a>
+    <a href="{{ urls.pages.podcast }}">cleartext/</a>
+    <a href="{{ urls.pages.capture }}">capture://credits</a>
+  </div>
+  <div class="nw-log-rows">
+    <span class="nw-log-muted">skin=</span>
+    {% if theme.homepage != "" %}
+    <a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.id | escape }}@{{ theme.version | escape }}</a>
+    {% else %}
+    <span>{{ theme.id | escape }}@{{ theme.version | escape }}</span>
+    {% endif %}
+  </div>
+  <p class="nw-log-cursor">{% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | downcase | escape }}_</a>{% else %}{{ theme.name | downcase | escape }}_{% endif %}<span class="nw-blink">█</span></p>
+</footer>

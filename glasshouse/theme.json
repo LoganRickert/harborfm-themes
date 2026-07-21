@@ -1,0 +1,18 @@
+{
+  "id": "glasshouse",
+  "name": "Glasshouse",
+  "version": "1.0.0",
+  "description": "Business and leadership polish with glass-and-steel restraint.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-glasshouse",
+  "pages": {
+    "podcast": "minutes.html",
+    "charter": "charter.html",
+    "partners": "partners.html",
+    "brief": "brief.html",
+    "underwrite": "underwrite.html",
+    "attribution": "attribution.html"
+  },
+  "not_found": "not_found"
+}

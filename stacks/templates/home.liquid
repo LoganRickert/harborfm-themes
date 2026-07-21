@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="stacks-theme stacks-page-{{ page }}">
+  <div class="layout">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div>
+      <main class="page">
+        <div class="hero-lib">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+          <div>
+            <p class="eyebrow">Ideas between the shelves</p>
+            <h1 class="title display">{{ podcast.title | escape }}</h1>
+            {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+            <div class="action-row">
+              <button type="button" class="btn-stamp" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+              <a class="btn-line" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+              <button type="button" class="btn-line" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+            </div>
+            <p class="lede"><a class="catalogue-link" href="{{ urls.pages.podcast }}">Open Catalogue &rarr;</a></p>
+          </div>
+        </div>
+        <div class="shelf-row">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+        </div>
+      </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

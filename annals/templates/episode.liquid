@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="annals-theme annals-page-{{ page }}">
+  <div class="ann-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="ann-page">
+      <header class="ann-ep-mast">
+        <p class="ann-ep-mast__folio"><span class="ann-folio">Folio</span> · volume</p>
+        <p class="ann-eyebrow">Scholarly archive, open stacks</p>
+      </header>
+      <nav class="ann-ep-crumbs" aria-label="Breadcrumb">
+        <a href="{{ urls.home }}">Reading room</a><span aria-hidden="true">/</span>
+        <a href="{{ urls.pages.podcast }}">Catalogue</a><span aria-hidden="true">/</span>
+        <span>Volume</span>
+      </nav>
+      <section class="ann-ep-player">{% render 'harborfm/player' %}</section>
+      {% if show.episode_description %}{% if episode.description != "" %}
+      <section class="ann-panel">
+        <h2><span class="ann-folio">Note</span> Marginalia</h2>
+        <p class="ann-lede">{{ episode.description | escape }}</p>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.funding %}{% if funding_links.size > 0 %}
+      <section class="ann-panel">
+        <h2><span class="ann-folio">Patron</span> Endowments</h2>
+        <div class="ann-fund-row">
+          {% for f in funding_links %}<a class="ann-fund-chip" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_episode %}
+      <section class="ann-panel ann-reviews-block" aria-label="Marginalia">
+        <header class="ann-reviews-block__head">
+          <h2><span class="ann-folio">Reader</span> Marginalia</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

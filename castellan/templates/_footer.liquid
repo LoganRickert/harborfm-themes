@@ -1,0 +1,17 @@
+<footer class="site-foot cs-warden" aria-label="Keep warden">
+  <div class="cs-warden__crest" aria-hidden="true"></div>
+  <p class="cs-warden__name">{{ podcast.title | escape }}</p>
+  <p class="cs-warden__sub">
+    The keep stands · mapped in
+    {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+  </p>
+  <div class="cs-warden__posts">
+    <a href="{{ urls.home }}"><span>1</span> Ramparts</a>
+    <a href="{{ urls.pages.podcast }}"><span>2</span> Chronicle</a>
+    <a href="{{ urls.pages.court }}"><span>3</span> Court</a>
+    <a href="{{ urls.pages.tithes }}"><span>4</span> Tithes</a>
+    <a href="{{ urls.pages.reliquary }}"><span>5</span> Reliquary</a>
+    <a href="{{ urls.pages.illuminations }}"><span>6</span> Illuminations</a>
+  </div>
+  <p class="cs-warden__credit"><a href="{{ urls.pages.illuminations }}">Illumination credits</a></p>
+</footer>

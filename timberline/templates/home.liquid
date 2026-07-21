@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="timberline-theme timberline-page-{{ page }}">
+  <div class="shell">
+    <header class="trailhead">
+      <div class="trailhead__sky" style="background-image: url('{{ urls.theme_asset_base }}/images/a.jpg');" role="img" aria-label=""></div>
+      <div class="trailhead__shade" aria-hidden="true"></div>
+      <div class="trailhead__copy">
+        <p class="eyebrow">Outdoors, unhurried</p>
+        <h1 class="title display">{{ podcast.title | escape }}</h1>
+        {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+        <div class="action-row">
+          <button type="button" class="btn-forest" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+          <a class="btn-bark" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+          <button type="button" class="btn-bark" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="waypoint-strip trailhead-strip" aria-hidden="true">
+        <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+      <section class="panel"><h2>Trail log</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+<nav class="bottom-nav" aria-label="Show pages">
+    <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Basecamp</a>
+    <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Trail</a>
+    <a href="{{ urls.pages.guides }}"{% if page == "guides" %} aria-current="page"{% endif %}>Guides</a>
+    <a href="{{ urls.pages.campfund }}"{% if page == "campfund" %} aria-current="page"{% endif %}>Camp Fund</a>
+    <a href="{{ urls.pages.fieldnotes }}"{% if page == "fieldnotes" %} aria-current="page"{% endif %}>Field Notes</a>
+  </nav>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<header class="film-nav">
+  <a class="brand" href="{{ urls.home }}">{{ podcast.title | escape }}</a>
+  <details class="nav-menu">
+    <summary class="nav-menu__toggle" aria-label="Menu"><span class="nav-menu__icon" aria-hidden="true"></span></summary>
+    <nav aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Lobby</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Reel</a>
+      <a href="{{ urls.pages.synopsis }}"{% if page == "synopsis" %} aria-current="page"{% endif %}>Synopsis</a>
+      <a href="{{ urls.pages.talent }}"{% if page == "talent" %} aria-current="page"{% endif %}>Talent</a>
+      <a href="{{ urls.pages.backstage }}"{% if page == "backstage" %} aria-current="page"{% endif %}>Backstage</a>
+      <a href="{{ urls.pages.boxoffice }}"{% if page == "boxoffice" %} aria-current="page"{% endif %}>Box Office</a>
+      <a href="{{ urls.pages.premiere }}"{% if page == "premiere" %} aria-current="page"{% endif %}>Premiere</a>
+      <a href="{{ urls.pages.marquee }}"{% if page == "marquee" %} aria-current="page"{% endif %}>Marquee</a>
+    </nav>
+  </details>
+</header>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Channels | {{ podcast.title | escape }}</title>
+</head>
+<body class="casefile-theme casefile-page-{{ page }}">
+  <div class="dossier">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <div class="dossier-main">
+      <header class="page-head">
+        <p class="eyebrow">Noir dossier, open file</p>
+        <h1 class="title display">Channels</h1>
+        <p class="lede">External relays where this signal also lands.</p>
+      </header>
+
+      <section class="panel dossier-panel">
+        {% if show.links %}{% if links.size > 0 %}
+        <h2><span class="evidence-label">Wire</span> Open channels</h2>
+        <div class="channel-row">
+          {% for link in links %}
+          <a class="channel-tag channel-{{ link.group }}" href="{{ link.url | escape }}">{{ link.label | escape }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}{% else %}
+        <p class="lede">Add listen-on and social links in HarborFM to fill this page.</p>
+        {% endif %}
+      </section>
+
+      {% if show.podroll %}{% if podroll.size > 0 %}
+      <section class="panel dossier-panel">
+        <h2><span class="evidence-label">Podroll</span> Also in rotation</h2>
+        <div class="podroll-grid">
+          {% for p in podroll %}
+          <a class="podroll-card" href="{{ p.home_url | escape }}">
+            {% if p.cover_art_url != "" %}<img src="{{ p.cover_art_url | escape }}" alt="" />{% endif %}
+            <span>{{ p.title | escape }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+
+      {% if show.reviews_podcast %}
+      <section class="panel dossier-panel reviews-block" aria-label="Witness statements">
+        <header class="reviews-block__head">
+          <h2>Witness statements</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+
+      {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    </div>
+  </div>
+</body>
+</html>

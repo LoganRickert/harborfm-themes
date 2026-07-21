@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Dispatches | {{ podcast.title | escape }}</title>
+</head>
+<body class="wayfarer-theme wayfarer-page-{{ page }}">
+  <div class="journal">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="content">
+
+      <header>
+        <p class="eyebrow">Stories from the road</p>
+        <h1 class="title display">Dispatches</h1>
+      </header>
+
+      <section class="panel"><h2>Dispatches</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

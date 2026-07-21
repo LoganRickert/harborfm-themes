@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="orbitlab-theme orbitlab-page-{{ page }}">
+  <div class="orbit-wrap">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="console">
+      <header>
+        <p class="eyebrow">Telemetry gap</p>
+        <h1 class="title display">Orbit not mapped</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">That coordinate is outside the mission plan. Return to the console.</p>
+        <div class="action-row">
+          <a class="btn-orbit" href="{{ urls.home }}">Return to console</a>
+        </div>
+      </section>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

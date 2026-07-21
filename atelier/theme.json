@@ -1,0 +1,19 @@
+{
+  "id": "atelier",
+  "name": "Atelier",
+  "version": "1.0.0",
+  "description": "Interview and fashion studio look for conversation-led shows.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-atelier",
+  "pages": {
+    "podcast": "archive.html",
+    "profile": "profile.html",
+    "muses": "muses.html",
+    "lookbook": "lookbook.html",
+    "patronage": "patronage.html",
+    "salon": "salon.html",
+    "plates": "plates.html"
+  },
+  "not_found": "not_found"
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Exhibits | {{ podcast.title | escape }}</title>
+</head>
+<body class="casefile-theme casefile-page-{{ page }}">
+  <div class="dossier">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <div class="dossier-main plates">
+      <header class="plates__head">
+        <p class="eyebrow">Noir dossier, open file</p>
+        <h1 class="title display">Exhibits</h1>
+        <p class="plates__lede">Still frames in the Casefile package, licensed from Unsplash. Each plate links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/do-not-cross-police-barricade-tape-close-up-photography-jM6Y2nhsAtk" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Do not cross police barricade tape close up" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Police tape</p>
+            <p class="plate__file">hero.jpg · Briefing hero</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@davidvondiemar" rel="noopener noreferrer">David von Diemar</a>
+              on
+              <a href="https://unsplash.com/photos/do-not-cross-police-barricade-tape-close-up-photography-jM6Y2nhsAtk" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/a-skull-sits-on-a-desk-with-papers-and-lamp-MAAEbFrYizw" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="A skull sits on a desk with papers and lamp" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Desk skull</p>
+            <p class="plate__file">a.jpg · Briefing evidence strip</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@anasofia02" rel="noopener noreferrer">Ana Sofia</a>
+              on
+              <a href="https://unsplash.com/photos/a-skull-sits-on-a-desk-with-papers-and-lamp-MAAEbFrYizw" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/silhouette-of-hand-with-red-background-V1y6si3fOho" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Silhouette of hand with red background" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Red hand</p>
+            <p class="plate__file">b.jpg · Briefing evidence strip</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@ari_spada" rel="noopener noreferrer">Ari Spada</a>
+              on
+              <a href="https://unsplash.com/photos/silhouette-of-hand-with-red-background-V1y6si3fOho" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/a-man-wearing-a-black-uniform-nSjiagGwqHg" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="A man wearing a black uniform with badge" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Badge</p>
+            <p class="plate__file">c.jpg · Briefing evidence strip</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@shotbyreupie" rel="noopener noreferrer">Pierre Cazenave-Kaufman</a>
+              on
+              <a href="https://unsplash.com/photos/a-man-wearing-a-black-uniform-nSjiagGwqHg" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="plate">
+          <a class="plate__frame" href="https://unsplash.com/photos/white-and-black-wooden-wall-Kc_kgXZhZkk" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="White and black wooden wall texture" />
+          </a>
+          <div class="plate__meta">
+            <p class="plate__name">Wall</p>
+            <p class="plate__file">d.jpg · Tips page</p>
+            <p class="plate__by">
+              Photo by
+              <a href="https://unsplash.com/@purzlbaum" rel="noopener noreferrer">Claudio Schwarz</a>
+              on
+              <a href="https://unsplash.com/photos/white-and-black-wooden-wall-Kc_kgXZhZkk" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+
+      {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    </div>
+  </div>
+</body>
+</html>

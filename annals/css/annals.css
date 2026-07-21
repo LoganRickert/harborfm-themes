@@ -1,0 +1,931 @@
+.annals-theme {
+  --ink: #1a2332;
+  --muted: #5a6475;
+  --bg: #f4efe6;
+  --panel: #faf6ef;
+  --line: #d4cabb;
+  --navy: #1a2332;
+  --seal: var(--accent);
+  --font-display: "Literata", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  color-scheme: light;
+}
+
+.annals-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 4px;
+  overflow-x: clip;
+}
+
+.annals-theme *,
+.annals-theme *::before,
+.annals-theme *::after { box-sizing: border-box; }
+
+.annals-theme img { max-width: 100%; height: auto; }
+
+.annals-theme [data-harborfm-block] {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.annals-theme h1,
+.annals-theme .ann-display {
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.annals-theme .ann-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.annals-theme .ann-page {
+  flex: 1;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 1.75rem 1.35rem 2.5rem;
+}
+
+.annals-theme .ann-title {
+  font-size: clamp(2rem, 5vw, 2.85rem);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.annals-theme .ann-lede {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0.75rem 0 0;
+}
+
+.annals-theme .ann-eyebrow {
+  color: var(--seal);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+  margin: 0 0 0.5rem;
+}
+
+.annals-theme .ann-folio {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--seal);
+  margin-right: 0.35em;
+}
+
+.annals-theme .ann-page-head {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.annals-theme .ann-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 1.25rem 1.35rem;
+  margin: 1.25rem 0;
+}
+
+.annals-theme .ann-panel h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0 0 1rem;
+  color: var(--navy);
+}
+
+/* top navigation */
+.annals-theme .ann-topnav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 92%, var(--panel));
+  backdrop-filter: blur(8px);
+}
+
+.annals-theme .ann-topnav__bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding: 0.85rem 1.35rem 0.65rem;
+}
+
+.annals-theme .ann-brand {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.annals-theme .ann-topnav__rule {
+  height: 1px;
+  background: var(--line);
+  transform-origin: left center;
+  animation: ann-rule-grow 1.4s ease-out forwards;
+}
+
+.annals-theme .ann-nav-menu {
+  margin: 0;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.annals-theme .ann-nav-menu__toggle {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--navy);
+}
+
+.annals-theme .ann-nav-menu__toggle::-webkit-details-marker { display: none; }
+
+.annals-theme .ann-nav-menu__icon,
+.annals-theme .ann-nav-menu__icon::before,
+.annals-theme .ann-nav-menu__icon::after {
+  display: block;
+  width: 1.1rem;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+}
+
+.annals-theme .ann-nav-menu__icon::before,
+.annals-theme .ann-nav-menu__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.annals-theme .ann-nav-menu__icon::before { top: -5px; }
+.annals-theme .ann-nav-menu__icon::after { top: 5px; }
+
+.annals-theme .ann-nav-menu nav a {
+  display: block;
+  padding: 0.45rem 0;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.annals-theme .ann-nav-menu nav a[aria-current="page"] { color: var(--seal); }
+
+@media (max-width: 760px) {
+  .annals-theme .ann-nav-menu nav {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.35rem);
+    z-index: 40;
+    min-width: 14rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.75rem 1rem 1rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(26, 35, 50, 0.12);
+  }
+}
+
+@media (min-width: 761px) {
+  .annals-theme .ann-nav-menu::details-content {
+    display: contents;
+    content-visibility: visible;
+    height: auto;
+    overflow: visible;
+  }
+
+  .annals-theme .ann-nav-menu__toggle { display: none; }
+
+  .annals-theme .ann-nav-menu nav {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.15rem 1.1rem;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .annals-theme .ann-nav-menu nav a {
+    display: inline-block;
+    padding: 0.2rem 0;
+    white-space: nowrap;
+  }
+}
+
+/* hero */
+.annals-theme .ann-hero {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+  animation: ann-fade-up 0.75s ease-out;
+}
+
+.annals-theme .ann-hero__scene {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.annals-theme .ann-hero__cover {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  margin-bottom: 0.75rem;
+}
+
+.annals-theme .ann-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.annals-theme .ann-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.annals-theme .ann-btn--fill {
+  background: var(--seal);
+  color: var(--accent-fg, #faf6ef);
+  border: 1px solid var(--seal);
+}
+
+.annals-theme .ann-btn--fill:hover {
+  background: color-mix(in srgb, var(--seal) 82%, black);
+  color: var(--accent-fg, #faf6ef);
+}
+
+.annals-theme .ann-btn--line {
+  background: transparent;
+  color: var(--navy);
+  border: 1px solid var(--line);
+}
+
+.annals-theme .ann-btn--line:hover { border-color: var(--navy); }
+
+.annals-theme .ann-catalogue-link {
+  color: var(--seal);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+
+.annals-theme .ann-catalogue-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--seal);
+  width: 0;
+  animation: ann-rule-grow 1.6s ease-out 0.3s forwards;
+}
+
+/* strip */
+.annals-theme .ann-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 620px) {
+  .annals-theme .ann-strip { grid-template-columns: 1fr; }
+}
+
+.annals-theme .ann-strip__item {
+  margin: 0;
+  min-width: 0;
+}
+
+.annals-theme .ann-strip__item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  display: block;
+}
+
+.annals-theme .ann-strip__item figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* cast */
+.annals-theme .ann-cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.annals-theme .ann-cast-card {
+  border-top: 1px solid var(--line);
+  padding-top: 0.85rem;
+}
+
+.annals-theme .ann-cast-card img {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+.annals-theme .ann-cast-name {
+  margin: 0.65rem 0 0.15rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.annals-theme .ann-cast-role {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--seal);
+  font-weight: 600;
+}
+
+.annals-theme .ann-cast-desc {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+/* funding */
+.annals-theme .ann-fund-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.annals-theme .ann-fund-chip {
+  border: 1px solid var(--line);
+  color: var(--navy);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.annals-theme .ann-fund-chip:hover {
+  border-color: var(--seal);
+  color: var(--seal);
+}
+
+/* provenance plate wall */
+.annals-theme .ann-plates__head { margin-bottom: 1.35rem; }
+
+.annals-theme .ann-plates__lede {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Four unique stills: equal 2x2 panel wall */
+.annals-theme .ann-plate-wall {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.15rem;
+}
+
+.annals-theme .ann-plate {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.annals-theme .ann-plate__frame {
+  display: block;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 80%, transparent);
+  overflow: clip;
+  line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.annals-theme .ann-plate__frame:hover {
+  border-color: var(--seal);
+  transform: translateY(-2px);
+}
+
+.annals-theme .ann-plate__frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.annals-theme .ann-plate__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.annals-theme .ann-plate__file {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.annals-theme .ann-plate__by {
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.annals-theme .ann-plate__by a {
+  color: var(--seal);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.annals-theme .ann-plate__by a:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .annals-theme .ann-plate-wall { grid-template-columns: 1fr; }
+}
+
+/* footer colophon */
+.annals-theme .ann-colophon {
+  margin-top: auto;
+  padding: 0 1.35rem 2rem;
+}
+
+.annals-theme .ann-colophon__rule {
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 1.25rem;
+}
+
+.annals-theme .ann-colophon__inner {
+  width: min(100%, 28rem);
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem 0 0;
+}
+
+.annals-theme .ann-colophon__stamp {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--seal);
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+}
+
+.annals-theme .ann-colophon__title {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--navy);
+}
+
+.annals-theme .ann-colophon__meta {
+  margin: 0.35rem 0 0.85rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.annals-theme .ann-colophon__meta a {
+  color: var(--seal);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--seal) 35%, transparent);
+}
+
+.annals-theme .ann-colophon__meta a:hover { border-bottom-color: var(--seal); }
+
+.annals-theme .ann-colophon__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem 1rem;
+}
+
+.annals-theme .ann-colophon__links a {
+  color: var(--seal);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--seal) 30%, transparent);
+}
+
+.annals-theme .ann-colophon__links a:hover { border-bottom-color: var(--seal); }
+
+/* episode */
+.annals-theme .ann-ep-mast {
+  margin: 0 0 0.75rem;
+  padding: 0 0 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.annals-theme .ann-ep-mast__folio {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
+
+.annals-theme .ann-ep-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  align-items: center;
+  margin: 0 0 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.annals-theme .ann-ep-crumbs a {
+  color: var(--seal);
+  text-decoration: none;
+}
+
+.annals-theme .ann-ep-crumbs span { color: var(--muted); }
+
+.annals-theme .ann-ep-player { margin: 0.85rem 0 1.5rem; }
+
+.annals-theme .ann-ep-player [data-harborfm-episode-card] {
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+.annals-theme .ann-ep-player [data-harborfm-episode-header] {
+  margin: 0 !important;
+  padding: 1.25rem 1.35rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  gap: 1rem !important;
+}
+
+.annals-theme .ann-ep-player [data-harborfm-episode-row] {
+  display: grid !important;
+  grid-template-columns: 8.5rem 1fr !important;
+  gap: 1.15rem !important;
+  align-items: start !important;
+}
+
+.annals-theme .ann-ep-player [data-harborfm-episode-artwork] {
+  width: 8.5rem !important;
+  height: 11rem !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--line) !important;
+  object-fit: cover !important;
+}
+
+.annals-theme .ann-ep-player [data-harborfm-episode-title] {
+  font-family: var(--font-display) !important;
+  color: var(--navy) !important;
+  font-size: clamp(1.6rem, 4vw, 2.35rem) !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+.annals-theme .ann-ep-player [data-harborfm-episode-meta] {
+  color: var(--seal) !important;
+  font-weight: 700;
+}
+
+.annals-theme .ann-ep-player [data-harborfm-episode-actions] button {
+  border-radius: 0 !important;
+  border: 1px solid var(--navy) !important;
+  background: transparent !important;
+  color: var(--navy) !important;
+  font-weight: 650;
+}
+
+.annals-theme .ann-ep-player [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  padding: 1.15rem 1.35rem !important;
+}
+
+@media (max-width: 640px) {
+  .annals-theme .ann-ep-player [data-harborfm-episode-row] { grid-template-columns: 1fr !important; }
+  .annals-theme .ann-ep-player [data-harborfm-episode-artwork] {
+    width: 100% !important;
+    height: 12rem !important;
+  }
+}
+
+/* episodes list */
+.annals-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.85rem !important;
+  border: none !important;
+}
+
+.annals-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 1.1rem 1.2rem !important;
+  transition: border-color 0.15s ease !important;
+}
+
+.annals-theme [data-harborfm-episode-item]:hover {
+  border-color: color-mix(in srgb, var(--seal) 35%, var(--line)) !important;
+}
+
+.annals-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.8rem !important;
+  min-width: 0 !important;
+}
+
+.annals-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: var(--font-display) !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.annals-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted) !important;
+  font-size: 0.8rem !important;
+}
+
+.annals-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  border-radius: 0 !important;
+  background: var(--navy) !important;
+  color: var(--panel) !important;
+  border: none !important;
+  padding: 0.4rem 0.8rem !important;
+  font-weight: 650 !important;
+  font-size: 0.8rem !important;
+  text-decoration: none !important;
+}
+
+.annals-theme [data-harborfm-episode-item-link]:hover {
+  background: var(--seal) !important;
+}
+
+.annals-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  color: var(--muted) !important;
+  margin: 0.6rem 0 0 !important;
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.annals-theme [data-harborfm-episode-item-type] {
+  border-radius: 0 !important;
+  background: color-mix(in srgb, var(--seal) 12%, var(--panel)) !important;
+  color: var(--seal) !important;
+  border: 1px solid color-mix(in srgb, var(--seal) 28%, var(--line)) !important;
+}
+
+.annals-theme [data-harborfm-episodes-load-more] {
+  border-radius: 0 !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--navy) !important;
+  font-weight: 650 !important;
+}
+
+/* reviews */
+.annals-theme .ann-reviews-block { margin: 1.5rem 0; }
+
+.annals-theme .ann-reviews-block__head h2 {
+  font-family: var(--font-display);
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+}
+
+.annals-theme .ann-reviews-block [data-harborfm-reviews-title] { display: none !important; }
+
+.annals-theme .ann-reviews-block [data-harborfm-reviews] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.annals-theme .ann-reviews-block [data-harborfm-reviews-list] {
+  list-style: none !important;
+  margin: 0 0 1rem !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.85rem !important;
+}
+
+.annals-theme .ann-reviews-block [data-harborfm-review] {
+  min-width: 0 !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 1rem 1.1rem !important;
+}
+
+.annals-theme .ann-reviews-block [data-harborfm-review-name] {
+  font-family: var(--font-display) !important;
+  color: var(--navy) !important;
+  font-weight: 700 !important;
+}
+
+.annals-theme .ann-reviews-block [data-harborfm-reviews-write],
+.annals-theme .ann-reviews-block [data-harborfm-reviews-load-more] {
+  border-radius: 0 !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--navy) !important;
+  font-weight: 650 !important;
+}
+
+.annals-theme .ann-reviews-block [data-harborfm-reviews-write] {
+  background: var(--navy) !important;
+  color: var(--panel) !important;
+  border: none !important;
+}
+
+/* action icons */
+.annals-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.annals-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* dialogs */
+.annals-theme [data-harborfm-dialog="feedback"],
+.annals-theme [data-harborfm-dialog="alerts"],
+.annals-theme [data-harborfm-dialog="share"],
+.annals-theme [data-harborfm-dialog="subscription"],
+.annals-theme [data-harborfm-dialog="review"] {
+  --bg: #f4efe6;
+  --bg-elevated: #faf6ef;
+  --bg-muted: color-mix(in srgb, #f4efe6 85%, #1a2332 15%);
+  --text: #1a2332;
+  --text-muted: #5a6475;
+  --border: #d4cabb;
+  --radius: 2px;
+  font-family: var(--font-body) !important;
+  background: #faf6ef !important;
+  border: 1px solid #d4cabb !important;
+  border-radius: 2px !important;
+  color: #1a2332 !important;
+}
+
+.annals-theme [data-harborfm-dialog-overlay="feedback"],
+.annals-theme [data-harborfm-dialog-overlay="alerts"],
+.annals-theme [data-harborfm-dialog-overlay="share"],
+.annals-theme [data-harborfm-dialog-overlay="subscription"],
+.annals-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(26, 35, 50, 0.38) !important;
+}
+
+.annals-theme [data-harborfm-dialog] h2,
+.annals-theme [data-harborfm-dialog] h3,
+.annals-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: var(--font-display) !important;
+  color: #1a2332 !important;
+}
+
+.annals-theme [data-harborfm-dialog] input,
+.annals-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #faf6ef 70%, #f4efe6) !important;
+  border: 1px solid #d4cabb !important;
+  border-radius: 2px !important;
+  color: #1a2332 !important;
+  font-family: inherit !important;
+}
+
+.annals-theme [data-harborfm-dialog] input:focus,
+.annals-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--seal) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--seal) 22%, transparent) !important;
+  outline: none !important;
+}
+
+.annals-theme [data-harborfm-dialog] button {
+  border-radius: 2px !important;
+  font-family: inherit !important;
+}
+
+.annals-theme [data-harborfm-dialog] button[type="submit"],
+.annals-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.annals-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--seal) !important;
+  color: var(--accent-fg, #faf6ef) !important;
+  border: 1px solid var(--seal) !important;
+  font-weight: 650 !important;
+}
+
+.annals-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid #d4cabb !important;
+  color: #5a6475 !important;
+}
+
+.annals-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 8px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* motion */
+@keyframes ann-rule-grow {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes ann-fade-up {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .annals-theme .ann-topnav__rule,
+  .annals-theme .ann-catalogue-link::after,
+  .annals-theme .ann-hero,
+  .annals-theme .ann-plate__frame:hover {
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .annals-theme .ann-page {
+    padding-left: max(0.85rem, env(safe-area-inset-left));
+    padding-right: max(0.85rem, env(safe-area-inset-right));
+  }
+}

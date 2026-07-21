@@ -1,0 +1,14 @@
+{
+  "id": "stacks",
+  "name": "Stacks",
+  "version": "1.0.0",
+  "description": "Books and ideas: a clean, shelf-like layout for thoughtful shows.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-stacks",
+  "pages": {
+    "podcast": "catalogue.html",
+    "colophon": "colophon.html"
+  },
+  "not_found": "not_found"
+}

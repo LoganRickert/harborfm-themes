@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Provenance | {{ podcast.title | escape }}</title>
+</head>
+<body class="annals-theme annals-page-{{ page }}">
+  <div class="ann-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="ann-page ann-plates">
+      <header class="ann-plates__head">
+        <p class="ann-eyebrow"><span class="ann-folio">Folio V</span> Scholarly archive, open stacks</p>
+        <h1 class="ann-title ann-display">Provenance</h1>
+        <p class="ann-plates__lede">Four archive stills in the Annals package, licensed from Unsplash. Each panel links to the original.</p>
+      </header>
+
+      <ul class="ann-plate-wall">
+        <li class="ann-plate">
+          <a class="ann-plate__frame" href="https://unsplash.com/photos/gray-concrete-building-during-daytime-Q4g0Q-eVVEg" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Gray concrete building during daytime" />
+          </a>
+          <div class="ann-plate__meta">
+            <p class="ann-plate__name">Colosseum</p>
+            <p class="ann-plate__file">hero.jpg · Reading room, gallery preview</p>
+            <p class="ann-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@didiofederico_photographer" rel="noopener noreferrer">Federico Di Dio photography</a>
+              on
+              <a href="https://unsplash.com/photos/gray-concrete-building-during-daytime-Q4g0Q-eVVEg" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="ann-plate">
+          <a class="ann-plate__frame" href="https://unsplash.com/photos/maps-lying-on-the-floor-1-29wyvvLJA" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Maps lying on the floor" />
+          </a>
+          <div class="ann-plate__meta">
+            <p class="ann-plate__name">Maps</p>
+            <p class="ann-plate__file">a.jpg · Reading room strip</p>
+            <p class="ann-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@andrewtneel" rel="noopener noreferrer">Andrew Neel</a>
+              on
+              <a href="https://unsplash.com/photos/maps-lying-on-the-floor-1-29wyvvLJA" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="ann-plate">
+          <a class="ann-plate__frame" href="https://unsplash.com/photos/book-lot-on-black-wooden-shelf-zeH-ljawHtg" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Book lot on black wooden shelf" />
+          </a>
+          <div class="ann-plate__meta">
+            <p class="ann-plate__name">Library</p>
+            <p class="ann-plate__file">b.jpg · Reading room strip</p>
+            <p class="ann-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@giamboscaro" rel="noopener noreferrer">Giammarco Boscaro</a>
+              on
+              <a href="https://unsplash.com/photos/book-lot-on-black-wooden-shelf-zeH-ljawHtg" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="ann-plate">
+          <a class="ann-plate__frame" href="https://unsplash.com/photos/brown-paper-and-black-pen-B6yDtYs2IgY" rel="noopener noreferrer">
+            <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Brown paper and black pen" />
+          </a>
+          <div class="ann-plate__meta">
+            <p class="ann-plate__name">Letters</p>
+            <p class="ann-plate__file">c.jpg · Reading room strip</p>
+            <p class="ann-plate__by">
+              Photo by
+              <a href="https://unsplash.com/@joannakosinska" rel="noopener noreferrer">Joanna Kosinska</a>
+              on
+              <a href="https://unsplash.com/photos/brown-paper-and-black-pen-B6yDtYs2IgY" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

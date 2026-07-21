@@ -1,0 +1,15 @@
+<div class="util">
+  <a class="brand" href="{{ urls.home }}">{{ podcast.title | escape }}</a>
+  <details class="nav-menu">
+    <summary class="nav-menu__toggle" aria-label="Menu"><span class="nav-menu__icon" aria-hidden="true"></span></summary>
+    <nav aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Atrium</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Minutes</a>
+      <a href="{{ urls.pages.charter }}"{% if page == "charter" %} aria-current="page"{% endif %}>Charter</a>
+      <a href="{{ urls.pages.partners }}"{% if page == "partners" %} aria-current="page"{% endif %}>Partners</a>
+      <a href="{{ urls.pages.brief }}"{% if page == "brief" %} aria-current="page"{% endif %}>Brief</a>
+      <a href="{{ urls.pages.underwrite }}"{% if page == "underwrite" %} aria-current="page"{% endif %}>Underwrite</a>
+      <a href="{{ urls.pages.attribution }}"{% if page == "attribution" %} aria-current="page"{% endif %}>Attribution</a>
+    </nav>
+  </details>
+</div>

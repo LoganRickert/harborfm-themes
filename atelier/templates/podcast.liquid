@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Archive rack | {{ podcast.title | escape }}</title>
+</head>
+<body class="atelier-theme atelier-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Interviews in sharp light</p>
+        <h1 class="title display">Archive rack</h1>
+      </header>
+      <section class="panel cover-panel">
+        {% if podcast.artwork_url != "" %}<img class="cover-art" src="{{ podcast.artwork_url | escape }}" alt="" />{% endif %}
+        <div>
+          {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+          {% if show.author %}{% if podcast.author_name != "" %}<p class="lede">Hosted by {{ podcast.author_name | escape }}.</p>{% endif %}{% endif %}
+        </div>
+      </section>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/d.jpg" alt="" />
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

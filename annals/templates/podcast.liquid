@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Catalogue | {{ podcast.title | escape }}</title>
+</head>
+<body class="annals-theme annals-page-{{ page }}">
+  <div class="ann-shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="ann-page">
+      <header class="ann-page-head">
+        <p class="ann-eyebrow"><span class="ann-folio">Folio II</span> Scholarly archive, open stacks</p>
+        <h1 class="ann-title ann-display">Catalogue</h1>
+        <p class="ann-lede">Search the register and browse every recorded volume in the collection.</p>
+      </header>
+      <section class="ann-panel">
+        <h2><span class="ann-folio">Ref.</span> Full run</h2>
+        {% render 'harborfm/search' %}
+        {% render 'harborfm/episodes' %}
+      </section>
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+  </div>
+</body>
+</html>

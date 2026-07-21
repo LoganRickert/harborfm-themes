@@ -1,0 +1,1241 @@
+.soliloquy-theme {
+  --ink: #111111;
+  --muted: #6e6a63;
+  --bg: #f7f5f1;
+  --panel: #ffffff;
+  --line: #e3ded4;
+  --accent-soft: var(--accent);
+  --font: "Nunito Sans", system-ui, sans-serif;
+  --display: "Fraunces", Georgia, serif;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  color-scheme: light;
+  overflow-x: clip;
+}
+
+.soliloquy-theme *,
+.soliloquy-theme *::before,
+.soliloquy-theme *::after { box-sizing: border-box; }
+
+.soliloquy-theme img { max-width: 100%; height: auto; }
+
+.soliloquy-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 6px;
+}
+
+.soliloquy-theme [data-harborfm-block] {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* centered wordmark mast */
+.soliloquy-theme .sol-mast {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem 1rem;
+  padding: 1.35rem 1.25rem 1.15rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.soliloquy-theme .sol-wordmark {
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--ink);
+  max-width: min(28rem, 100%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.soliloquy-theme .sol-mast-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem 1.1rem;
+}
+
+.soliloquy-theme .sol-mast-nav a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 0.15rem;
+}
+
+.soliloquy-theme .sol-mast-nav a[aria-current="page"] {
+  color: var(--accent-soft);
+}
+
+/* underline-grow links */
+.soliloquy-theme .sol-link-grow {
+  text-decoration: none;
+  color: inherit;
+  background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.35s ease, color 0.2s ease;
+}
+
+.soliloquy-theme .sol-link-grow:hover,
+.soliloquy-theme .sol-link-grow:focus-visible {
+  background-size: 100% 2px;
+  color: var(--ink);
+}
+
+.soliloquy-theme .sol-mast-nav a.sol-link-grow:hover,
+.soliloquy-theme .sol-mast-nav a.sol-link-grow:focus-visible {
+  color: var(--accent-soft);
+}
+
+/* typography */
+.soliloquy-theme .sol-kicker {
+  margin: 0 0 0.65rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.soliloquy-theme .sol-display {
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.soliloquy-theme .sol-display--page {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.soliloquy-theme .sol-display--episode {
+  font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+  max-width: 20ch;
+}
+
+.soliloquy-theme .sol-lede {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.soliloquy-theme .sol-lede--opening {
+  margin-top: 1rem;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  text-align: left;
+}
+
+/* journal layout */
+.soliloquy-theme .sol-journal {
+  width: min(920px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 0 0 3rem;
+}
+
+.soliloquy-theme .sol-journal--page {
+  padding-top: 2.25rem;
+}
+
+.soliloquy-theme .sol-page-head {
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+.soliloquy-theme .sol-page-head .sol-lede {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* opening hero */
+.soliloquy-theme .sol-opening {
+  display: grid;
+  gap: 2.5rem;
+  padding: 2.5rem 0 3rem;
+}
+
+.soliloquy-theme .sol-opening__hero,
+.soliloquy-theme .sol-opening__silhouette {
+  margin: 0;
+  line-height: 0;
+  overflow: clip;
+}
+
+.soliloquy-theme .sol-opening__hero img,
+.soliloquy-theme .sol-opening__silhouette img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.soliloquy-theme .sol-opening__body {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.soliloquy-theme .sol-opening__art {
+  width: 7.5rem;
+  height: 7.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 1.25rem;
+  display: block;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.soliloquy-theme .sol-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.35rem;
+}
+
+.soliloquy-theme .sol-btn-fill,
+.soliloquy-theme .sol-btn-line {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.soliloquy-theme .sol-btn-fill {
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+}
+
+.soliloquy-theme .sol-btn-fill:hover {
+  background: color-mix(in srgb, var(--ink) 88%, var(--accent-soft));
+  border-color: color-mix(in srgb, var(--ink) 88%, var(--accent-soft));
+}
+
+.soliloquy-theme .sol-btn-line {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.soliloquy-theme .sol-btn-line:hover {
+  border-color: var(--accent-soft);
+  color: var(--accent-soft);
+}
+
+/* image moments: quiet equal strip */
+.soliloquy-theme .sol-moments {
+  padding: 0.5rem 0 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.soliloquy-theme .sol-moments__label {
+  margin: 0 0 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+.soliloquy-theme .sol-moments__strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.soliloquy-theme .sol-moment {
+  margin: 0;
+  line-height: 0;
+  overflow: clip;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.soliloquy-theme .sol-moment img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .soliloquy-theme .sol-moments__strip {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .soliloquy-theme .sol-moment img { aspect-ratio: 16 / 10; }
+  .soliloquy-theme .sol-opening__hero img,
+  .soliloquy-theme .sol-opening__silhouette img { aspect-ratio: 16 / 10; }
+}
+
+/* sheets / panels */
+.soliloquy-theme .sol-sheet {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.soliloquy-theme .sol-sheet__title {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 500;
+  margin: 0 0 0.35rem;
+}
+
+.soliloquy-theme .sol-sheet__lede {
+  margin: 0 0 1.35rem;
+}
+
+.soliloquy-theme .sol-aside-figure {
+  margin: 2rem 0 0;
+  line-height: 0;
+}
+
+.soliloquy-theme .sol-aside-figure img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* voices */
+.soliloquy-theme .sol-voice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.75rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.soliloquy-theme .sol-voice-card {
+  min-width: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.soliloquy-theme .sol-voice-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 0.65rem;
+  border-radius: var(--radius);
+}
+
+.soliloquy-theme .sol-voice-name {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.soliloquy-theme .sol-voice-role {
+  margin: 0.15rem 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.soliloquy-theme .sol-voice-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* funding */
+.soliloquy-theme .sol-fund-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.soliloquy-theme .sol-fund-link {
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.soliloquy-theme .sol-fund-link:hover {
+  border-color: var(--accent-soft);
+  color: var(--accent-soft);
+  background: color-mix(in srgb, var(--accent-soft) 6%, transparent);
+}
+
+/* plate wall */
+.soliloquy-theme .sol-plates { padding-bottom: 1rem; }
+
+/* Four unique stills: equal 2x2 panel wall */
+.soliloquy-theme .sol-plate-wall {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.15rem;
+}
+
+.soliloquy-theme .sol-plate {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.soliloquy-theme .sol-plate__frame {
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  overflow: clip;
+  line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.soliloquy-theme .sol-plate__frame:hover {
+  border-color: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.soliloquy-theme .sol-plate__frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.soliloquy-theme .sol-plate__name {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.soliloquy-theme .sol-plate__file {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.soliloquy-theme .sol-plate__by {
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.soliloquy-theme .sol-plate__by a {
+  color: var(--accent-soft);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.soliloquy-theme .sol-plate__by a:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .soliloquy-theme .sol-plate-wall { grid-template-columns: 1fr; }
+}
+
+/* episode page */
+.soliloquy-theme .sol-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  align-items: center;
+  margin: 0 0 1.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.soliloquy-theme .sol-crumbs span { color: var(--muted); }
+
+.soliloquy-theme .sol-ep-mast {
+  margin: 0 0 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.soliloquy-theme .sol-ep-mast .sol-display--episode {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.soliloquy-theme .sol-ep-dek {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.soliloquy-theme .sol-ep-player { margin: 0 0 2rem; }
+
+/* Centered listening shelf: circular art + icon seals */
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-card],
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-block="player"] {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-header] {
+  margin: 0 0 1.35rem !important;
+  padding: 0 !important;
+  border: 0 !important;
+  gap: 0 !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-row] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 1.15rem !important;
+  text-align: center !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-artwork] {
+  width: min(12.5rem, 48vw) !important;
+  height: min(12.5rem, 48vw) !important;
+  border-radius: 100% !important;
+  border: 1px solid var(--line) !important;
+  object-fit: cover !important;
+  box-shadow: 0 14px 36px rgba(17, 17, 17, 0.1) !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-body] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-title] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-meta] {
+  margin: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.3rem 0.5rem !important;
+  color: var(--muted) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-meta] span,
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-meta] .badgeSep {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  color: inherit !important;
+  font: inherit !important;
+  box-shadow: none !important;
+  width: auto !important;
+  height: auto !important;
+  opacity: 1 !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-meta] .badgeSep::before {
+  content: "·";
+  color: color-mix(in srgb, var(--muted) 65%, transparent);
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-actions] {
+  margin: 0.15rem 0 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-actions] > div {
+  display: contents !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Icon seals: round, label-free (aria-label remains) */
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-actions] button {
+  width: 2.85rem !important;
+  height: 2.85rem !important;
+  padding: 0 !important;
+  border-radius: 100% !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--ink) !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+  box-shadow: 0 4px 14px rgba(17, 17, 17, 0.05) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-actions] button svg {
+  width: 1.1rem !important;
+  height: 1.1rem !important;
+  flex-shrink: 0 !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-actions] button:hover {
+  border-color: var(--ink) !important;
+  background: var(--ink) !important;
+  color: var(--bg) !important;
+  box-shadow: 0 6px 18px rgba(17, 17, 17, 0.12) !important;
+}
+
+.soliloquy-theme .sol-ep-player--journal [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  margin-top: 0.25rem !important;
+  padding: 1.25rem 0 0 !important;
+  border: none !important;
+  border-top: 1px solid var(--line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 640px) {
+  .soliloquy-theme .sol-display--episode { max-width: none; }
+}
+
+/* footer */
+.soliloquy-theme .site-foot.sol-foot {
+  margin-top: 2.5rem;
+  padding: 2rem 1.25rem 2.75rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.soliloquy-theme .sol-foot-inner {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.soliloquy-theme .sol-foot-kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.soliloquy-theme .sol-foot-title {
+  margin: 0.45rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-weight: 500;
+}
+
+.soliloquy-theme .sol-foot-note {
+  margin: 0.75rem auto 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  max-width: 32rem;
+}
+
+.soliloquy-theme .sol-foot-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem 1.1rem;
+  margin-top: 1.1rem;
+}
+
+.soliloquy-theme .sol-foot-nav a {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* mobile hamburger nav */
+.soliloquy-theme .sol-mast { position: relative; }
+
+.soliloquy-theme .nav-menu { margin: 0; position: static; }
+
+.soliloquy-theme .nav-menu__toggle {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.soliloquy-theme .nav-menu__toggle::-webkit-details-marker { display: none; }
+
+.soliloquy-theme .nav-menu__icon,
+.soliloquy-theme .nav-menu__icon::before,
+.soliloquy-theme .nav-menu__icon::after {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  position: relative;
+}
+
+.soliloquy-theme .nav-menu__icon::before,
+.soliloquy-theme .nav-menu__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.soliloquy-theme .nav-menu__icon::before { top: -6px; }
+.soliloquy-theme .nav-menu__icon::after { top: 6px; }
+
+@media (max-width: 759px) {
+  .soliloquy-theme .sol-mast {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .soliloquy-theme .sol-wordmark { flex: 1 1 auto; text-align: left; }
+  .soliloquy-theme .nav-menu { margin-left: auto; }
+  .soliloquy-theme .nav-menu nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.85rem 1.25rem 1rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(17, 17, 17, 0.08);
+  }
+  .soliloquy-theme .nav-menu nav a { display: block; padding: 0.55rem 0.35rem; }
+}
+
+@media (min-width: 760px) {
+  .soliloquy-theme .nav-menu::details-content {
+    display: contents;
+    content-visibility: visible;
+    height: auto;
+    overflow: visible;
+  }
+  .soliloquy-theme .nav-menu__toggle { display: none; }
+  .soliloquy-theme .nav-menu nav {
+    position: static !important;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem 1.1rem;
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+/* animations */
+@keyframes sol-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.soliloquy-theme .sol-opening__body,
+.soliloquy-theme .sol-page-head,
+.soliloquy-theme .sol-ep-mast {
+  animation: sol-fade-up 0.65s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soliloquy-theme .sol-opening__body,
+  .soliloquy-theme .sol-page-head,
+  .soliloquy-theme .sol-ep-mast {
+    animation: none;
+  }
+  .soliloquy-theme .sol-plate__frame:hover { transform: none; }
+  .soliloquy-theme .sol-link-grow { transition: none; }
+}
+
+.soliloquy-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.soliloquy-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+@media (max-width: 720px) {
+  .soliloquy-theme .main,
+  .soliloquy-theme .page,
+  .soliloquy-theme .content,
+  .soliloquy-theme .console,
+  .soliloquy-theme .sol-journal {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+}
+
+/* harborfm-themed-dialogs */
+.soliloquy-theme [data-harborfm-dialog="feedback"],
+.soliloquy-theme [data-harborfm-dialog="alerts"],
+.soliloquy-theme [data-harborfm-dialog="share"],
+.soliloquy-theme [data-harborfm-dialog="subscription"],
+.soliloquy-theme [data-harborfm-dialog="review"] {
+  --bg: #f7f5f1;
+  --bg-elevated: #ffffff;
+  --bg-muted: color-mix(in srgb, #f7f5f1 85%, #111111 15%);
+  --text: #111111;
+  --text-muted: #6e6a63;
+  --border: #e3ded4;
+  --radius: 6px;
+  font-family: var(--font) !important;
+  background: #ffffff !important;
+  border: 1px solid #e3ded4 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 20px 48px rgba(17, 17, 17, 0.1) !important;
+  color: #111111 !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog-overlay="feedback"],
+.soliloquy-theme [data-harborfm-dialog-overlay="alerts"],
+.soliloquy-theme [data-harborfm-dialog-overlay="share"],
+.soliloquy-theme [data-harborfm-dialog-overlay="subscription"],
+.soliloquy-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(17, 17, 17, 0.35) !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog] h2,
+.soliloquy-theme [data-harborfm-dialog] h3,
+.soliloquy-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: var(--display) !important;
+  color: #111111 !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog] input,
+.soliloquy-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #ffffff 75%, #f7f5f1) !important;
+  border: 1px solid #e3ded4 !important;
+  border-radius: 6px !important;
+  color: #111111 !important;
+  font-family: inherit !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog] input:focus,
+.soliloquy-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--accent-soft, var(--accent)) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-soft, var(--accent)) 22%, transparent) !important;
+  outline: none !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog] button {
+  border-radius: 6px !important;
+  font-family: inherit !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog] button[type="submit"],
+.soliloquy-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.soliloquy-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--accent-soft, var(--accent)) !important;
+  color: var(--accent-fg, #111111) !important;
+  border: 1px solid var(--accent-soft, var(--accent)) !important;
+  font-weight: 700 !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid #e3ded4 !important;
+  color: #6e6a63 !important;
+}
+
+.soliloquy-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 10px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* search */
+.soliloquy-theme [data-harborfm-search] {
+  margin: 0 0 1.5rem !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.soliloquy-theme [data-harborfm-search] input,
+.soliloquy-theme [data-harborfm-search] select,
+.soliloquy-theme [data-harborfm-search] button {
+  border-radius: 0 !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--ink) !important;
+  font-family: var(--font) !important;
+}
+
+.soliloquy-theme [data-harborfm-search] input:focus,
+.soliloquy-theme [data-harborfm-search] select:focus {
+  outline: none !important;
+  border-color: var(--accent-soft) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-soft) 18%, transparent) !important;
+}
+
+/* episodes list: journal table of contents */
+.soliloquy-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  border: none !important;
+  border-top: 2px solid var(--ink) !important;
+  counter-reset: sol-entry !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item] {
+  position: relative !important;
+  counter-increment: sol-entry !important;
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: 3rem minmax(0, 1fr) !important;
+  column-gap: 1rem !important;
+  row-gap: 0.35rem !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  padding: 1.45rem 5px !important;
+  box-shadow: none !important;
+  transition: background 0.15s ease !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item]::before {
+  content: counter(sol-entry, decimal-leading-zero) !important;
+  grid-row: 1 / span 4 !important;
+  font-family: var(--display) !important;
+  font-size: 1.15rem !important;
+  font-weight: 500 !important;
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: 0.04em !important;
+  color: color-mix(in srgb, var(--muted) 70%, var(--ink)) !important;
+  padding-top: 0.2rem !important;
+  line-height: 1 !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item]:hover {
+  background: color-mix(in srgb, var(--ink) 3%, transparent) !important;
+  transform: none !important;
+  box-shadow: none !important;
+  border-bottom-color: color-mix(in srgb, var(--ink) 35%, var(--line)) !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item][data-subscriber-only="true"] {
+  border-bottom-color: color-mix(in srgb, var(--accent-soft) 45%, var(--line)) !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-type] {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  grid-column: 2 !important;
+  width: fit-content !important;
+  margin: 0 0 0.15rem !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--accent-soft) !important;
+  border: none !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-soft) 55%, transparent) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  font-size: 0.62rem !important;
+  font-weight: 800 !important;
+  padding: 0 0 0.1rem !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-header] {
+  grid-column: 2 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 1rem 1.25rem !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-header] > div {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: var(--display) !important;
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--ink) !important;
+  margin: 0 0 0.35rem !important;
+  line-height: 1.2 !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-meta] {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.25rem 0.55rem !important;
+  color: var(--muted) !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-meta] > span:not(:last-child)::after {
+  content: "·" !important;
+  margin-left: 0.55rem !important;
+  color: color-mix(in srgb, var(--muted) 65%, transparent) !important;
+  font-weight: 400 !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  align-self: center !important;
+  width: auto !important;
+  max-width: max-content !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  border: none !important;
+  border-bottom: 1px solid var(--ink) !important;
+  padding: 0.15rem 0 !important;
+  font-family: var(--font) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-link]:hover {
+  color: var(--accent-soft) !important;
+  border-bottom-color: var(--accent-soft) !important;
+  background: transparent !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-description] {
+  grid-column: 2 !important;
+  min-width: 0 !important;
+  color: var(--muted) !important;
+  margin: 0.15rem 0 0 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-locked],
+.soliloquy-theme [data-harborfm-episode-item-no-audio] {
+  grid-column: 2 !important;
+  margin-top: 0.55rem !important;
+  font-size: 0.8rem !important;
+  color: var(--muted) !important;
+}
+
+.soliloquy-theme [data-harborfm-episode-item-player] {
+  grid-column: 2 !important;
+  margin-top: 0.65rem !important;
+}
+
+.soliloquy-theme [data-harborfm-episodes-load-more] {
+  margin-top: 1.35rem !important;
+  width: 100% !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--ink) !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  font-family: var(--font) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.soliloquy-theme [data-harborfm-episodes-load-more]:hover {
+  background: var(--ink) !important;
+  color: var(--bg) !important;
+}
+
+@media (max-width: 640px) {
+  .soliloquy-theme [data-harborfm-episode-item] {
+    grid-template-columns: 2.25rem minmax(0, 1fr) !important;
+    column-gap: 0.75rem !important;
+  }
+  .soliloquy-theme [data-harborfm-episode-item-header] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .soliloquy-theme [data-harborfm-episode-item-link] {
+    align-self: flex-start !important;
+    margin-top: 0.35rem !important;
+  }
+}
+
+/* reviews */
+.soliloquy-theme .sol-reviews { margin-top: 0.5rem; }
+
+.soliloquy-theme .sol-reviews [data-harborfm-reviews-title] { display: none !important; }
+
+.soliloquy-theme .sol-reviews [data-harborfm-reviews] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.soliloquy-theme .sol-reviews [data-harborfm-reviews-list] {
+  list-style: none !important;
+  margin: 0 0 1rem !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--line) !important;
+}
+
+.soliloquy-theme .sol-reviews [data-harborfm-review] {
+  min-width: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 1.15rem 0 !important;
+}
+
+.soliloquy-theme .sol-reviews [data-harborfm-review-name] {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+
+.soliloquy-theme .sol-reviews [data-harborfm-review-body] {
+  font-family: var(--display) !important;
+  font-size: 1.25rem !important;
+  font-style: italic !important;
+  line-height: 1.45 !important;
+  color: var(--ink) !important;
+}
+
+.soliloquy-theme .sol-reviews [data-harborfm-reviews-write],
+.soliloquy-theme .sol-reviews [data-harborfm-reviews-load-more] {
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--line) !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  font-size: 0.72rem !important;
+}
+
+.soliloquy-theme .sol-reviews [data-harborfm-reviews-write]:hover {
+  border-color: var(--accent-soft) !important;
+  color: var(--accent-soft) !important;
+}

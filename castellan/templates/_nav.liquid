@@ -1,0 +1,25 @@
+<header class="herald-bar" aria-label="Keep navigation">
+  <a class="herald-bar__brand" href="{{ urls.home }}">
+    <span class="herald-bar__escutcheon" aria-hidden="true"></span>
+    <span class="herald-bar__show">{{ podcast.title | escape }}</span>
+  </a>
+  <details class="herald-bar__menu">
+    <summary class="herald-bar__toggle" aria-label="Menu"><span class="herald-bar__chevron" aria-hidden="true"></span></summary>
+    <nav class="herald-bar__links" aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Ramparts</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Chronicle</a>
+      <a href="{{ urls.pages.court }}"{% if page == "court" %} aria-current="page"{% endif %}>Court</a>
+      <a href="{{ urls.pages.tithes }}"{% if page == "tithes" %} aria-current="page"{% endif %}>Tithes</a>
+      <a href="{{ urls.pages.reliquary }}"{% if page == "reliquary" %} aria-current="page"{% endif %}>Reliquary</a>
+      <a href="{{ urls.pages.illuminations }}"{% if page == "illuminations" %} aria-current="page"{% endif %}>Illuminations</a>
+    </nav>
+  </details>
+  <nav class="herald-bar__rail" aria-label="Show pages">
+    <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Ramparts</a>
+    <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Chronicle</a>
+    <a href="{{ urls.pages.court }}"{% if page == "court" %} aria-current="page"{% endif %}>Court</a>
+    <a href="{{ urls.pages.tithes }}"{% if page == "tithes" %} aria-current="page"{% endif %}>Tithes</a>
+    <a href="{{ urls.pages.reliquary }}"{% if page == "reliquary" %} aria-current="page"{% endif %}>Reliquary</a>
+    <a href="{{ urls.pages.illuminations }}"{% if page == "illuminations" %} aria-current="page"{% endif %}>Illuminations</a>
+  </nav>
+</header>

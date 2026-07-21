@@ -1,0 +1,20 @@
+<footer class="site-foot casefile-foot" aria-label="Case footer">
+  <div class="casefile-foot__stamp" aria-hidden="true">CONFIDENTIAL</div>
+  <div class="casefile-foot__rows">
+    <span class="casefile-foot__file">{{ podcast.title | escape }}</span>
+    <span class="casefile-foot__muted">HarborFM dossier skin</span>
+  </div>
+  <div class="casefile-foot__rows">
+    <a href="{{ urls.pages.podcast }}">Case log</a>
+    <a href="{{ urls.pages.exhibits }}">Exhibits</a>
+    <a href="{{ urls.home }}">Briefing</a>
+  </div>
+  <p class="casefile-foot__credit">
+    {% if theme.homepage != "" %}
+    <a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>
+    {% else %}
+    {{ theme.name | escape }}
+    {% endif %}
+    <span class="casefile-foot__version">{{ theme.version | escape }}</span>
+  </p>
+</footer>

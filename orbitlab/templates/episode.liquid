@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ episode.title | escape }} | {{ podcast.title | escape }}</title>
+</head>
+<body class="orbitlab-theme orbitlab-page-{{ page }}">
+  <div class="orbit-wrap">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="console">
+
+      <header class="ep-mast ep-mast--orbit">
+        <div class="ep-mast__readout">
+          <span class="ep-mast__label">UPLINK</span>
+          <span class="ep-mast__value">EPISODE STREAM</span>
+        </div>
+        <p class="eyebrow">Deep dives from the console</p>
+      </header>
+      <nav class="ep-crumbs ep-crumbs--orbit" aria-label="Breadcrumb">
+        <a href="{{ urls.home }}">Console</a><span aria-hidden="true">/</span>
+        <a href="{{ urls.pages.podcast }}">Dossier</a><span aria-hidden="true">/</span>
+        <span>Stream</span>
+      </nav>
+      <section class="ep-player ep-player--orbit">{% render 'harborfm/player' %}</section>
+      {% if show.episode_description %}{% if episode.description != "" %}
+      <section class="panel"><h2>Observation log</h2><p class="lede">{{ episode.description | escape }}</p></section>
+      {% endif %}{% endif %}
+      {% if show.funding %}{% if funding_links.size > 0 %}
+      <section class="panel">
+        <h2>Keep it going</h2>
+        <div class="orbit-tags">
+          {% for f in funding_links %}<a class="orbit-tag" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_episode %}
+      <section class="panel reviews-block" aria-label="Signal packets">
+        <header class="reviews-block__head">
+          <h2>Signal packets</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

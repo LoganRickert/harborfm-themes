@@ -1,0 +1,16 @@
+{
+  "id": "annals",
+  "name": "Annals",
+  "version": "1.0.0",
+  "description": "History-archive feel with chronological structure and deep typography.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-annals",
+  "pages": {
+    "podcast": "catalogue.html",
+    "contributors": "contributors.html",
+    "endowments": "endowments.html",
+    "provenance": "provenance.html"
+  },
+  "not_found": "not_found"
+}

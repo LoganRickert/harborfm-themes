@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Patronage | {{ podcast.title | escape }}</title>
+</head>
+<body class="atelier-theme atelier-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Interviews in sharp light</p>
+        <h1 class="title display">Patronage</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">Underwrite the next sitting under sharp light.</p>
+        {% if show.funding %}{% if funding_links.size > 0 %}
+        <div class="masthead-tags">
+          {% for f in funding_links %}<a class="masthead-tag" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Add funding links in HarborFM to unlock this page.</p>{% endif %}
+      </section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

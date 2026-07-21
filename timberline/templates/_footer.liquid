@@ -1,0 +1,20 @@
+<footer class="site-foot tl-register" aria-label="Trail register">
+  <div class="tl-register__inner">
+    <div class="tl-register__mast">
+      <p class="tl-register__you">You are here</p>
+      <p class="tl-register__name">{{ podcast.title | escape }}</p>
+      <p class="tl-register__mapped">
+        Leave no trace · mapped in
+        {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+      </p>
+    </div>
+    <nav class="tl-register__nav" aria-label="Trail route">
+      <a href="{{ urls.home }}">Basecamp</a>
+      <a href="{{ urls.pages.podcast }}">Trail</a>
+      <a href="{{ urls.pages.guides }}">Guides</a>
+      <a href="{{ urls.pages.campfund }}">Camp Fund</a>
+      <a href="{{ urls.pages.fieldnotes }}">Field Notes</a>
+    </nav>
+    <p class="tl-register__credit"><a href="{{ urls.pages.fieldnotes }}">Field photo credits</a></p>
+  </div>
+</footer>

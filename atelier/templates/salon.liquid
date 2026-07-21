@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Salon doors | {{ podcast.title | escape }}</title>
+</head>
+<body class="atelier-theme atelier-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Interviews in sharp light</p>
+        <h1 class="title display">Salon doors</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">Where the conversation continues after the shoot.</p>
+        {% if show.links %}{% if links.size > 0 %}
+        <div class="masthead-tags">
+          {% for link in links %}<a class="masthead-tag" href="{{ link.url | escape }}">{{ link.label | escape }}</a>{% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Add listen-on / social links in HarborFM to fill this page.</p>{% endif %}
+      </section>
+      {% if show.podroll %}{% if podroll.size > 0 %}
+      <section class="panel">
+        <h2>Also in rotation</h2>
+        <div class="salon-grid">
+          {% for show_item in podroll %}
+          <a class="salon-card" href="{{ show_item.home_url | escape }}">
+            {% if show_item.cover_art_url != "" %}<img src="{{ show_item.cover_art_url | escape }}" alt="" />{% endif %}
+            <span>{{ show_item.title | escape }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}{% endif %}
+      {% if show.reviews_podcast %}
+      <section class="panel reviews-block" aria-label="Listener notes">
+        <header class="reviews-block__head">
+          <h2>Listener notes</h2>
+        </header>
+        {% render 'harborfm/reviews' %}
+      </section>
+      {% endif %}
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="timberline-theme timberline-page-{{ page }}">
+  <div class="shell">
+    {% render '_pathhead', title: 'No blaze for this path', podcast: podcast, urls: urls %}
+    <main class="main">
+      <section class="panel">
+        <p class="lede">That spur is not on the map. Walk back to the trailhead.</p>
+        <div class="action-row">
+          <a class="btn-forest" href="{{ urls.home }}">Back to trailhead</a>
+        </div>
+      </section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+<nav class="bottom-nav" aria-label="Show pages">
+    <a href="{{ urls.home }}">Basecamp</a>
+    <a href="{{ urls.pages.podcast }}">Trail</a>
+    <a href="{{ urls.pages.guides }}">Guides</a>
+    <a href="{{ urls.pages.campfund }}">Camp Fund</a>
+    <a href="{{ urls.pages.fieldnotes }}">Field Notes</a>
+  </nav>
+  </div>
+</body>
+</html>

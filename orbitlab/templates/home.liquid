@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="orbitlab-theme orbitlab-page-{{ page }}">
+  <div class="orbit-wrap">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="console">
+      <img class="hero-img" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+      <p class="mono" style="color:var(--teal)">Deep dives from the console</p>
+      <h1 class="title">{{ podcast.title | escape }}</h1>
+      {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+
+      <div class="action-row">
+        <button type="button" class="btn-orbit" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+        <a class="btn-orbit-ghost" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+        <button type="button" class="btn-orbit-ghost" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+      </div>
+
+      <div class="data-row">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+      <section class="panel"><h2>Telemetry</h2>{% render 'harborfm/search' %}{% render 'harborfm/episodes' %}</section>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Matchday stills | {{ podcast.title | escape }}</title>
+</head>
+<body class="pitchside-theme pitchside-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <main class="main plates">
+      <header class="plates__head">
+        <p class="eyebrow">Match-day talk, no fluff</p>
+        <h1 class="title display">Matchday stills</h1>
+        <p class="plates__lede">Stadium and pitch photography in the Pitchside package, licensed from Unsplash. Each still links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/people-watching-soccer-game-in-stadium-hQBIJsBtyBw" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Crowd watching a soccer match in a stadium" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Crowd roar</p>
+          <p class="plate__file">hero.jpg · Home, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@kris1902" rel="noopener noreferrer">Krzysztof Dubiel</a>
+            on
+            <a href="https://unsplash.com/photos/people-watching-soccer-game-in-stadium-hQBIJsBtyBw" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/high-angel-photography-of-football-stadium-70YxSTWa2Zw" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="High-angle view of a football stadium" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Bowl view</p>
+          <p class="plate__file">a.jpg · Home match grid</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@marioklassen" rel="noopener noreferrer">Mario Klassen</a>
+            on
+            <a href="https://unsplash.com/photos/high-angel-photography-of-football-stadium-70YxSTWa2Zw" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/white-and-blue-soccer-ball-on-green-grass-field-OgqWLzWRSaI" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Soccer ball on a green grass field" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">On the grass</p>
+          <p class="plate__file">b.jpg · Home match grid</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@concoyne" rel="noopener noreferrer">Connor Coyne</a>
+            on
+            <a href="https://unsplash.com/photos/white-and-blue-soccer-ball-on-green-grass-field-OgqWLzWRSaI" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/man-playing-disc-golf-in-a-forest-_gVsi62PtfA" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Person playing disc golf among trees" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Park play</p>
+          <p class="plate__file">c.jpg · Home match grid</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@priscilladupreez" rel="noopener noreferrer">Priscilla Du Preez</a>
+            on
+            <a href="https://unsplash.com/photos/man-playing-disc-golf-in-a-forest-_gVsi62PtfA" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/triathlon-competitor-riding-aerodynamic-bike-on-road-mySLKs_r8uc" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Triathlete riding an aerodynamic bike on the road" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Road stage</p>
+          <p class="plate__file">d.jpg · Archive</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@timmossholder" rel="noopener noreferrer">Tim Mossholder</a>
+            on
+            <a href="https://unsplash.com/photos/triathlon-competitor-riding-aerodynamic-bike-on-road-mySLKs_r8uc" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+</body>
+</html>

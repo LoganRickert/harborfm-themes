@@ -1,0 +1,20 @@
+{% comment %}
+  Postcard card only. Expects: r, postcard_id.
+  Long notes use a short preview here; full text lives in _postcard_popover
+  outside the grid so it cannot inflate layout width.
+{% endcomment %}
+{% assign body_len = r.body | size %}
+{% assign long_note = false %}
+{% if body_len > 280 %}
+  {% assign long_note = true %}
+{% endif %}
+<article class="pc-card" role="listitem">
+  <div class="pc-stamp" aria-label="Rating {{ r.rating }} of 5">{{ r.rating }}/5</div>
+  {% if long_note %}
+    <p class="pc-body">{{ r.body | truncate: 220 | escape }}</p>
+    <button type="button" class="pc-more" popovertarget="{{ postcard_id }}">Show more</button>
+  {% else %}
+    <p class="pc-body">{{ r.body | escape }}</p>
+  {% endif %}
+  <p class="pc-address">{{ r.name | escape }}{% if r.verified %} · Verified traveler{% endif %}</p>
+</article>

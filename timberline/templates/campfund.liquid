@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Camp fund | {{ podcast.title | escape }}</title>
+</head>
+<body class="timberline-theme timberline-page-{{ page }}">
+  <div class="shell">
+    {% render '_pathhead', title: 'Camp fund', podcast: podcast, urls: urls %}
+    <main class="main">
+      <section class="panel">
+        <p class="lede">Chip in for fuel, permits, and hot coffee at the pass.</p>
+        {% if show.funding %}{% if funding_links.size > 0 %}
+        <div class="tag-row">
+          {% for f in funding_links %}<a class="tag tag-fund" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Add funding links in HarborFM to unlock this page.</p>{% endif %}
+      </section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+<nav class="bottom-nav" aria-label="Show pages">
+    <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Basecamp</a>
+    <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Trail</a>
+    <a href="{{ urls.pages.guides }}"{% if page == "guides" %} aria-current="page"{% endif %}>Guides</a>
+    <a href="{{ urls.pages.campfund }}"{% if page == "campfund" %} aria-current="page"{% endif %}>Camp Fund</a>
+    <a href="{{ urls.pages.fieldnotes }}"{% if page == "fieldnotes" %} aria-current="page"{% endif %}>Field Notes</a>
+  </nav>
+  </div>
+</body>
+</html>

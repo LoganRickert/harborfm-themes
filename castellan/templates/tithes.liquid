@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Tithes | {{ podcast.title | escape }}</title>
+</head>
+<body class="castellan-theme castellan-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    {% render '_pathhead', title: 'Tithes', podcast: podcast, urls: urls %}
+    <main class="main">
+      <section class="panel panel--parchment">
+        <p class="lede">Offerings for the keep: fuel the hearth, pay the scribes, keep the lamps lit.</p>
+        {% if show.funding %}{% if funding_links.size > 0 %}
+        <div class="tithe-row">
+          {% for f in funding_links %}<a class="tithe-tag" href="{{ f.url | escape }}">{{ f.text | escape }}</a>{% endfor %}
+        </div>
+        {% endif %}{% else %}<p class="lede">Add funding links in HarborFM to unlock this page.</p>{% endif %}
+      </section>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/d.jpg" alt="" />
+    </main>
+    {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    <nav class="battlement-nav" aria-label="Show pages">
+      <a href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Ramparts</a>
+      <a href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Chronicle</a>
+      <a href="{{ urls.pages.court }}"{% if page == "court" %} aria-current="page"{% endif %}>Court</a>
+      <a href="{{ urls.pages.tithes }}"{% if page == "tithes" %} aria-current="page"{% endif %}>Tithes</a>
+      <a href="{{ urls.pages.reliquary }}"{% if page == "reliquary" %} aria-current="page"{% endif %}>Reliquary</a>
+      <a href="{{ urls.pages.illuminations }}"{% if page == "illuminations" %} aria-current="page"{% endif %}>Illuminations</a>
+    </nav>
+  </div>
+</body>
+</html>

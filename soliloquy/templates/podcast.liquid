@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Episodes | {{ podcast.title | escape }}</title>
+</head>
+<body class="soliloquy-theme soliloquy-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+
+  <main class="sol-journal sol-journal--page">
+    <header class="sol-page-head">
+      <p class="sol-kicker">A room for unguarded thought</p>
+      <h1 class="sol-display sol-display--page">Episodes</h1>
+      {% if show.podcast_description %}{% if podcast.description != "" %}
+        <p class="sol-lede">{{ podcast.description | escape }}</p>
+      {% endif %}{% endif %}
+    </header>
+
+    <section class="sol-sheet sol-sheet--episodes">
+      <h2 class="sol-sheet__title">Table of entries</h2>
+      <p class="sol-lede sol-sheet__lede">Every monologue in the run, newest first.</p>
+      {% render 'harborfm/search' %}
+      {% render 'harborfm/episodes' %}
+    </section>
+  </main>
+
+  {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

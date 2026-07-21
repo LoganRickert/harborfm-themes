@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Page not found | {{ podcast.title | escape }}</title>
+</head>
+<body class="neonreel-theme neonreel-page-{{ page }}">
+  <div class="shell">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">End of reel</p>
+        <h1 class="title display">Scene missing</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">That cut never made the print. Back to the lobby for the next screening.</p>
+        <div class="action-row">
+          <a class="btn-pop" href="{{ urls.home }}">Return to lobby</a>
+        </div>
+      </section>
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Colophon | {{ podcast.title | escape }}</title>
+</head>
+<body class="stacks-theme stacks-page-{{ page }}">
+  <div class="layout">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div>
+    <main class="page plates">
+      <header class="plates__head">
+        <p class="eyebrow">Ideas between the shelves</p>
+        <h1 class="title display">Colophon</h1>
+        <p class="plates__lede">Library stills in the Stacks package, licensed from Unsplash. Each plate links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/assorted-title-book-lot-eeSdJfLfx1A" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Assorted books stacked by title" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Title stack</p>
+          <p class="plate__file">hero.jpg · Home, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@eddrobertson" rel="noopener noreferrer">Ed Robertson</a>
+            on
+            <a href="https://unsplash.com/photos/assorted-title-book-lot-eeSdJfLfx1A" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/brown-wooden-tables-inside-building-jo9eYA750V0" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Wooden tables inside a reading room" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Reading room</p>
+          <p class="plate__file">a.jpg · Home shelf</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@cameronstewart" rel="noopener noreferrer">Cameron Stewart</a>
+            on
+            <a href="https://unsplash.com/photos/brown-wooden-tables-inside-building-jo9eYA750V0" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/brown-and-blue-desk-globe-in-library-BpbkLACP64M" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Desk globe in a library setting" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Globe desk</p>
+          <p class="plate__file">b.jpg · Home shelf</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@jonathan_francisca" rel="noopener noreferrer">Jonathan Francisca</a>
+            on
+            <a href="https://unsplash.com/photos/brown-and-blue-desk-globe-in-library-BpbkLACP64M" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/brown-wooden-book-shelf-with-books-BEEyeib-am8" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Wooden bookshelf filled with books" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Open stacks</p>
+          <p class="plate__file">c.jpg · Home shelf</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@trnavskauni" rel="noopener noreferrer">Trnava University</a>
+            on
+            <a href="https://unsplash.com/photos/brown-wooden-book-shelf-with-books-BEEyeib-am8" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/brown-pencil-on-white-book-page-fVUl6kzIvLg" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Pencil resting on an open book page" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Margin notes</p>
+          <p class="plate__file">d.jpg · Package still</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@honza_kahanek" rel="noopener noreferrer">Jan Kahánek</a>
+            on
+            <a href="https://unsplash.com/photos/brown-pencil-on-white-book-page-fVUl6kzIvLg" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,522 @@
+.stacks-theme {
+  --ink: #1c1914; --muted: #5c5346; --bg: #f3ebe0; --panel: #fffaf2; --line: #d8cbb8;
+  --rust: var(--accent); --navy: #1e2a44; --font: "Libre Baskerville", "Source Sans 3", Georgia, serif;
+  margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+  font-family: "Source Sans 3", system-ui, sans-serif; color-scheme: light;
+}
+.stacks-theme h1, .stacks-theme .display { font-family: "Libre Baskerville", Georgia, serif; color: var(--navy); font-weight: 700; }
+.stacks-theme .layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+@media (max-width: 860px) { .stacks-theme .layout { grid-template-columns: 1fr; } }
+.stacks-theme .rail { position: sticky; top: 0; align-self: start; padding: 1.5rem 1rem; border-right: 1px solid var(--line);
+  background: #ebe2d4; min-height: 100vh; }
+@media (max-width: 860px) { .stacks-theme .rail { position: static; min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); } }
+.stacks-theme .rail a { display: block; padding: 0.35rem 0; color: var(--navy); text-decoration: none; font-weight: 600; }
+.stacks-theme .rail a[aria-current="page"] { color: var(--rust); }
+.stacks-theme .brand { font-family: "Libre Baskerville", serif; font-size: 1.25rem; margin-bottom: 1.25rem; display: block; color: var(--navy); text-decoration: none; }
+.stacks-theme .page { padding: 2rem 1.5rem 3rem; max-width: 720px; }
+.stacks-theme .hero-lib { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+.stacks-theme .hero-lib img { width: 100%; max-height: 320px; object-fit: cover; border: 1px solid var(--line); }
+.stacks-theme .title { font-size: clamp(2rem, 5vw, 3rem); margin: 0; line-height: 1.15; }
+.stacks-theme .lede { color: var(--muted); line-height: 1.7; }
+.stacks-theme .panel { background: var(--panel); border: 1px solid var(--line); padding: 1.25rem 1.35rem; margin: 1.25rem 0;
+  box-shadow: 4px 4px 0 rgba(30,42,68,0.06); }
+.stacks-theme .shelf-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem; }
+@media (max-width: 600px) { .stacks-theme .shelf-row { grid-template-columns: 1fr 1fr; } }
+.stacks-theme .shelf-row img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border: 1px solid var(--line); }
+.stacks-theme .credits-list { list-style: none; padding: 0; }
+.stacks-theme .credits-list li { margin: 0.85rem 0; }
+
+.stacks-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 8px;
+  overflow-x: clip;
+}
+.stacks-theme *,
+.stacks-theme *::before,
+.stacks-theme *::after { box-sizing: border-box; }
+.stacks-theme img { max-width: 100%; height: auto; }
+.stacks-theme [data-harborfm-block] { display: block; min-width: 0; max-width: 100%; }
+.stacks-theme [data-harborfm-block="show_header"] img {
+  width: 8rem !important;
+  height: 8rem !important;
+  max-width: 8rem !important;
+  object-fit: cover !important;
+}
+.stacks-theme .theme-figure { width: 100%; max-height: 360px; object-fit: cover; margin: 1rem 0; display: block; }
+@media (max-width: 720px) {
+  .stacks-theme .film-nav,
+  .stacks-theme .scorebar,
+  .stacks-theme .mag-top nav,
+  .stacks-theme .util nav,
+  .stacks-theme .topnav,
+  .stacks-theme .bottom-nav {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .stacks-theme .rail nav,
+  .stacks-theme .itinerary nav,
+  .stacks-theme .masonry { columns: 1 !important; }
+  .stacks-theme .panels > * { min-height: 140px; }
+  .stacks-theme .hero-bleed { min-height: 56vh; }
+  .stacks-theme .main,
+  .stacks-theme .page,
+  .stacks-theme .content,
+  .stacks-theme .console { padding-left: max(0.75rem, env(safe-area-inset-left)); padding-right: max(0.75rem, env(safe-area-inset-right)); }
+}
+
+.stacks-theme .eyebrow { color: var(--rust); font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: "Source Sans 3", sans-serif; }
+.stacks-theme .action-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+.stacks-theme .btn-stamp,
+.stacks-theme .btn-line { font-family: "Source Sans 3", sans-serif; font-weight: 600; font-size: 0.85rem; padding: 0.55rem 1rem;
+  border-radius: 2px; cursor: pointer; text-decoration: none; display: inline-block; }
+.stacks-theme .btn-stamp { background: var(--rust); color: var(--accent-fg, #fff8ef); border: 1px solid var(--rust); }
+.stacks-theme .btn-stamp:hover { background: color-mix(in srgb, var(--rust) 82%, black); color: var(--accent-fg, #fff8ef); }
+.stacks-theme .btn-line { background: transparent; color: var(--navy); border: 1px solid var(--line); }
+.stacks-theme .btn-line:hover { border-color: var(--navy); }
+.stacks-theme .catalogue-link { color: var(--rust); font-weight: 600; text-decoration: none; }
+.stacks-theme .fund-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.stacks-theme .fund-chip { border: 1px solid var(--line); color: var(--navy); padding: 0.4rem 0.75rem; font-size: 0.8rem; text-decoration: none; }
+
+@keyframes stk-underline-grow { 0% { width: 0; } 100% { width: 100%; } }
+@keyframes stk-fade-up { 0% { opacity: 0; transform: translateY(6px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes stk-dust { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.9; } }
+
+.stacks-theme .catalogue-link { position: relative; }
+.stacks-theme .catalogue-link::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; background: var(--rust);
+  width: 0; animation: stk-underline-grow 1.6s ease-out 0.3s forwards; }
+.stacks-theme .hero-lib { animation: stk-fade-up 0.8s ease-out; }
+.stacks-theme .eyebrow { animation: stk-dust 4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stacks-theme .catalogue-link::after,
+  .stacks-theme .hero-lib,
+  .stacks-theme .eyebrow {
+    animation: none;
+  }
+}
+
+.stacks-theme [data-harborfm-action] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+.stacks-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* harborfm-themed-dialogs */
+.stacks-theme [data-harborfm-dialog="feedback"],
+.stacks-theme [data-harborfm-dialog="alerts"],
+.stacks-theme [data-harborfm-dialog="share"],
+.stacks-theme [data-harborfm-dialog="subscription"],
+.stacks-theme [data-harborfm-dialog="review"] {
+  --bg: #f3ebe0;
+  --bg-elevated: #fffaf2;
+  --bg-muted: color-mix(in srgb, #f3ebe0 85%, #1c1914 15%);
+  --text: #1c1914;
+  --text-muted: #5c5346;
+  --border: #d8cbb8;
+  --radius: 2px;
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+  background: #fffaf2 !important;
+  border: 1px solid #d8cbb8 !important;
+  border-radius: 2px !important;
+  box-shadow: 6px 6px 0 rgba(30,42,68,0.12) !important;
+  color: #1c1914 !important;
+}
+.stacks-theme [data-harborfm-dialog-overlay="feedback"],
+.stacks-theme [data-harborfm-dialog-overlay="alerts"],
+.stacks-theme [data-harborfm-dialog-overlay="share"],
+.stacks-theme [data-harborfm-dialog-overlay="subscription"],
+.stacks-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(30, 42, 68, 0.4) !important;
+}
+.stacks-theme [data-harborfm-dialog] h2,
+.stacks-theme [data-harborfm-dialog] h3,
+.stacks-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: "Libre Baskerville", Georgia, serif !important;
+  color: #1c1914 !important;
+}
+.stacks-theme [data-harborfm-dialog] input,
+.stacks-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #fffaf2 70%, #f3ebe0) !important;
+  border: 1px solid #d8cbb8 !important;
+  border-radius: 2px !important;
+  color: #1c1914 !important;
+  font-family: inherit !important;
+}
+.stacks-theme [data-harborfm-dialog] input:focus,
+.stacks-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--rust, #b54a2a) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--rust, #b54a2a) 25%, transparent) !important;
+  outline: none !important;
+}
+.stacks-theme [data-harborfm-dialog] button {
+  border-radius: 2px !important;
+  font-family: inherit !important;
+}
+.stacks-theme [data-harborfm-dialog] button[type="submit"],
+.stacks-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.stacks-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--rust, #b54a2a) !important;
+  color: var(--accent-fg, #fff8ef) !important;
+  border: 1px solid var(--rust, #b54a2a) !important;
+  font-weight: 650 !important;
+}
+.stacks-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid #d8cbb8 !important;
+  color: #5c5346 !important;
+}
+.stacks-theme [data-harborfm-dialog] button[aria-label="Close"]:hover {
+  border-color: var(--rust, #b54a2a) !important;
+  color: #1c1914 !important;
+}
+
+
+
+/* reviews: book marginalia */
+.stacks-theme .reviews-block { margin: 1.5rem 0; }
+.stacks-theme .reviews-block__head h2 {
+  font-family: "Libre Baskerville", Georgia, serif; margin: 0 0 1rem; font-size: 1.45rem;
+}
+.stacks-theme .marginalia { display: grid; gap: 1.25rem; margin-bottom: 1rem; }
+.stacks-theme .margin-note {
+  display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.85rem 1rem; align-items: start;
+  padding: 0 0 1rem; border-bottom: 1px solid var(--line);
+}
+.stacks-theme .margin-note:last-child { border-bottom: none; }
+.stacks-theme .margin-stamp {
+  font-family: "Libre Baskerville", Georgia, serif; font-size: 1.35rem; font-weight: 700;
+  color: var(--accent-fg, #fff8ef); background: var(--rust);
+  width: 2.25rem; height: 2.25rem; display: grid; place-items: center;
+  transform: rotate(-6deg); box-shadow: 2px 2px 0 rgba(28,25,20,0.15);
+}
+.stacks-theme .margin-body {
+  grid-column: 2; margin: 0; font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.05rem; line-height: 1.55; color: var(--ink);
+  text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--rust) 45%, transparent);
+  text-underline-offset: 0.28em; text-decoration-thickness: 1px;
+}
+.stacks-theme .margin-shelf {
+  grid-column: 2; margin: 0.45rem 0 0; font-size: 0.78rem; color: var(--muted);
+  font-variant: small-caps; letter-spacing: 0.04em;
+}
+
+/* Stripe plan cards stay rectangular; do not inherit pill CTAs */
+.stacks-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 10px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* unique-site-footer */
+.stacks-theme .site-foot.st-plate {
+  margin: 2.5rem 1.5rem 2rem; display: flex; justify-content: center;
+}
+.stacks-theme .st-plate-inner {
+  width: min(100%, 28rem); border: 2px double var(--navy); background: #fffaf2;
+  padding: 1.35rem 1.5rem; text-align: center;
+  box-shadow: 8px 8px 0 rgba(30,42,68,0.08); transform: rotate(-0.6deg);
+}
+.stacks-theme .st-plate-stamp {
+  margin: 0; font-family: "Libre Baskerville", Georgia, serif; font-style: italic;
+  color: var(--rust); letter-spacing: 0.08em;
+}
+.stacks-theme .st-plate-title {
+  margin: 0.4rem 0 0; font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 1.45rem; color: var(--navy); line-height: 1.2;
+}
+.stacks-theme .st-plate-meta { margin: 0.35rem 0 1rem; color: var(--muted); font-size: 0.85rem; }
+.stacks-theme .st-plate-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1.25rem; }
+.stacks-theme .st-plate-links a {
+  color: var(--rust); text-decoration: none; font-weight: 600; font-size: 0.9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--rust) 35%, transparent);
+}
+.stacks-theme .st-plate-links a:hover { border-bottom-color: var(--rust); }
+
+.stacks-theme .st-plate-meta a { color: var(--rust); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--rust) 40%, transparent); }
+.stacks-theme .st-plate-meta a:hover { border-bottom-color: var(--rust); }
+
+.stacks-theme .rail .brand { margin-bottom: 0; }
+@media (min-width: 861px) {
+  .stacks-theme .rail .brand { margin-bottom: 1.25rem; }
+}
+
+.stacks-theme .brand { margin-bottom: 0; }
+@media (min-width: 861px) {
+  .stacks-theme .brand { margin-bottom: 1rem; }
+}
+/* mobile hamburger nav */
+.stacks-theme .rail { position: relative; z-index: 20; }
+.stacks-theme .terminal-bar,
+.stacks-theme .rail-bar,
+.stacks-theme .itinerary-bar {
+  display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 0.65rem 1rem;
+}
+.stacks-theme .nav-menu { margin: 0; position: static; flex: 0 0 auto; }
+.stacks-theme .nav-menu__toggle {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; border-radius: 8px; border: 1px solid var(--line);
+  background: #ebe2d4; color: var(--navy);
+}
+.stacks-theme .nav-menu__toggle::-webkit-details-marker { display: none; }
+.stacks-theme .nav-menu__icon,
+.stacks-theme .nav-menu__icon::before,
+.stacks-theme .nav-menu__icon::after {
+  display: block; width: 1.1rem; height: 2px; border-radius: 1px; background: currentColor; position: relative;
+}
+.stacks-theme .nav-menu__icon::before,
+.stacks-theme .nav-menu__icon::after { content: ""; position: absolute; left: 0; }
+.stacks-theme .nav-menu__icon::before { top: -6px; }
+.stacks-theme .nav-menu__icon::after { top: 6px; }
+@media (max-width: 860px) {
+  .stacks-theme .brand { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .stacks-theme .nav-menu nav {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 30;
+    display: flex; flex-direction: column; gap: 0.1rem;
+    padding: 0.75rem 1rem 1rem; background: #ebe2d4; border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  }
+  .stacks-theme .nav-menu nav a { display: block; padding: 0.55rem 0.35rem; }
+}
+@media (min-width: 861px) {
+  /* Closed <details> stays hidden via ::details-content in Chromium; force open on desktop. */
+  .stacks-theme .nav-menu::details-content {
+    display: contents;
+    content-visibility: visible;
+    height: auto;
+    overflow: visible;
+  }
+
+  .stacks-theme .terminal-bar,
+  .stacks-theme .rail-bar,
+  .stacks-theme .itinerary-bar { display: block; }
+  .stacks-theme .nav-menu__toggle { display: none; }
+  .stacks-theme .nav-menu nav {
+    position: static !important; display: block !important; min-width: 0; padding: 0;
+    background: transparent; border: 0; box-shadow: none;
+  }
+  .stacks-theme .nav-menu nav a { display: block; padding: 0.35rem 0; }
+}
+
+/* episode card skin */
+.stacks-theme .ep-crumbs--stacks {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 0.55rem; align-items: center;
+  margin: 0 0 0.85rem; font-size: 0.85rem; font-weight: 650;
+}
+.stacks-theme .ep-crumbs--stacks a { color: var(--rust); text-decoration: none; }
+.stacks-theme .ep-crumbs--stacks span { color: var(--muted); }
+.stacks-theme .ep-mast--stacks {
+  margin: 0 0 0.85rem; padding: 0 0 0.75rem; border-bottom: 2px solid var(--navy);
+}
+.stacks-theme .ep-mast__shelf {
+  margin: 0 0 0.3rem; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust);
+}
+.stacks-theme .ep-player--stacks { margin: 0.85rem 0 1.5rem; }
+.stacks-theme .ep-player--stacks [data-harborfm-episode-card] {
+  background: var(--panel) !important; border: 1px solid var(--line) !important;
+  border-radius: 0 !important; padding: 0 !important;
+  box-shadow: 5px 5px 0 rgba(30,42,68,0.1);
+}
+.stacks-theme .ep-player--stacks [data-harborfm-episode-header] {
+  margin: 0 !important; padding: 1.25rem 1.35rem !important; border: 0 !important;
+  border-bottom: 1px solid var(--line) !important; gap: 1rem !important;
+}
+.stacks-theme .ep-player--stacks [data-harborfm-episode-row] {
+  display: grid !important; grid-template-columns: 8.5rem 1fr !important; gap: 1.15rem !important;
+  align-items: start !important;
+}
+.stacks-theme .ep-player--stacks [data-harborfm-episode-artwork] {
+  width: 8.5rem !important; height: 11rem !important; border-radius: 0 !important;
+  border: 1px solid var(--line) !important; object-fit: cover !important;
+}
+.stacks-theme .ep-player--stacks [data-harborfm-episode-title] {
+  font-family: "Libre Baskerville", Georgia, serif !important; color: var(--navy) !important;
+  font-size: clamp(1.7rem, 4vw, 2.5rem) !important; line-height: 1.2 !important; margin: 0 !important;
+}
+.stacks-theme .ep-player--stacks [data-harborfm-episode-meta] { color: var(--rust) !important; font-weight: 700; }
+.stacks-theme .ep-player--stacks [data-harborfm-episode-actions] button {
+  border-radius: 0 !important; border: 1px solid var(--navy) !important;
+  background: transparent !important; color: var(--navy) !important; font-weight: 650;
+}
+.stacks-theme .ep-player--stacks [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  padding: 1.15rem 1.35rem !important;
+}
+@media (max-width: 640px) {
+  .stacks-theme .ep-player--stacks [data-harborfm-episode-row] { grid-template-columns: 1fr !important; }
+  .stacks-theme .ep-player--stacks [data-harborfm-episode-artwork] { width: 100% !important; height: 12rem !important; }
+}
+
+/* credit plate wall */
+.stacks-theme .plates { margin-top: 0.25rem; }
+.stacks-theme .plates__head { margin: 0 0 1.35rem; }
+.stacks-theme .plates__lede {
+  margin: 0.5rem 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.55;
+}
+.stacks-theme .plate-wall {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.85rem;
+}
+.stacks-theme .plate {
+  grid-column: span 2; min-width: 0;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.stacks-theme .plate:nth-child(1),
+.stacks-theme .plate:nth-child(2) { grid-column: span 3; }
+.stacks-theme .plate__frame {
+  display: block; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 80%, transparent);
+  overflow: clip; line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.stacks-theme .plate__frame:hover {
+  border-color: var(--rust);
+  transform: translateY(-2px);
+}
+.stacks-theme .plate__frame img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+}
+.stacks-theme .plate:nth-child(1) .plate__frame img,
+.stacks-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 16 / 10; }
+.stacks-theme .plate__meta { min-width: 0; }
+.stacks-theme .plate__name {
+  margin: 0; font-weight: 700; letter-spacing: -0.02em; font-size: 1.15rem; color: var(--ink);
+}
+.stacks-theme .plate__file {
+  margin: 0.15rem 0 0; font-size: 0.75rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--muted); font-weight: 650;
+}
+.stacks-theme .plate__by {
+  margin: 0.35rem 0 0; font-size: 0.95rem; line-height: 1.45; color: var(--ink);
+}
+.stacks-theme .plate__by a { color: var(--rust); font-weight: 650; text-decoration: none; }
+.stacks-theme .plate__by a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .stacks-theme .plate-wall { grid-template-columns: 1fr 1fr; }
+  .stacks-theme .plate,
+  .stacks-theme .plate:nth-child(1),
+  .stacks-theme .plate:nth-child(2) { grid-column: span 1; }
+  .stacks-theme .plate:nth-child(1) .plate__frame img,
+  .stacks-theme .plate:nth-child(2) .plate__frame img { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 560px) {
+  .stacks-theme .plate-wall { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stacks-theme .plate__frame:hover { transform: none; }
+}
+/* episodes list skin */
+.stacks-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.85rem !important;
+  border: none !important;
+}
+.stacks-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 4px !important;
+  padding: 1.1rem 1.2rem !important;
+  box-shadow: 3px 3px 0 rgba(30, 42, 68, 0.08) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+.stacks-theme [data-harborfm-episode-item]:hover {
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 5px 5px 0 rgba(30, 42, 68, 0.12) !important;
+  border-color: color-mix(in srgb, var(--rust) 35%, var(--line)) !important;
+  background: #fffaf2 !important;
+}
+.stacks-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.8rem !important;
+  min-width: 0 !important;
+}
+.stacks-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: "Libre Baskerville", Georgia, serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+}
+.stacks-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted) !important;
+  font-size: 0.8rem !important;
+  font-style: italic !important;
+}
+.stacks-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  border-radius: 3px !important;
+  background: var(--navy) !important;
+  color: #fffaf2 !important;
+  border: none !important;
+  padding: 0.4rem 0.8rem !important;
+  font-weight: 650 !important;
+  font-size: 0.8rem !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+.stacks-theme [data-harborfm-episode-item-link]:hover {
+  background: var(--rust) !important;
+}
+.stacks-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  color: var(--muted) !important;
+  margin: 0.6rem 0 0 !important;
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+.stacks-theme [data-harborfm-episode-item-type] {
+  border-radius: 3px !important;
+  background: color-mix(in srgb, var(--rust) 14%, #fff) !important;
+  color: var(--rust) !important;
+  border: 1px solid color-mix(in srgb, var(--rust) 30%, var(--line)) !important;
+}
+.stacks-theme [data-harborfm-episodes-load-more] {
+  border-radius: 3px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--navy) !important;
+  font-weight: 650 !important;
+  box-shadow: 2px 2px 0 rgba(30, 42, 68, 0.08) !important;
+}
+/* reviews mount (paged ReviewsCard) */
+.stacks-theme .reviews-block [data-harborfm-reviews-title] { display: none !important; }
+.stacks-theme .reviews-block [data-harborfm-reviews] {
+  margin: 0 !important; padding: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important;
+}
+.stacks-theme .reviews-block [data-harborfm-reviews-list] {
+  list-style: none !important; margin: 0 0 1rem !important; padding: 0 !important;
+  display: flex !important; flex-direction: column !important; gap: 0.85rem !important;
+}
+.stacks-theme .reviews-block [data-harborfm-review] {
+  min-width: 0 !important; background: var(--panel) !important; border: 1px solid var(--line) !important;
+  border-radius: 4px !important; box-shadow: 3px 3px 0 rgba(30,42,68,0.08) !important; padding: 1rem 1.1rem !important;
+}
+.stacks-theme .reviews-block [data-harborfm-review-name] {
+  font-family: "Libre Baskerville", Georgia, serif !important; color: var(--navy) !important; font-weight: 700 !important;
+}
+.stacks-theme .reviews-block [data-harborfm-reviews-write],
+.stacks-theme .reviews-block [data-harborfm-reviews-load-more] {
+  border-radius: 3px !important; border: 1px solid var(--line) !important; background: var(--panel) !important;
+  color: var(--navy) !important; font-weight: 650 !important; box-shadow: 2px 2px 0 rgba(30,42,68,0.08) !important;
+}
+.stacks-theme .reviews-block [data-harborfm-reviews-write] {
+  background: var(--navy) !important; color: #fffaf2 !important; border: none !important;
+}

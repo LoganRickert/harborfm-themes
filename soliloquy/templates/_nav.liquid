@@ -1,0 +1,13 @@
+<header class="sol-mast">
+  <a class="sol-wordmark" href="{{ urls.home }}">{{ podcast.title | escape }}</a>
+  <details class="nav-menu">
+    <summary class="nav-menu__toggle" aria-label="Menu"><span class="nav-menu__icon" aria-hidden="true"></span></summary>
+    <nav class="sol-mast-nav" aria-label="Show pages">
+      <a class="sol-link-grow" href="{{ urls.home }}"{% if page == "home" %} aria-current="page"{% endif %}>Opening</a>
+      <a class="sol-link-grow" href="{{ urls.pages.podcast }}"{% if page == "podcast" %} aria-current="page"{% endif %}>Episodes</a>
+      <a class="sol-link-grow" href="{{ urls.pages.voices }}"{% if page == "voices" %} aria-current="page"{% endif %}>Voices</a>
+      <a class="sol-link-grow" href="{{ urls.pages.support }}"{% if page == "support" %} aria-current="page"{% endif %}>Support</a>
+      <a class="sol-link-grow" href="{{ urls.pages.plates }}"{% if page == "plates" %} aria-current="page"{% endif %}>Plates</a>
+    </nav>
+  </details>
+</header>

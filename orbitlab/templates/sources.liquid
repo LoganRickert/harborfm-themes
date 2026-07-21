@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Imagery sources | {{ podcast.title | escape }}</title>
+</head>
+<body class="orbitlab-theme orbitlab-page-{{ page }}">
+  <div class="orbit-wrap">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="console plates">
+      <header class="plates__head">
+        <p class="eyebrow">Deep dives from the console</p>
+        <h1 class="title display">Imagery sources</h1>
+        <p class="plates__lede">Telemetry stills in the Orbit Lab package, licensed from Unsplash. Each source links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/a-glowing-red-moon-reflects-in-water-over-alien-landscape-dFQKK08lHfU" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Glowing red moon reflected over an alien landscape" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Red moon</p>
+          <p class="plate__file">hero.jpg · Home, Briefing, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@a_chosensoul" rel="noopener noreferrer">A Chosen Soul</a>
+            on
+            <a href="https://unsplash.com/photos/a-glowing-red-moon-reflects-in-water-over-alien-landscape-dFQKK08lHfU" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/red-nebula-surrounded-by-countless-stars-in-deep-space-lHJGcfT7wyM" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Red nebula surrounded by stars" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Nebula field</p>
+          <p class="plate__file">a.jpg · Home data grid</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@fourmis" rel="noopener noreferrer">thibault henry</a>
+            on
+            <a href="https://unsplash.com/photos/red-nebula-surrounded-by-countless-stars-in-deep-space-lHJGcfT7wyM" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/dna-double-helix-render-on-blue-Mm1VIPqd0OA" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="DNA double helix render on blue" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Helix sample</p>
+          <p class="plate__file">b.jpg · Home data grid</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@3dparadise" rel="noopener noreferrer">Braňo</a>
+            on
+            <a href="https://unsplash.com/photos/dna-double-helix-render-on-blue-Mm1VIPqd0OA" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/woman-in-white-robe-sitting-on-black-office-rolling-chair-uVnRa6mOLOM" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Scientist seated at a lab workstation" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Lab bench</p>
+          <p class="plate__file">c.jpg · Home data grid</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@nci" rel="noopener noreferrer">National Cancer Institute</a>
+            on
+            <a href="https://unsplash.com/photos/woman-in-white-robe-sitting-on-black-office-rolling-chair-uVnRa6mOLOM" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/black-and-silver-coffee-maker-on-white-wooden-table-_9xRHrMOjeg" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Lab glassware on a white table" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Instrument tray</p>
+          <p class="plate__file">d.jpg · Archive</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@trnavskauni" rel="noopener noreferrer">Trnava University</a>
+            on
+            <a href="https://unsplash.com/photos/black-and-silver-coffee-maker-on-white-wooden-table-_9xRHrMOjeg" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

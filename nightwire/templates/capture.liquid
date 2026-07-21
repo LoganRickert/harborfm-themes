@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Capture log | {{ podcast.title | escape }}</title>
+</head>
+<body class="nightwire-theme nightwire-page-{{ page }}">
+  <div class="hud">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <div class="stage plates">
+      <div class="glitch" style="top:12%" aria-hidden="true"></div>
+      <div class="glitch g2" aria-hidden="true"></div>
+
+      <header class="plates__head">
+        <p class="eyebrow">Underground signal, open channel</p>
+        <h1 class="title display">Capture log</h1>
+        <p class="plates__lede">Still frames in the Nightwire package, licensed from Unsplash. Each capture links to the original.</p>
+      </header>
+
+      <ul class="plate-wall">
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/silhouette-of-man-standing-on-the-ground-vzEeVwUgTmI" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="Silhouette of a person against a bright ground" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Signal silhouette</p>
+          <p class="plate__file">hero.jpg · Home, gallery preview</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@adamneumann" rel="noopener noreferrer">Adam Neumann</a>
+            on
+            <a href="https://unsplash.com/photos/silhouette-of-man-standing-on-the-ground-vzEeVwUgTmI" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/architectural-photography-alleyway-4pTY4ty7jXM" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="Architectural alleyway with repeating lines" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Alley grid</p>
+          <p class="plate__file">a.jpg · Home log strip</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@chengfengrecord" rel="noopener noreferrer">cheng feng</a>
+            on
+            <a href="https://unsplash.com/photos/architectural-photography-alleyway-4pTY4ty7jXM" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/aerial-view-of-a-vibrant-bustling-city-intersection-at-night-HGP3Brk6Flk" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="Aerial view of a busy city intersection at night" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Night junction</p>
+          <p class="plate__file">b.jpg · Home log strip</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@verycore" rel="noopener noreferrer">André Filipe</a>
+            on
+            <a href="https://unsplash.com/photos/aerial-view-of-a-vibrant-bustling-city-intersection-at-night-HGP3Brk6Flk" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/woman-in-black-framed-eyeglasses-and-brown-fur-coat-Lme2Ye2jVo8" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="Person in glasses and a fur coat" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Street contact</p>
+          <p class="plate__file">c.jpg · Home log strip</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@wilmerlens" rel="noopener noreferrer">Wilmer Martinez</a>
+            on
+            <a href="https://unsplash.com/photos/woman-in-black-framed-eyeglasses-and-brown-fur-coat-Lme2Ye2jVo8" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+
+      <li class="plate">
+        <a class="plate__frame" href="https://unsplash.com/photos/historic-stone-archway-illuminated-at-dusk-with-blurred-vehicle-lights-Jh0hcMvYXYI" rel="noopener noreferrer">
+          <img src="{{ urls.theme_asset_base }}/images/d.jpg" alt="Stone archway lit at dusk with vehicle lights" />
+        </a>
+        <div class="plate__meta">
+          <p class="plate__name">Arch after dark</p>
+          <p class="plate__file">d.jpg · Feed</p>
+          <p class="plate__by">
+            Photo by
+            <a href="https://unsplash.com/@lessmondays" rel="noopener noreferrer">Ionut Vlad</a>
+            on
+            <a href="https://unsplash.com/photos/historic-stone-archway-illuminated-at-dusk-with-blurred-vehicle-lights-Jh0hcMvYXYI" rel="noopener noreferrer">Unsplash</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</div>
+  </div>
+</body>
+</html>

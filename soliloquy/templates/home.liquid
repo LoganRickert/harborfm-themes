@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="soliloquy-theme soliloquy-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+
+  <main class="sol-journal">
+    <section class="sol-opening">
+      <figure class="sol-opening__hero">
+        <img src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+      </figure>
+      <div class="sol-opening__body">
+        {% if podcast.artwork_url != "" %}
+          <img class="sol-opening__art" src="{{ podcast.artwork_url | escape }}" alt="" width="128" height="128" />
+        {% endif %}
+        <p class="sol-kicker">A room for unguarded thought</p>
+        <h1 class="sol-display">{{ podcast.title | escape }}</h1>
+        {% if show.podcast_description %}{% if podcast.description != "" %}
+          <p class="sol-lede sol-lede--opening">{{ podcast.description | escape }}</p>
+        {% endif %}{% endif %}
+        <div class="sol-actions">
+          <button type="button" class="sol-btn-fill" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+          <a class="sol-btn-line" href="{{ urls.pages.podcast }}"><i class="fa-solid fa-list" aria-hidden="true"></i> Browse episodes</a>
+          <a class="sol-btn-line" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+          <button type="button" class="sol-btn-line" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sol-moments" aria-label="Image moments">
+      <p class="sol-moments__label">In the margins</p>
+      <div class="sol-moments__strip">
+        <figure class="sol-moment">
+          <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" />
+        </figure>
+        <figure class="sol-moment">
+          <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" />
+        </figure>
+        <figure class="sol-moment">
+          <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

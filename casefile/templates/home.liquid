@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>{{ podcast.title | escape }} | {{ site.name | escape }}</title>
+</head>
+<body class="casefile-theme casefile-page-{{ page }}">
+  <div class="dossier">
+    {% render '_nav', podcast: podcast, urls: urls, page: page %}
+    <div class="dossier-main">
+      <header class="briefing-hero">
+        <img class="briefing-hero__scene" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+        <div class="briefing-hero__panel">
+          <p class="eyebrow">Noir dossier, open file</p>
+          {% if podcast.artwork_url != "" %}
+          <img class="briefing-hero__cover" src="{{ podcast.artwork_url | escape }}" alt="" width="152" height="152" />
+          {% endif %}
+          <h1 class="title display">{{ podcast.title | escape }}</h1>
+          {% if show.podcast_description %}{% if podcast.description != "" %}<p class="lede">{{ podcast.description | escape }}</p>{% endif %}{% endif %}
+          <div class="action-row">
+            <button type="button" class="btn-stamp" data-harborfm-action="subscribe"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i> Subscribe</button>
+            <a class="btn-outline" data-harborfm-action="feed"><i class="fa-solid fa-rss" aria-hidden="true"></i> Feed</a>
+            <button type="button" class="btn-outline" data-harborfm-action="share"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share</button>
+            <button type="button" class="btn-outline" data-harborfm-action="message"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Message</button>
+            <button type="button" class="btn-outline" data-harborfm-action="alerts"><i class="fa-solid fa-bell" aria-hidden="true"></i> Alerts</button>
+          </div>
+          <a class="briefing-link" href="{{ urls.pages.podcast }}">Open case log &rarr;</a>
+        </div>
+      </header>
+
+      <div class="evidence-strip">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" />
+        <img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+
+      {% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+    </div>
+  </div>
+</body>
+</html>

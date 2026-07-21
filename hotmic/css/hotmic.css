@@ -1,0 +1,1027 @@
+.hotmic-theme {
+  --ink: #f5eef8;
+  --muted: #9a8fa8;
+  --bg: #141218;
+  --panel: #1c1824;
+  --line: #3a2f48;
+  --brick: #141218;
+  --warm: #ffb347;
+  --spot: var(--accent);
+  --display-font: "Bebas Neue", sans-serif;
+  --body-font: "Outfit", system-ui, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body-font);
+  color-scheme: dark;
+}
+
+.hotmic-theme {
+  --bg-elevated: var(--panel);
+  --bg-muted: color-mix(in srgb, var(--bg) 88%, var(--ink) 12%);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --border: var(--line);
+  --error: #dc2626;
+  --success: #059669;
+  --radius: 6px;
+  overflow-x: clip;
+}
+
+.hotmic-theme *,
+.hotmic-theme *::before,
+.hotmic-theme *::after { box-sizing: border-box; }
+
+.hotmic-theme img { max-width: 100%; height: auto; }
+
+.hotmic-theme h1,
+.hotmic-theme h2,
+.hotmic-theme .hm-display {
+  font-family: var(--display-font);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+}
+
+.hotmic-theme [data-harborfm-block] {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hotmic-theme [data-harborfm-block="show_header"] img {
+  width: 8rem !important;
+  height: 8rem !important;
+  max-width: 8rem !important;
+  object-fit: cover !important;
+}
+
+/* marquee bar */
+.hotmic-theme .hm-marquee {
+  overflow: hidden;
+  background: var(--spot);
+  color: var(--accent-fg, #141218);
+  border-bottom: 2px solid color-mix(in srgb, var(--spot) 70%, black);
+  font-family: var(--display-font);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hotmic-theme .hm-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: hm-marquee-scroll 48s linear infinite;
+  will-change: transform;
+}
+
+.hotmic-theme .hm-marquee__group {
+  flex: 0 0 auto;
+  box-sizing: content-box;
+  min-width: 100vw;
+  padding: 0.45rem 0;
+  white-space: nowrap;
+}
+
+/* top bar + nav */
+.hotmic-theme .hm-topbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(180deg, #1a1522, var(--brick));
+  border-bottom: 3px solid var(--spot);
+  font-family: var(--display-font);
+  font-size: 1.15rem;
+  position: relative;
+}
+
+.hotmic-theme .hm-brand {
+  color: var(--ink);
+  text-decoration: none;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hotmic-theme .hm-brand strong { font-weight: 400; }
+
+.hotmic-theme .hm-topbar a { color: inherit; text-decoration: none; opacity: 0.92; }
+.hotmic-theme .hm-topbar a[aria-current="page"] {
+  color: var(--spot);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.hotmic-theme .hm-shell { min-height: 100vh; display: flex; flex-direction: column; }
+
+.hotmic-theme .hm-main {
+  width: min(1080px, 100% - 2rem);
+  margin: 0 auto 2.5rem;
+  flex: 1;
+}
+
+/* hero */
+.hotmic-theme .hm-hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 58vh;
+  border-bottom: 4px solid var(--line);
+}
+
+.hotmic-theme .hm-hero__copy {
+  padding: 2rem 1.5rem;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, color-mix(in srgb, var(--spot) 18%, transparent), transparent),
+    linear-gradient(160deg, #1c1824 50%, var(--brick));
+  position: relative;
+}
+
+.hotmic-theme .hm-hero__copy::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 8%;
+  bottom: 8%;
+  width: 14px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--brick) 0 6px,
+    transparent 6px 12px
+  );
+}
+
+.hotmic-theme .hm-hero__photo {
+  background: #0a080c center/cover no-repeat;
+  min-height: 280px;
+  box-shadow:
+    inset 0 0 80px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 3px color-mix(in srgb, var(--spot) 35%, transparent);
+  animation: hm-neon-pulse 4.5s ease-in-out infinite;
+}
+
+.hotmic-theme .hm-neon-label {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: clamp(3rem, 12vw, 5.5rem);
+  color: var(--spot);
+  text-shadow:
+    0 0 8px var(--accent-glow, var(--spot)),
+    0 0 24px color-mix(in srgb, var(--spot) 55%, transparent),
+    0 0 48px color-mix(in srgb, var(--warm) 35%, transparent);
+  animation: hm-neon-flicker 5s steps(1) infinite;
+  line-height: 1;
+}
+
+.hotmic-theme .hm-kicker {
+  color: var(--warm);
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+}
+
+.hotmic-theme .hm-display {
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  margin: 0.15rem 0 0.5rem;
+  color: var(--ink);
+}
+
+.hotmic-theme .hm-lede {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.hotmic-theme .hm-page-head { margin: 1.5rem 0 0.75rem; }
+
+/* ticket-stub CTAs */
+.hotmic-theme .hm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.hotmic-theme .hm-ticket,
+.hotmic-theme .hm-ticket--ghost {
+  font-family: var(--display-font);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.15rem 0.65rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  border: none;
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%, 10px 50%);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.hotmic-theme .hm-ticket {
+  background: var(--spot);
+  color: var(--accent-fg, #141218);
+  animation: hm-ticket-glow 3.2s ease-in-out infinite;
+}
+
+.hotmic-theme .hm-ticket:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+.hotmic-theme .hm-ticket--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--line);
+  clip-path: none;
+  border-radius: 2px;
+}
+
+.hotmic-theme .hm-ticket--ghost:hover {
+  border-color: var(--spot);
+  color: var(--spot);
+}
+
+.hotmic-theme [data-harborfm-action] i {
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+/* panels + strips */
+.hotmic-theme .hm-stage-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 1.25rem 1.35rem;
+  margin: 1.25rem 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.hotmic-theme .hm-stage-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.65rem;
+  color: var(--spot);
+}
+
+.hotmic-theme .hm-spotlight-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
+}
+
+.hotmic-theme .hm-spotlight-strip img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 2px solid var(--line);
+  filter: saturate(1.08) contrast(1.05);
+  transition: border-color 0.18s ease;
+}
+
+.hotmic-theme .hm-spotlight-strip img:hover { border-color: var(--spot); }
+
+.hotmic-theme .hm-figure {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  margin: 1rem 0;
+  display: block;
+  border: 2px solid var(--line);
+}
+
+/* green room */
+.hotmic-theme .hm-comic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: 0.85rem;
+}
+
+.hotmic-theme .hm-comic-card {
+  background: #12101a;
+  border: 2px solid var(--line);
+  padding: 0.85rem;
+}
+
+.hotmic-theme .hm-comic-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin-bottom: 0.55rem;
+  border: 2px solid var(--spot);
+}
+
+.hotmic-theme .hm-comic-name {
+  font-family: var(--display-font);
+  font-size: 1.25rem;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.hotmic-theme .hm-comic-role {
+  color: var(--warm);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0.1rem 0;
+}
+
+.hotmic-theme .hm-comic-desc {
+  font-size: 0.85rem;
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.hotmic-theme .hm-backstage-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.hotmic-theme .hm-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hotmic-theme .hm-chip {
+  border: 2px solid var(--line);
+  color: var(--ink);
+  padding: 0.42rem 0.85rem;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hotmic-theme .hm-chip--listen { border-color: var(--spot); color: var(--spot); }
+.hotmic-theme .hm-chip--social { border-color: var(--warm); color: var(--warm); }
+.hotmic-theme .hm-chip--fund { border-color: color-mix(in srgb, var(--spot) 60%, var(--warm)); color: color-mix(in srgb, var(--spot) 50%, var(--warm)); }
+
+/* footer */
+.hotmic-theme .hm-foot {
+  margin-top: auto;
+  background: linear-gradient(180deg, #100e16, #0a080e);
+  border-top: 4px solid var(--spot);
+  color: var(--ink);
+}
+
+.hotmic-theme .hm-foot__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  font-family: var(--display-font);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hotmic-theme .hm-foot__badge {
+  background: var(--spot);
+  color: var(--accent-fg, #141218);
+  font-size: 0.85rem;
+  padding: 0.2rem 0.55rem;
+}
+
+.hotmic-theme .hm-foot__badge-dim {
+  background: #2a2438;
+  color: var(--muted);
+}
+
+.hotmic-theme .hm-foot__title {
+  font-size: 1.35rem;
+  text-align: center;
+  flex: 1;
+}
+
+.hotmic-theme .hm-foot__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+  padding: 0.75rem 1.25rem 1.1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.hotmic-theme .hm-foot__links a {
+  color: var(--spot);
+  text-decoration: none;
+  font-family: var(--display-font);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hotmic-theme .hm-foot__links a:hover { color: var(--ink); }
+
+.hotmic-theme .hm-foot__credit {
+  margin-left: auto;
+  color: var(--muted);
+  font-family: var(--body-font);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.hotmic-theme .hm-foot__credit a { color: var(--spot); }
+
+/* mobile nav */
+.hotmic-theme .hm-nav-menu { margin: 0 0 0 auto; position: static; }
+
+.hotmic-theme .hm-nav-menu__toggle {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 4px;
+  border: 2px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.hotmic-theme .hm-nav-menu__toggle::-webkit-details-marker { display: none; }
+
+.hotmic-theme .hm-nav-menu__icon,
+.hotmic-theme .hm-nav-menu__icon::before,
+.hotmic-theme .hm-nav-menu__icon::after {
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  position: relative;
+}
+
+.hotmic-theme .hm-nav-menu__icon::before,
+.hotmic-theme .hm-nav-menu__icon::after { content: ""; position: absolute; left: 0; }
+
+.hotmic-theme .hm-nav-menu__icon::before { top: -6px; }
+.hotmic-theme .hm-nav-menu__icon::after { top: 6px; }
+
+@media (max-width: 759px) {
+  .hotmic-theme .hm-nav-menu nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.75rem 1rem 1rem;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  }
+
+  .hotmic-theme .hm-nav-menu nav a { display: block; padding: 0.55rem 0.35rem; }
+}
+
+@media (min-width: 760px) {
+  .hotmic-theme .hm-nav-menu::details-content {
+    display: contents;
+    content-visibility: visible;
+    height: auto;
+    overflow: visible;
+  }
+
+  .hotmic-theme .hm-nav-menu__toggle { display: none; }
+
+  .hotmic-theme .hm-nav-menu nav {
+    position: static !important;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.85rem;
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hotmic-theme .hm-spotlight-strip { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 800px) {
+  .hotmic-theme .hm-hero { grid-template-columns: 1fr; }
+  .hotmic-theme .hm-hero__copy::after { display: none; }
+  .hotmic-theme .hm-hero__photo {
+    width: min(360px, 72vw);
+    aspect-ratio: 1;
+    min-height: 0;
+    max-height: none;
+    justify-self: center;
+    margin: 0.75rem auto 1.25rem;
+  }
+  .hotmic-theme .hm-foot__credit { margin-left: 0; width: 100%; }
+}
+
+@media (max-width: 520px) {
+  .hotmic-theme .hm-spotlight-strip { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .hotmic-theme .hm-main {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+}
+
+/* episode page */
+.hotmic-theme .hm-ep-mast {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1.25rem 0 0.75rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--spot);
+  color: var(--accent-fg, var(--ink));
+  font-family: var(--display-font);
+  text-transform: uppercase;
+}
+
+.hotmic-theme .hm-ep-mast__badge {
+  display: inline-flex;
+  padding: 0.15rem 0.45rem;
+  background: rgba(0, 0, 0, 0.28);
+  font-size: 0.75rem;
+}
+
+.hotmic-theme .hm-ep-mast__line { margin: 0; font-size: 1rem; }
+
+.hotmic-theme .hm-ep-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  align-items: center;
+  margin: 0 0 0.75rem;
+  font-family: var(--display-font);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.hotmic-theme .hm-ep-crumbs a { color: var(--spot); text-decoration: none; }
+.hotmic-theme .hm-ep-crumbs span { color: var(--muted); }
+
+.hotmic-theme .hm-ep-player { margin: 0.75rem 0 1.5rem; }
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-card] {
+  background: var(--panel) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  border-top: 4px solid var(--spot) !important;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-header] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  gap: 0 !important;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-row] {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-artwork] {
+  width: 100% !important;
+  height: min(42vw, 220px) !important;
+  max-height: 220px;
+  border-radius: 0 !important;
+  border: 0 !important;
+  object-fit: cover !important;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-body] {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.55rem !important;
+  padding: 1rem 1.1rem 1.15rem !important;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-meta] {
+  order: -1;
+  font-family: var(--display-font);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--spot) !important;
+  font-size: 0.85rem !important;
+  margin: 0 !important;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-title] {
+  font-family: var(--display-font) !important;
+  text-transform: uppercase !important;
+  font-size: clamp(1.7rem, 5vw, 2.6rem) !important;
+  letter-spacing: 0.04em !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-actions] button {
+  border-radius: 2px !important;
+  border: 2px solid var(--line) !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  font-family: var(--display-font);
+  text-transform: uppercase;
+}
+
+.hotmic-theme .hm-ep-player [data-harborfm-episode-card] > *:not([data-harborfm-episode-header]) {
+  padding: 1rem !important;
+  border-top: 1px solid var(--line);
+}
+
+.hotmic-theme .hm-dead-mic .hm-display {
+  color: var(--spot);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--spot) 40%, transparent);
+}
+
+/* plate wall */
+.hotmic-theme .hm-plates { margin-top: 0.25rem; }
+
+.hotmic-theme .hm-plates__head { margin: 1.25rem 0 1.35rem; }
+
+.hotmic-theme .hm-plates__lede {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+/* Four unique stills: equal 2x2 panel wall */
+.hotmic-theme .hm-plate-wall {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.1rem;
+}
+
+.hotmic-theme .hm-plate {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hotmic-theme .hm-plate__frame {
+  display: block;
+  border: 2px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 80%, transparent);
+  overflow: clip;
+  line-height: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.hotmic-theme .hm-plate__frame:hover {
+  border-color: var(--spot);
+  transform: translateY(-2px);
+}
+
+.hotmic-theme .hm-plate__frame img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.hotmic-theme .hm-plate__name {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hotmic-theme .hm-plate__file {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.hotmic-theme .hm-plate__by {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.hotmic-theme .hm-plate__by a {
+  color: var(--spot);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.hotmic-theme .hm-plate__by a:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .hotmic-theme .hm-plate-wall { grid-template-columns: 1fr; }
+}
+
+/* episodes list */
+.hotmic-theme [data-harborfm-episodes-list] {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.55rem !important;
+  border: none !important;
+}
+
+.hotmic-theme [data-harborfm-episode-item] {
+  min-width: 0 !important;
+  position: relative !important;
+  background: #12101a !important;
+  border: 1px solid var(--line) !important;
+  border-left: 5px solid var(--spot) !important;
+  border-radius: 2px !important;
+  padding: 0.95rem 1rem 0.95rem 1.1rem !important;
+  box-shadow: none !important;
+}
+
+.hotmic-theme [data-harborfm-episode-item]:hover {
+  background: #221e2c !important;
+  border-color: color-mix(in srgb, var(--spot) 45%, var(--line)) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.hotmic-theme [data-harborfm-episode-item-header] {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 0.75rem !important;
+  min-width: 0 !important;
+}
+
+.hotmic-theme [data-harborfm-episode-item-title] {
+  min-width: 0 !important;
+  font-family: var(--display-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  font-size: 1.35rem !important;
+  font-weight: 400 !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+  line-height: 1.15 !important;
+}
+
+.hotmic-theme [data-harborfm-episode-item-meta] {
+  color: var(--muted) !important;
+  font-size: 0.78rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  font-family: var(--display-font) !important;
+}
+
+.hotmic-theme [data-harborfm-episode-item-link] {
+  flex: 0 0 auto !important;
+  border-radius: 2px !important;
+  background: var(--spot) !important;
+  color: var(--accent-fg, var(--ink)) !important;
+  border: none !important;
+  padding: 0.35rem 0.75rem !important;
+  font-family: var(--display-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  font-size: 0.9rem !important;
+  text-decoration: none !important;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 0 100%, 6px 50%);
+}
+
+.hotmic-theme [data-harborfm-episode-item-link]:hover { filter: brightness(1.08) !important; }
+
+.hotmic-theme [data-harborfm-episode-item-description] {
+  min-width: 0 !important;
+  color: var(--muted) !important;
+  margin: 0.55rem 0 0 !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere !important;
+}
+
+.hotmic-theme [data-harborfm-episode-item-type] {
+  border-radius: 2px !important;
+  background: transparent !important;
+  border: 1px solid var(--spot) !important;
+  color: var(--spot) !important;
+  font-family: var(--display-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+.hotmic-theme [data-harborfm-episodes-load-more] {
+  border-radius: 2px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--ink) !important;
+  font-family: var(--display-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* reviews */
+.hotmic-theme .hm-reviews { margin: 1.5rem 0; }
+
+.hotmic-theme .hm-reviews__head h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  color: var(--spot);
+}
+
+.hotmic-theme .hm-reviews [data-harborfm-reviews-title] { display: none !important; }
+
+.hotmic-theme .hm-reviews [data-harborfm-reviews] {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.hotmic-theme .hm-reviews [data-harborfm-reviews-list] {
+  list-style: none !important;
+  margin: 0 0 1rem !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.55rem !important;
+}
+
+.hotmic-theme .hm-reviews [data-harborfm-review] {
+  min-width: 0 !important;
+  background: #12101a !important;
+  border: 1px solid var(--line) !important;
+  border-left: 5px solid var(--spot) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  padding: 0.95rem 1rem !important;
+}
+
+.hotmic-theme .hm-reviews [data-harborfm-review-name] {
+  font-family: var(--display-font) !important;
+  text-transform: uppercase !important;
+  font-size: 1.15rem !important;
+}
+
+.hotmic-theme .hm-reviews [data-harborfm-reviews-write],
+.hotmic-theme .hm-reviews [data-harborfm-reviews-load-more] {
+  border-radius: 2px !important;
+  border: 1px solid var(--line) !important;
+  background: var(--panel) !important;
+  color: var(--ink) !important;
+  font-family: var(--display-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.hotmic-theme .hm-reviews [data-harborfm-reviews-write] {
+  background: var(--spot) !important;
+  color: var(--accent-fg, var(--ink)) !important;
+  border: none !important;
+}
+
+/* harborfm-themed-dialogs */
+.hotmic-theme [data-harborfm-dialog="feedback"],
+.hotmic-theme [data-harborfm-dialog="alerts"],
+.hotmic-theme [data-harborfm-dialog="share"],
+.hotmic-theme [data-harborfm-dialog="subscription"],
+.hotmic-theme [data-harborfm-dialog="review"] {
+  --bg: #100e16;
+  --bg-elevated: #1c1824;
+  --bg-muted: color-mix(in srgb, #100e16 85%, #f5eef8 15%);
+  --text: #f5eef8;
+  --text-muted: #9a8fa8;
+  --border: #3a2f48;
+  --radius: 4px;
+  font-family: var(--body-font) !important;
+  background: #1c1824 !important;
+  border: 1px solid #3a2f48 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px color-mix(in srgb, var(--spot) 12%, transparent) !important;
+  color: #f5eef8 !important;
+}
+
+.hotmic-theme [data-harborfm-dialog-overlay="feedback"],
+.hotmic-theme [data-harborfm-dialog-overlay="alerts"],
+.hotmic-theme [data-harborfm-dialog-overlay="share"],
+.hotmic-theme [data-harborfm-dialog-overlay="subscription"],
+.hotmic-theme [data-harborfm-dialog-overlay="review"] {
+  background: rgba(10, 8, 14, 0.78) !important;
+}
+
+.hotmic-theme [data-harborfm-dialog] h2,
+.hotmic-theme [data-harborfm-dialog] h3,
+.hotmic-theme [data-harborfm-dialog] [class*="title"] {
+  font-family: var(--display-font) !important;
+  color: #f5eef8 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hotmic-theme [data-harborfm-dialog] input,
+.hotmic-theme [data-harborfm-dialog] textarea {
+  background: color-mix(in srgb, #1c1824 70%, #100e16) !important;
+  border: 1px solid #3a2f48 !important;
+  border-radius: 4px !important;
+  color: #f5eef8 !important;
+  font-family: inherit !important;
+}
+
+.hotmic-theme [data-harborfm-dialog] input:focus,
+.hotmic-theme [data-harborfm-dialog] textarea:focus {
+  border-color: var(--spot) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--spot) 25%, transparent) !important;
+  outline: none !important;
+}
+
+.hotmic-theme [data-harborfm-dialog] button {
+  border-radius: 2px !important;
+  font-family: inherit !important;
+}
+
+.hotmic-theme [data-harborfm-dialog] button[type="submit"],
+.hotmic-theme [data-harborfm-dialog="subscription"] button:not([aria-label="Close"]):not([data-harborfm-plan-card]),
+.hotmic-theme [data-harborfm-dialog="share"] button:not([aria-label="Close"]) {
+  background: var(--spot) !important;
+  color: var(--accent-fg, #141218) !important;
+  border: 1px solid var(--spot) !important;
+  font-weight: 650 !important;
+  font-family: var(--display-font) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hotmic-theme [data-harborfm-dialog] button[aria-label="Close"] {
+  background: transparent !important;
+  border: 1px solid #3a2f48 !important;
+  color: #9a8fa8 !important;
+}
+
+.hotmic-theme [data-harborfm-dialog] button[aria-label="Close"]:hover {
+  border-color: var(--spot) !important;
+  color: #f5eef8 !important;
+}
+
+.hotmic-theme [data-harborfm-dialog="subscription"] [data-harborfm-plan-card] {
+  border-radius: 6px !important;
+  background: var(--bg, transparent) !important;
+  color: var(--text, inherit) !important;
+  border: 1px solid var(--border, currentColor) !important;
+  font-weight: inherit !important;
+}
+
+/* motion */
+@keyframes hm-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes hm-neon-flicker {
+  0%, 91%, 100% { opacity: 1; }
+  92% { opacity: 0.82; }
+  94% { opacity: 1; }
+  96% { opacity: 0.75; }
+}
+
+@keyframes hm-neon-pulse {
+  0%, 100% { filter: brightness(1) saturate(1); }
+  50% { filter: brightness(1.06) saturate(1.12); }
+}
+
+@keyframes hm-ticket-glow {
+  0%, 100% { box-shadow: 0 0 0 color-mix(in srgb, var(--spot) 0%, transparent); }
+  50% { box-shadow: 0 0 18px color-mix(in srgb, var(--spot) 45%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotmic-theme .hm-marquee__track,
+  .hotmic-theme .hm-neon-label,
+  .hotmic-theme .hm-hero__photo,
+  .hotmic-theme .hm-ticket,
+  .hotmic-theme .hm-plate__frame:hover {
+    animation: none;
+    transform: none;
+  }
+}

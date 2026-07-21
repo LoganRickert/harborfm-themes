@@ -1,0 +1,14 @@
+{
+  "id": "pitchside",
+  "name": "Pitchside",
+  "version": "1.0.0",
+  "description": "Sports-talk energy with bold type and match-day pacing.",
+  "index": "home",
+  "preview": "images/preview.jpg",
+  "homepage": "https://app.harborfm.com/feed/preview-pitchside",
+  "pages": {
+    "podcast": "clubhouse.html",
+    "stills": "stills.html"
+  },
+  "not_found": "not_found"
+}

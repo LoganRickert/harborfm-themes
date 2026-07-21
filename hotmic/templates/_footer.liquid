@@ -1,0 +1,16 @@
+<footer class="hm-foot" aria-label="Stage footer">
+  <div class="hm-foot__row">
+    <span class="hm-foot__badge">ON AIR</span>
+    <span class="hm-foot__title">{{ podcast.title | escape }}</span>
+    <span class="hm-foot__badge hm-foot__badge-dim">SET 2</span>
+  </div>
+  <div class="hm-foot__links">
+    <a href="{{ urls.home }}">Tonight</a>
+    <a href="{{ urls.pages.podcast }}">Green room</a>
+    <span class="hm-foot__credit">
+      Kit:
+      {% if theme.homepage != "" %}<a href="{{ theme.homepage | escape }}" rel="noopener noreferrer">{{ theme.name | escape }}</a>{% else %}{{ theme.name | escape }}{% endif %}
+      · <a href="{{ urls.pages.wall }}">Wall credits</a>
+    </span>
+  </div>
+</footer>

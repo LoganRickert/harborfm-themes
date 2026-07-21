@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {% render '_head', accent: accent %}
+  <title>Lookbook | {{ podcast.title | escape }}</title>
+</head>
+<body class="atelier-theme atelier-page-{{ page }}">
+  {% render '_nav', podcast: podcast, urls: urls, page: page %}
+  <main class="main">
+      <header>
+        <p class="eyebrow">Interviews in sharp light</p>
+        <h1 class="title display">Lookbook</h1>
+      </header>
+      <section class="panel">
+        <p class="lede">Faces and frames that set the tone for each conversation.</p>
+      </section>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/hero.jpg" alt="" />
+      <div class="portraits" style="margin:1rem 0">
+        <img src="{{ urls.theme_asset_base }}/images/a.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/b.jpg" alt="" /><img src="{{ urls.theme_asset_base }}/images/c.jpg" alt="" />
+      </div>
+      <img class="theme-figure" src="{{ urls.theme_asset_base }}/images/d.jpg" alt="" />
+    </main>
+{% render '_footer', podcast: podcast, urls: urls, theme: theme %}
+</body>
+</html>

@@ -2,15 +2,20 @@
 /**
  * Discover theme packages (dirs with theme.json), validate, zip, write catalog.json.
  *
+ * Download URLs use per-theme release tags: `{id}-v{version}`.
+ * The mutable GitHub release tag `catalog` hosts only catalog.json.
+ *
  * Env:
  *   GITHUB_REPOSITORY  owner/repo (default LoganRickert/harborfm-themes)
- *   RELEASE_TAG        release tag for download URLs (required for catalog URLs)
  *   DOWNLOAD_BASE      optional absolute/relative URL prefix for zips + previews
- *                      (overrides GitHub release URLs; e.g. http://127.0.0.1:4173
- *                      or /theme-gallery for docs `astro dev`)
+ *                      (overrides GitHub per-theme URLs; e.g. /theme-gallery)
+ *   CATALOG_NAME       top-level catalog name (default "HarborFM Themes")
  *   OUT_DIR            output directory (default ./dist)
  *   MAX_ZIP_BYTES      max packed size (default 10 MiB)
  */
+import {
+  createHash,
+} from "node:crypto";
 import {
   cpSync,
   existsSync,
@@ -29,12 +34,12 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIR = process.env.OUT_DIR || join(ROOT, "dist");
 const MAX_ZIP_BYTES = Number(process.env.MAX_ZIP_BYTES || 10 * 1024 * 1024);
 const REPO = process.env.GITHUB_REPOSITORY || "LoganRickert/harborfm-themes";
-const RELEASE_TAG = process.env.RELEASE_TAG || "";
+const CATALOG_NAME = (process.env.CATALOG_NAME || "HarborFM Themes").trim() || "HarborFM Themes";
 
 const PACKAGE_ID_RE = /^[a-z0-9][a-z0-9_-]*$/;
 const PREVIEW_RE =
-  /^images\/[a-zA-Z0-9][a-zA-Z0-9._-]*\.(png|jpe?g|gif|webp)$/i;
-const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp"]);
+  /^images\/[a-zA-Z0-9][a-zA-Z0-9._-]*\.(png|jpe?g|gif|webp|svg)$/i;
+const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"]);
 const FONT_EXT = new Set([".woff2", ".ttf"]);
 const ALLOWED_EXT = new Set([
   ".liquid",
@@ -45,6 +50,7 @@ const ALLOWED_EXT = new Set([
   ".jpeg",
   ".gif",
   ".webp",
+  ".svg",
 ]);
 
 function fail(msg) {
@@ -121,6 +127,15 @@ function parseManifest(dir) {
       fail(`${relative(ROOT, dir)}: invalid homepage URL "${homepage}"`);
     }
   }
+  const catalog =
+    json.catalog === undefined || json.catalog === null
+      ? undefined
+      : String(json.catalog).trim();
+  if (catalog !== undefined) {
+    if (!/^https?:\/\/[^\s]+$/i.test(catalog) || catalog.length > 500) {
+      fail(`${relative(ROOT, dir)}: invalid catalog URL "${catalog}"`);
+    }
+  }
   const description =
     json.description === undefined || json.description === null
       ? undefined
@@ -144,6 +159,7 @@ function parseManifest(dir) {
     description,
     preview,
     homepage,
+    catalog,
     index: json.index,
     not_found: notFound,
     pages: json.pages,
@@ -203,7 +219,6 @@ function validatePackage({ folder, dir }) {
 function zipPackage(dir, zipPath) {
   mkdirSync(dirname(zipPath), { recursive: true });
   if (existsSync(zipPath)) rmSync(zipPath);
-  // zip contents at archive root (theme.json at root)
   const result = spawnSync(
     "zip",
     ["-r", "-q", zipPath, ".", "-x", "*.DS_Store", "*__MACOSX*", "*.git*"],
@@ -221,14 +236,18 @@ function zipPackage(dir, zipPath) {
   return size;
 }
 
+function sha256File(path) {
+  const hash = createHash("sha256");
+  hash.update(readFileSync(path));
+  return hash.digest("hex");
+}
+
+function themeReleaseTag(id, version) {
+  return `${id}-v${version}`;
+}
+
 function main() {
   const downloadBaseEnv = (process.env.DOWNLOAD_BASE || "").trim().replace(/\/$/, "");
-  if (!downloadBaseEnv && !RELEASE_TAG) {
-    console.warn("warning: RELEASE_TAG unset; catalog download URLs will be placeholders");
-  }
-  const tag = RELEASE_TAG || "TAG";
-  const downloadBase =
-    downloadBaseEnv || `https://github.com/${REPO}/releases/download/${tag}`;
 
   rmSync(OUT_DIR, { recursive: true, force: true });
   mkdirSync(OUT_DIR, { recursive: true });
@@ -239,23 +258,34 @@ function main() {
   }
 
   const catalog = {
+    name: CATALOG_NAME,
     generatedAt: new Date().toISOString(),
-    releaseTag: RELEASE_TAG || null,
+    themes: [],
+  };
+  const publishManifest = {
+    catalogName: CATALOG_NAME,
     themes: [],
   };
 
   for (const pkg of packages) {
     const { manifest } = validatePackage(pkg);
+    const releaseTag = themeReleaseTag(manifest.id, manifest.version);
     const zipName = `${manifest.id}-${manifest.version}-theme.zip`;
     const zipPath = join(OUT_DIR, zipName);
     const byteSize = zipPackage(pkg.dir, zipPath);
+    const sha256 = sha256File(zipPath);
+
+    const themeDownloadBase =
+      downloadBaseEnv ||
+      `https://github.com/${REPO}/releases/download/${releaseTag}`;
 
     const entry = {
       id: manifest.id,
       name: manifest.name,
       version: manifest.version,
-      downloadUrl: `${downloadBase}/${zipName}`,
+      downloadUrl: `${themeDownloadBase}/${zipName}`,
       byteSize,
+      sha256,
     };
 
     if (manifest.description) {
@@ -266,19 +296,33 @@ function main() {
       entry.homepage = manifest.homepage;
     }
 
+    let previewAsset = null;
     if (manifest.preview) {
       const ext = extname(manifest.preview).toLowerCase();
-      const previewAsset = `${manifest.id}-preview${ext}`;
+      previewAsset = `${manifest.id}-preview${ext}`;
       cpSync(join(pkg.dir, manifest.preview), join(OUT_DIR, previewAsset));
       entry.preview = manifest.preview;
-      entry.previewUrl = `${downloadBase}/${previewAsset}`;
+      entry.previewUrl = `${themeDownloadBase}/${previewAsset}`;
     }
 
     catalog.themes.push(entry);
-    console.log(`packed ${manifest.id}@${manifest.version} (${byteSize} bytes)`);
+    publishManifest.themes.push({
+      id: manifest.id,
+      version: manifest.version,
+      releaseTag,
+      zipName,
+      previewAsset,
+      byteSize,
+      sha256,
+    });
+    console.log(`packed ${manifest.id}@${manifest.version} → ${releaseTag} (${byteSize} bytes)`);
   }
 
   writeFileSync(join(OUT_DIR, "catalog.json"), `${JSON.stringify(catalog, null, 2)}\n`);
+  writeFileSync(
+    join(OUT_DIR, "publish-manifest.json"),
+    `${JSON.stringify(publishManifest, null, 2)}\n`,
+  );
   console.log(`wrote ${join(OUT_DIR, "catalog.json")} (${catalog.themes.length} themes)`);
 }
 

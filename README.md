@@ -70,9 +70,11 @@ That copies packages into the server theme data dir (no zip step). After edits, 
 Needs `zip` on your PATH:
 
 ```bash
-RELEASE_TAG=v0.0.0 node scripts/validate-and-pack.mjs
+node scripts/validate-and-pack.mjs
 ls dist/
 ```
+
+Each theme zip is addressed by a per-theme release tag (`{id}-v{version}`). The catalog index is published separately under a long-lived `catalog` release.
 
 ### Preview the docs Themes page
 
@@ -97,9 +99,18 @@ DOWNLOAD_BASE=/theme-gallery node scripts/validate-and-pack.mjs
 
 ## Publish a release
 
-1. Push the theme packages.
-2. Tag a release (`v*`) or run the **Publish theme zips** workflow.
-3. The docs Themes page loads `catalog.json` from that release.
+1. Bump `version` in each theme you changed (`theme.json`).
+2. Push the theme packages.
+3. Run the **Publish theme zips** workflow (or push a `publish-*` / `v*` tag).
+4. CI packs all themes, uploads only new/changed `{id}-v{version}` releases, and replaces `catalog.json` on the stable `catalog` release.
+
+Stable catalog URL:
+
+```text
+https://github.com/LoganRickert/harborfm-themes/releases/download/catalog/catalog.json
+```
+
+Unchanged themes keep their existing download URLs. Changing a package without bumping its version fails the publish check.
 
 ## Previews
 
